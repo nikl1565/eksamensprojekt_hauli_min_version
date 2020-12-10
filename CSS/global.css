@@ -1,14 +1,259 @@
 *,
 *::before,
-*::after
-{
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    /*    Nulstiller fontsize, så den er 10px. Dermed kan vi bruge rem til lettere at definere fontstørrelse */
+    font-size: 62.5%;
+}
+
+:root {
+    /*    Font families */
+    --font-family-playfair: 'Playfair Display', serif;
+    --font-family-roboto: 'Roboto', sans-serif;
+
+    /*    Font sizes  */
+    --h1-font-size: 6rem;
+    --h2-font-size: 4.5rem;
+    --h3-font-size: 3.5rem;
+    --h4-font-size: 3rem;
+    --h5-font-size: 2.6rem;
+    --h6-font-size: 2.1rem;
+    --p-font-size: 1.7rem;
+    --citat-font-size: 1.7rem;
+    --a-font-size: 1.7rem;
+    --cta-text-font-size: 1.7rem;
+
+
+    /*    Font colors  */
+    --h1-font-color: #000000;
+    --h2-font-color: #000000;
+    --h3-font-color: #000000;
+    --h4-font-color: #000000;
+    --h5-font-color: #000000;
+    --h6-font-color: #000000;
+    --p-font-color: #000000;
+    --citat-font-color: #000000;
+    /*    --a-font-color: #5788f5;*/
+    --a-font-color-hover: #3B3635;
+    --cta-primary-text-font-color: #ffffff;
+    --cta-primary-text-font-color-hover: #847673;
+    --cta-secondary-text-font-color: #ffffff;
+    --cta-secondary-text-font-color-hover: #3B3635;
+
+
+    /*    Font lineheight */
+    --h1-font-line-height: 1.6;
+    --h2-font-line-height: 1.6;
+    --h3-font-line-height: 1.6;
+    --h4-font-line-height: 1.6;
+    --h5-font-line-height: 1.6;
+    --h6-font-line-height: 1.6;
+    --p-font-line-height: 1.6;
+    --citat-font-line-height: 1.6;
+
+    /*    Font weights  */
+    --font-weight-medium: 500;
+    --font-weight-regular: 400;
+    --font-weight-light: 300;
+    --font-weight-thin: 100;
+
+
+    /*    Farver */
+    --red-color: #FFE4E4;
+    --blue-color: #EEF6FB;
+    --green-color: #ECFBE5;
+    --yellow-color: #FFFDE6;
+    --body-color: #939393;
+    --main-color: #ffffff;
+
+    /*    CTA knapper*/
+    /*        Primære knapper*/
+    --cta-primary-background-color: #3B3635;
+    --cta-primary-border-radius: 2px;
+    --cta-primary-box-shadow: 1.5px 1.5px 3px rgba(59, 54, 53, 0.22);
+    /*             Denne padding skal jo nok overskrives nogle steder med noget mindre */
+    --cta-primary-padding: 10px;
+
+
+    /*        Sekundære knapper*/
+    --cta-secondary-background-color: rgba(255, 255, 255, 0);
+    --cta-secondary-border: 2px solid #fff;
+    --cta-secondary-border-radius: 2px;
+    --cta-secondary-box-shadow: 1.5px 1.5px 3px rgba(16, 31, 72, 0.22);
+    /*             Denne padding skal jo nok overskrives nogle steder med noget mindre */
+    --cta-secondary-padding: 10px;
+
+}
+
+/* til tests */
+.cube {
+    width: 80px;
+    height: 80px;
+}
+
+.red {
+    background-color: var(--red-color);
+}
+
+.blue {
+    background-color: var(--blue-color);
+}
+
+.green {
+    background-color: var(--green-color);
+}
+
+.yellow {
+    background-color: var(--yellow-color);
+}
+
+
+/*   STYLETILE  */
+body {
+    background-color: var(--body-color);
+}
+
+main {
+    background-color: var(--main-color);
+}
+
+
+/* Style tile til tekst og knapper */
+h1 {
+    font-family: var(--font-family-playfair);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--h1-font-size);
+    line-height: var(--h1-font-line-height);
+    color: var(--h1-font-color);
+}
+
+h2 {
+    font-family: var(--font-family-playfair);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--h2-font-size);
+    line-height: var(--h1-font-line-height);
+    color: var(--h2-font-color);
+}
+
+h3 {
+    font-family: var(--font-family-playfair);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--h3-font-size);
+    line-height: var(--h3-font-line-height);
+    color: var(--h3-font-color);
+}
+
+h4 {
+    font-family: var(--font-family-playfair);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--h4-font-size);
+    line-height: var(--h4-font-line-height);
+    color: var(--h4-font-color);
+}
+
+h5 {
+    font-family: var(--font-family-playfair);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--h5-font-size);
+    line-height: var(--h5-font-line-height);
+    color: var(--h5-font-color);
+}
+
+h6 {
+    font-family: var(--font-family-playfair);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--h6-font-size);
+    line-height: var(--h6-font-line-height);
+    color: var(--h6-font-color);
+}
+
+p {
+    font-family: var(--font-family-roboto);
+    font-weight: var(--font-weight-light);
+    font-size: var(--p-font-size);
+    line-height: var(--p-font-line-height);
+    color: var(--p-font-color);
+}
+
+.citation {
+    font-family: var(--font-family-roboto);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--citat-font-size);
+    line-height: var(--citat-font-line-height);
+    color: var(--citat-font-color);
+    font-style: italic
+}
+
+a {
+    font-family: var(--font-family-roboto);
+    color: var(--a-font-color);
+    font-weight: var(--font-weight-light);
+    text-decoration: none;
+    font-size: var(--a-font-size);
+    line-height: var(--a-font-line-height);
+}
+
+a:hover {
+    color: var(--a-font-color-hover);
+}
+
+
+/*         Knapper */
+.cta-primary {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 20px 30px 20px 0px;
+    cursor: pointer;
+
+    background-color: var(--cta-primary-background-color);
+    border-radius: var(--cta-primary-border-radius);
+    box-shadow: var(--cta-primary-box-shadow);
+    padding: var(--cta-primary-padding);
+    border: none;
+
+    /*    Tekst */
+    font-family: var(--font-family);
+    font-size: var(--cta-text-font-size);
+    font-weight: var(--cta-font-weight);
+    color: var(--cta-primary-text-font-color);
+    text-decoration: none;
+}
+
+.cta-primary:hover {
+    color: var(--cta-primary-text-font-color-hover);
+}
+
+.cta-secondary {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 20px 30px 20px 0px;
+    cursor: pointer;
+
+    background-color: var(--cta-secondary-background-color);
+    border: var(--cta-secondary-border);
+    border-radius: var(--cta-secondary-border-radius);
+    box-shadow: var(--cta-secondary-box-shadow);
+    padding: var(--cta-secondary-padding);
+
+    /*    Tekst */
+    font-family: var(--font-family);
+    font-size: var(--cta-text-font-size);
+    font-weight: var(--cta-font-weight);
+    color: var(--cta-secondary-text-font-color);
+    text-decoration: none;
+}
+
+.cta-secondary:hover {
+    color: var(--cta-secondary-text-font-color-hover);
+}
+
 .container {
-max-width: 1400px;
+  max-width: 1400px;
 }
 
 /********************FOOTER********************/
@@ -124,5 +369,3 @@ footer {
     border:10px solid white;
 
 }
-
-/**********************************************/
