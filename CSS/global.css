@@ -39,11 +39,11 @@ html {
     --p-font-color: #000000;
     --citat-font-color: #000000;
     /*    --a-font-color: #5788f5;*/
-    --a-font-color-hover: #1742a7;
+    --a-font-color-hover: #3B3635;
     --cta-primary-text-font-color: #ffffff;
-    --cta-primary-text-font-color-hover: #607bb7;
-    --cta-secondary-text-font-color: #0c1f4b;
-    --cta-secondary-text-font-color-hover: #607bb7;
+    --cta-primary-text-font-color-hover: #847673;
+    --cta-secondary-text-font-color: #ffffff;
+    --cta-secondary-text-font-color-hover: #3B3635;
 
 
     /*    Font lineheight */
@@ -66,14 +66,31 @@ html {
     /*    Farver */
     --red-color: #FFE4E4;
     --blue-color: #EEF6FB;
-    --green-color: #EFFBEE;
+    --green-color: #ECFBE5;
     --yellow-color: #FFFDE6;
-    --body-color: #fff;
+    --body-color: #939393;
     --main-color: #ffffff;
+
+    /*    CTA knapper*/
+    /*        Primære knapper*/
+    --cta-primary-background-color: #3B3635;
+    --cta-primary-border-radius: 2px;
+    --cta-primary-box-shadow: 1.5px 1.5px 3px rgba(59, 54, 53, 0.22);
+    /*             Denne padding skal jo nok overskrives nogle steder med noget mindre */
+    --cta-primary-padding: 10px;
+
+
+    /*        Sekundære knapper*/
+    --cta-secondary-background-color: rgba(255, 255, 255, 0);
+    --cta-secondary-border: 2px solid #fff;
+    --cta-secondary-border-radius: 2px;
+    --cta-secondary-box-shadow: 1.5px 1.5px 3px rgba(16, 31, 72, 0.22);
+    /*             Denne padding skal jo nok overskrives nogle steder med noget mindre */
+    --cta-secondary-padding: 10px;
+
 }
 
 /* til tests */
-
 .cube {
     width: 80px;
     height: 80px;
@@ -105,8 +122,8 @@ main {
     background-color: var(--main-color);
 }
 
-/* Style tile til tekst og knapper */
 
+/* Style tile til tekst og knapper */
 h1 {
     font-family: var(--font-family-playfair);
     font-weight: var(--font-weight-regular);
@@ -187,7 +204,6 @@ a:hover {
 
 
 /*         Knapper */
-/*
 .cta-primary {
     display: inline-block;
     vertical-align: middle;
@@ -199,20 +215,15 @@ a:hover {
     box-shadow: var(--cta-primary-box-shadow);
     padding: var(--cta-primary-padding);
     border: none;
-*/
 
-/*    Tekst */
-/*
+    /*    Tekst */
     font-family: var(--font-family);
     font-size: var(--cta-text-font-size);
     font-weight: var(--cta-font-weight);
     color: var(--cta-primary-text-font-color);
     text-decoration: none;
-    text-transform: uppercase;
 }
-*/
 
-/*
 .cta-primary:hover {
     color: var(--cta-primary-text-font-color-hover);
 }
@@ -228,19 +239,15 @@ a:hover {
     border-radius: var(--cta-secondary-border-radius);
     box-shadow: var(--cta-secondary-box-shadow);
     padding: var(--cta-secondary-padding);
-*/
 
-/*    Tekst */
-/*
+    /*    Tekst */
     font-family: var(--font-family);
     font-size: var(--cta-text-font-size);
     font-weight: var(--cta-font-weight);
     color: var(--cta-secondary-text-font-color);
     text-decoration: none;
-    text-transform: uppercase;
-    }
+}
 
-    .cta-secondary:hover {
-        color: var(--cta-secondary-text-font-color-hover);
-    }
-*/
+.cta-secondary:hover {
+    color: var(--cta-secondary-text-font-color-hover);
+}
