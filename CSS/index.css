@@ -1,0 +1,62 @@
+img {
+    width: 100%;
+    height: auto;
+}
+
+.container {
+    margin: 0 auto;
+}
+
+.css_splash {
+    width: 100%;
+
+    background-image: url(../img/hauli_splash01.jpg);
+    background-size: cover;
+    background-position: 29.5% 50%;
+    max-width: 1920px;
+    width: 100%;
+    height: 100vh;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 10px;
+}
+
+.gallery_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.grid_gallery_img1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+}
+
+.grid_txt_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.grid_txt {
+
+}
+
+
+.grid_gallery_img2 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+}

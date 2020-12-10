@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="CSS/index.css">
+    <link rel="stylesheet" href="CSS/global.css">
+</head>
+
+<body>
+    <section class="css_splash">
+    </section>
+
+    <main class="container">
+
+    <section class="js_dynamic_content"></section>
+
+    <article class="grid-container">
+        <figure class="grid_gallery_img1">
+            <img class="gallery_img" src="img/colorblock_kjole.jpeg" alt="">
+        </figure>
+
+        <div class="grid_txt_container">
+            <article class="grid_txt">
+                <h2>COLORBLOCK COLLECTION</h2>
+                <p>beskrivelse beskrivelse beskrivelse beskrivelse beskrivelse beskrivelse</p>
+            </article>
+        </div>
+
+        <figure class="grid_gallery_img2">
+        <img class="gallery_img" src="img/colorblock_taske.png" alt="">
+        </figure>
+
+    </article>
+
+    </main>
+   <!--FOOTER-->
+    <footer class="footerstyling">
+        <!--FOOTER COLUMN WRAPPER-->
+        <div class="footerinfo">
+            <!--FOOTER COLUMN-->
+            <div class="footercolumn">
+                <h3 class="footer_title">KONTAKT HAULI</h3>
+                <ul>
+                    <li><a class="footer_link" href="https://goo.gl/maps/QZTs9b3uJH38N15x6" target="_blank">Kronprinsessegade 24, 1306 Kbh K</a></li>
+                    <li><a class="footer_link" href="tel:+45 21 96 32 61">+45 21 96 32 61</a></li>
+                    <li><a class="footer_link" href="mailto:info@hauli.dk">info@hauli.dk</a></li>
+                    <li><a class="footer_link" href="omos.html">CVR: 35902619</a></li>
+                </ul>
+            </div>
+            <!---->
+                        <!---->
+            <div class="footercolumn">
+                <h3 class="footer_title">Nyhedsbrev</h3>
+                <img class="footer_nyhedsbrev" src="img/nyhedsbrev_logo.svg" alt="nyhedsbev logo">
+                <input class="footer_nyhedsbrev_input" type="text" placeholder="Email" name="mail" required>
+
+                <div class="footer_nyhedsbrev_checkbox">
+                    <button>
+                        Tilmeld
+                    </button>
+                </div>
+            </div>
+            <!---->
+            <div class="footercolumn">
+                <h3 class="footer_title">KONTAKT HAULI</h3>
+                <ul>
+                    <li><a class="footer_link" href="https://goo.gl/maps/QZTs9b3uJH38N15x6" target="_blank">Kronprinsessegade 24, 1306 Kbh K</a></li>
+                    <li><a class="footer_link" href="tel:+45 21 96 32 61">+45 21 96 32 61</a></li>
+                    <li><a class="footer_link" href="mailto:info@hauli.dk">info@hauli.dk</a></li>
+                    <li><a class="footer_link" href="omos.html">CVR: 35902619</a></li>
+                </ul>
+
+                    <div class="socialmediabox">
+                    <!--FOOTER SOCIALMEDIA LINK-->
+
+                    <a href="https://www.instagram.com/hauli_official/" target="_blank">
+                        <img class="socials_icon" src="img/Icon%20awesome-instagram.png" alt="instagram social icon">
+                    </a>
+
+                    <a href="https://www.facebook.com/HAULI-108749427480091/" target="_blank">
+                        <img class="socials_icon" src="img/Icon%20awesome-facebook-square.png" alt="facebook social icon">
+                    </a>
+
+                </div>
+
+            </div>
+
+            </div>
+        <!--END FOOTER COLUMN WRAPPER-->
+    </footer>
+
+    <script>
+        //Venter på DOMContent er loaded, starter hentData, opretter JSON-url som variabel.
+        document.addEventListener("DOMContentLoaded", hentData);
+        var url = "https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/pages?slug=landingpage";
+
+        async function hentData() {
+            const respons = await fetch(url);
+            const landingpage = await respons.json();
+            showLandingpage(landingpage);
+        }
+
+            function showLandingpage(landingpage) {
+            console.log(landingpage);
+
+            document.querySelector(".js_dynamic_content").innerHTML = landingpage[0].content.rendered;
+        }
+    </script>
+
+</body>
+</html>
