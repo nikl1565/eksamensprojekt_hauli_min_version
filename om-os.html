@@ -18,13 +18,32 @@
 <body>
     <main>
         <section class="about_content">
-
-
-
-
         </section>
     </main>
 
     <!--    <script src="/JS/global.js"></script>-->
-    <script src="/JS/om-os.js"></script>
-</body></html>
+    <script>
+        document.addEventListener("DOMContentLoaded", init);
+
+        function init() {
+            let url = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/pages?slug=om-os';
+            getData(url);
+        }
+
+        async function getData(url) {
+            //            console.log('getData');
+            const response = await fetch(url);
+            const data = await response.json();
+            console.log(data);
+            showData(data);
+        }
+
+        function showData(data) {
+            //            console.log(data);
+            document.querySelector(".about_content").innerHTML = data[0].content.rendered;
+        }
+
+    </script>
+</body>
+
+</html>

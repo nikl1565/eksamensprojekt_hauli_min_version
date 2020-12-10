@@ -18,12 +18,12 @@ html {
 
     /*    Font sizes  */
     --h1-font-size: 6rem;
-    --h2-font-size: 4.5rem;
+    --h2-font-size: 5rem;
     --h3-font-size: 3.5rem;
     --h4-font-size: 3rem;
     --h5-font-size: 2.6rem;
     --h6-font-size: 2.1rem;
-    --p-font-size: 1.7rem;
+    --p-font-size: 1.6rem;
     --citat-font-size: 1.7rem;
     --a-font-size: 1.7rem;
     --cta-text-font-size: 1.7rem;
@@ -47,13 +47,13 @@ html {
 
 
     /*    Font lineheight */
-    --h1-font-line-height: 1.6;
+    --h1-font-line-height: 1.2;
     --h2-font-line-height: 1.6;
     --h3-font-line-height: 1.6;
     --h4-font-line-height: 1.6;
     --h5-font-line-height: 1.6;
     --h6-font-line-height: 1.6;
-    --p-font-line-height: 1.6;
+    --p-font-line-height: 1.7;
     --citat-font-line-height: 1.6;
 
     /*    Font weights  */
@@ -88,6 +88,12 @@ html {
     /*             Denne padding skal jo nok overskrives nogle steder med noget mindre */
     --cta-secondary-padding: 10px;
 
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* til tests */
@@ -130,6 +136,7 @@ h1 {
     font-size: var(--h1-font-size);
     line-height: var(--h1-font-line-height);
     color: var(--h1-font-color);
+    margin-bottom: 15px;
 }
 
 h2 {
@@ -138,6 +145,7 @@ h2 {
     font-size: var(--h2-font-size);
     line-height: var(--h1-font-line-height);
     color: var(--h2-font-color);
+    margin-bottom: 10px;
 }
 
 h3 {
