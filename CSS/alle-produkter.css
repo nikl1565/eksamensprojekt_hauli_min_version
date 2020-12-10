@@ -26,7 +26,6 @@
     padding-left: 2rem;
     flex-grow: 1;
     scroll-snap-align: start;
-
 }
 
 .category-list__link {
@@ -54,3 +53,9 @@
 }
 
 /* Category slider end */
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    grid-gap: 32px;
+}

@@ -11,3 +11,11 @@ img {
     height: auto;
     max-width: 100%;
 }
+
+.container {
+    max-width: 1400px;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    margin-right: auto;
+    margin-left: auto;
+}
