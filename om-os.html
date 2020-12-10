@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="/CSS/global.css">
+    <link rel="stylesheet" href="/CSS/om-os.css">
+
+
+    <!--    Fonte-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <main>
+        <section class="about_content">
+        </section>
+    </main>
+
+    <!--    <script src="/JS/global.js"></script>-->
+    <script>
+        document.addEventListener("DOMContentLoaded", init);
+
+        function init() {
+            let url = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/pages?slug=om-os';
+            getData(url);
+        }
+
+        async function getData(url) {
+            //            console.log('getData');
+            const response = await fetch(url);
+            const data = await response.json();
+            console.log(data);
+            showData(data);
+        }
+
+        function showData(data) {
+            //            console.log(data);
+            document.querySelector(".about_content").innerHTML = data[0].content.rendered;
+        }
+
+    </script>
+</body>
+
+</html>
