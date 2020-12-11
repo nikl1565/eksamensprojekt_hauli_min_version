@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="CSS/global.css">
+    <link rel="stylesheet" href="CSS/alle-produkter.css">
+</head>
+
+<body>
+    <header></header>
+    <main>
+
+        <section class="category-slider">
+            <h2 class="category-slider__title">Produkter</h2>
+            <ul class="category-list">
+
+                <li class="category-list__item">
+                    <a href="#" class="category-list__link js-category-button" data-category="tasker">
+                        <div class="category-list__icon-container">
+                            <img src="img/taske.svg" alt="" class="category-list__icon">
+                        </div>
+                        <h3>Tasker</h3>
+                    </a>
+                </li>
+                <li class="category-list__item">
+                    <a href="#" class="category-list__link js-category-button" data-category="mundbind">
+                        <div class="category-list__icon-container">
+                            <img src="img/taske.svg" alt="" class="category-list__icon">
+                        </div>
+                        <h3>Mundbind</h3>
+                    </a>
+                </li>
+                <li class="category-list__item">
+                    <a href="#" class="category-list__link js-category-button" data-category="overdele">
+                        <div class="category-list__icon-container">
+                            <img src="img/taske.svg" alt="" class="category-list__icon">
+                        </div>
+                        <h3>Overdele</h3>
+                    </a>
+                </li>
+                <li class="category-list__item">
+                    <a href="#" class="category-list__link js-category-button" data-category="underdele">
+                        <div class="category-list__icon-container">
+                            <img src="img/taske.svg" alt="" class="category-list__icon">
+                        </div>
+                        <h3>Underdele</h3>
+                    </a>
+                </li>
+                <li class="category-list__item">
+                    <a href="#" class="category-list__link js-category-button" data-category="kjoler">
+                        <div class="category-list__icon-container">
+                            <img src="img/taske.svg" alt="" class="category-list__icon">
+                        </div>
+                        <h3>Kjoler</h3>
+                    </a>
+                </li>
+                <li class="category-list__item">
+                    <a href="#" class="category-list__link js-category-button" data-category="colorblock-collection">
+                        <div class="category-list__icon-container">
+                            <img src="img/taske.svg" alt="" class="category-list__icon">
+                        </div>
+                        <h3>Colorblock Kollektion</h3>
+                    </a>
+                </li>
+                <li class="category-list__item">
+                    <a href="#" class="category-list__link js-category-button" data-category="alle-produkter">
+                        <div class="category-list__icon-container">
+                            <img src="img/taske.svg" alt="" class="category-list__icon">
+                        </div>
+                        <h3>Alle produkter</h3>
+                    </a>
+                </li>
+
+            </ul>
+        </section>
+        <section class="products">
+            <div class="container">
+                <h2 class="js-product-list-title">Alle produkter</h2>
+                <div class="product-list js-product-list"></div>
+            </div>
+        </section>
+
+    </main>
+    <footer></footer>
+
+    <template class="t-product">
+        <a href="#" class="product" data-product-id="">
+            <img class="product__image" src="#" alt="#">
+            <h3 class="product__name"></h3>
+            <p class="product__price-text"><span class="product__price"></span> DKK</p>
+        </a>
+    </template>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", init);
+
+        const categoriesUrl = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/categories';
+        const productsUrl = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/produkt';
+        const productTemplate = document.querySelector(".t-product");
+        const productListTitle = document.querySelector(".js-product-list-title");
+        const productList = document.querySelector(".js-product-list");
+        let filter = "alle-produkter";
+
+        let products;
+        let categories;
+
+        async function init() {
+            await getCategories();
+            initCategoryButtons();
+        }
+
+        async function getCategories() {
+            console.log('getCategories');
+
+            const response = await fetch(categoriesUrl);
+            categories = await response.json();
+            console.log(categories);
+
+            getProducts();
+        }
+
+        async function getProducts() {
+            console.log('getProducts');
+
+            const response = await fetch(productsUrl);
+            products = await response.json();
+            console.log(products);
+
+            showProducts(products);
+        }
+
+        function showProducts(products) {
+            console.log('showProducts');
+
+            productList.innerHTML = '';
+
+            products.forEach(product => {
+                let findProductCategory = categories.find(category => category.id === product.categories[0]);
+
+                if (filter === 'alle-produkter' || filter === findProductCategory.slug) {
+
+                    const productClone = productTemplate.content.cloneNode(true);
+
+                    productClone.querySelector(".product").setAttribute('data-product-id', product.id);
+                    productClone.querySelector(".product__image").src = product.billede_thumbnail.guid;
+                    productClone.querySelector(".product__image").alt = product.title.rendered;
+                    productClone.querySelector(".product__name").textContent = product.title.rendered;
+                    productClone.querySelector(".product__price").textContent = product.pris;
+
+                    productClone.querySelector(".product").addEventListener("click", productClick);
+
+                    productList.appendChild(productClone);
+
+                }
+            });
+
+        }
+
+        function initCategoryButtons() {
+            console.log('initCategoryButtons');
+
+            const categoryButtons = document.querySelectorAll(".js-category-button");
+
+            categoryButtons.forEach(categoryButton => {
+
+                categoryButton.addEventListener("click", filterProducts);
+            });
+        }
+
+        function filterProducts() {
+            console.log(this);
+
+            filter = this.dataset.category;
+            console.log('filter', filter);
+
+            const findCategory = categories.find(category => category.slug === filter);
+            console.log('findCategory', findCategory);
+
+            productListTitle.textContent = findCategory.name;
+
+            showProducts(products);
+        }
+
+        function productClick(event) {
+            console.log('productClick');
+            event.preventDefault();
+
+        }
+    </script>
+</body></html>
