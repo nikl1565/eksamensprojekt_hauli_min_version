@@ -262,6 +262,10 @@ a:hover {
 
 .container {
     max-width: 1400px;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /********************FOOTER********************/
