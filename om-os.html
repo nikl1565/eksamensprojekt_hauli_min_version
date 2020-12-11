@@ -16,6 +16,31 @@
 </head>
 
 <body>
+
+    <header>
+        <div class="css_header_logo">
+            <a href="index.html">
+                <img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/LOG-LOGO-LOGO-e1587302092398.png" alt="Logo for HAULI" class="css_header_logo_image">
+            </a>
+        </div>
+
+        <div class="header_burger_icon">☰</div>
+        <nav>
+            <ul>
+                <li> <a href="#">Shop</a></li>
+                <ul class="underpunkter">
+                    <li><a href="#">Tasker</a></li>
+                    <li><a href="#">Tøj</a></li>
+                    <li><a href="#">Mundbind</a></li>
+                </ul>
+                <li> <a href="#">Kontakt</a></li>
+                <li> <a href="#">Om HAULI</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+
     <main>
         <section class="about_content">
         </section>
@@ -42,8 +67,5 @@
             //            console.log(data);
             document.querySelector(".about_content").innerHTML = data[0].content.rendered;
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
