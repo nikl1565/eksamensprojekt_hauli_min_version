@@ -261,11 +261,7 @@ a:hover {
 }
 
 .container {
-<<<<<<< HEAD
     max-width: 1400px;
-=======
-  max-width: 1400px;
->>>>>>> master
 }
 
 /********************FOOTER********************/
@@ -378,10 +374,6 @@ footer {
     width: 180px;
     padding: 10px;
     background-color: #f8f8f8;
-<<<<<<< HEAD
     border: 10px solid white;
-=======
-    border:10px solid white;
->>>>>>> master
 
 }
