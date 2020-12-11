@@ -18,26 +18,46 @@
 <body>
 
     <header>
-        <div class="css_header_logo">
-            <a href="index.html">
-                <img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/LOG-LOGO-LOGO-e1587302092398.png" alt="Logo for HAULI" class="css_header_logo_image">
-            </a>
-        </div>
+        <div class="header_menu_width">
+            <div class="css_header_mobile">
+                <div class="css_header_burger_icon js_header_burger_icon"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg></div>
 
-        <div class="header_burger_icon">☰</div>
-        <nav>
-            <ul>
-                <li> <a href="#">Shop</a></li>
-                <ul class="underpunkter">
-                    <li><a href="#">Tasker</a></li>
-                    <li><a href="#">Tøj</a></li>
-                    <li><a href="#">Mundbind</a></li>
+                <div class="css_header_logo">
+                    <a href="index.html">
+                        <img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/LOG-LOGO-LOGO-e1587302092398.png" alt="Logo for HAULI" class="css_header_logo_image">
+                    </a>
+                </div>
+
+                <div class="css_header_menu_cart_icon">
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="39" viewBox="0 0 35 39">
+                            <g id="Icon_Shopping_Bag" data-name="Icon Shopping Bag" transform="translate(1 1)">
+                                <path id="Path_9" data-name="Path 9" d="M11.5,4,6,11.4V37.3A3.683,3.683,0,0,0,9.667,41H35.333A3.683,3.683,0,0,0,39,37.3V11.4L33.5,4Z" transform="translate(-6 -4)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                                <path id="Path_10" data-name="Path 10" d="M6,12H39" transform="translate(-6 -4.6)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                                <path id="Path_11" data-name="Path 11" d="M29,20c0,4.418-2.91,8-6.5,8S16,24.418,16,20" transform="translate(-6 -5.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                            </g>
+                        </svg>
+                    </a>
+                </div>
+
+            </div>
+            <nav class="js_globalmenu css_globalmenu css_globalmenu_hidden js_globalmenu_hidden">
+                <ul>
+                    <li> <a href="#">Shop</a></li>
+                    <ul class="underpunkter">
+                        <li><a href="#">Tasker</a></li>
+                        <li><a href="#">Tøj</a></li>
+                        <li><a href="#">Mundbind</a></li>
+                    </ul>
+                    <li> <a href="#">Kontakt</a></li>
+                    <li> <a href="#">Om HAULI</a></li>
                 </ul>
-                <li> <a href="#">Kontakt</a></li>
-                <li> <a href="#">Om HAULI</a></li>
-            </ul>
-        </nav>
-
+            </nav>
+        </div>
     </header>
 
 
@@ -53,6 +73,8 @@
         function init() {
             let url = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/pages?slug=om-os';
             getData(url);
+
+            document.querySelector(".js_header_burger_icon").addEventListener("click", toggleHeaderBurgerIcon);
         }
 
         async function getData(url) {
@@ -66,6 +88,24 @@
         function showData(data) {
             //            console.log(data);
             document.querySelector(".about_content").innerHTML = data[0].content.rendered;
+        }
+
+
+        document.querySelector(".js_header_burger_icon").addEventListener("click", toggleHeaderBurgerIcon);
+
+
+        function toggleHeaderBurgerIcon() {
+            console.log("toggle menu");
+            document.querySelector(".js_globalmenu").classList.toggle("css_globalmenu_hidden");
+
+            let isHidden = document.querySelector(".js_globalmenu").classList.contains("css_globalmenu_hidden");
+
+            if (isHidden == true) {
+                document.querySelector(".js_header_burger_icon").innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+            } else {
+                document.querySelector(".js_header_burger_icon").innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
+            }
+
         }
     </script>
 </body></html>

@@ -68,7 +68,7 @@ html {
     --blue-color: #EEF6FB;
     --green-color: #ECFBE5;
     --yellow-color: #FFFDE6;
-    --body-color: #939393;
+    --body-color: #fff;
     --main-color: #ffffff;
 
     /*    CTA knapper*/
@@ -119,7 +119,7 @@ img {
 }
 
 
-/*   STYLETILE  */
+/********************STYLETILE********************/
 body {
     background-color: var(--body-color);
 }
@@ -265,6 +265,106 @@ a:hover {
 }
 
 
+/********************HEADER********************/
+header {
+    background-color: white;
+    position: sticky;
+    top: 0;
+    margin-bottom: 20px;
+    z-index: 1;
+
+}
+
+.header_menu_width {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.css_globalmenu {
+    height: 100vh;
+}
+
+/* Class til at skjule menuen */
+.css_globalmenu_hidden {
+    display: none;
+    height: 100%;
+}
+
+.css_header_mobile {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+}
+
+.css_header_logo {
+    margin: 0 auto;
+}
+
+.css_header_logo_image {
+    width: 200px;
+    display: inline-block;
+}
+
+.css_header_spacing {
+    width: 31.5px;
+}
+
+.css_header_menu_cart_icon,
+.header_burger_icon {
+    color: black;
+    cursor: pointer;
+    vertical-align: middle;
+    display: block;
+    font-size: 4rem;
+}
+
+.header_burger_icon {
+    margin-right: auto;
+}
+
+/*
+.css_header_menu_cart_icon {
+    margin-left: auto;
+}
+*/
+
+@media only screen and (min-width: 1000px) {
+    header {
+        margin-bottom: 40px;
+        padding-bottom: 15px;
+    }
+
+    .css_header_width {
+        display: flex;
+        align-content: center;
+        flex-direction: column;
+    }
+
+    .css_header_spacing {
+        display: none;
+    }
+
+    .css_header_burger_icon {
+        display: none;
+    }
+
+    .css_globalmenu {
+        display: block;
+        text-align: center;
+    }
+
+    .css_header_logo {
+        padding: 20px 0;
+        margin: 0 auto;
+        /*        ! */
+        /*        display: block;*/
+    }
+
+    .css_header_logo_image {
+        width: 180px;
+    }
+}
 
 /********************FOOTER********************/
 
