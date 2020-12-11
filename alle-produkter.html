@@ -170,12 +170,11 @@
                     const productClone = productTemplate.content.cloneNode(true);
 
                     productClone.querySelector(".product").setAttribute('data-product-id', product.id);
+                    productClone.querySelector(".product").href = `produkt.html?name=${product.slug}`;
                     productClone.querySelector(".product__image").src = product.billede_thumbnail.guid;
                     productClone.querySelector(".product__image").alt = product.title.rendered;
                     productClone.querySelector(".product__name").textContent = product.title.rendered;
                     productClone.querySelector(".product__price").textContent = product.pris;
-
-                    productClone.querySelector(".product").addEventListener("click", productClick);
 
                     productList.appendChild(productClone);
 
@@ -202,12 +201,6 @@
             console.log('filter', filter);
 
             showProducts(products);
-        }
-
-        function productClick(event) {
-            console.log('productClick');
-            event.preventDefault();
-
         }
 
     </script>
