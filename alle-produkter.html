@@ -59,25 +59,11 @@
 
     </header>
     <main>
+        <div class="container js-category-box">
 
-        <div class="grid-container">
-            <figure class="wp-block-image size-large grid_gallery_img1"><img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/colorblock_kjole.jpeg" alt="hauli colorblock kjole" class="wp-image-205" /></figure>
-            <div class="grid_txt_container">
-                <div class="grid_txt">
-                    <h2>COLORBLOCK COLLECTION</h2>
-                    <p>beskrivelse beskrivelse beskrivelse beskrivelse beskrivelse beskrivelse</p>
-                </div>
-            </div>
-
-            <figure class="wp-block-image size-large grid_gallery_img2"><img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/colorblock_taske-1024x512.png" alt="hauli colorblock taske" class="wp-image-206" /></figure>
-            <!-- /wp:image -->
-
-            <!-- wp:html -->
         </div>
-        <!-- /wp:html -->
-
         <section class="category-slider">
-            <h2 class="category-slider__title">Produkter</h2>
+            <h2 class="category-slider__title">Kategorier</h2>
             <ul class="category-list">
 
                 <li class="category-list__item">
@@ -143,16 +129,12 @@
 
         <section class="products">
             <div class="container">
-                <h2 class="js-product-list-title"></h2>
+                <!--                <h2 class="js-product-list-title"></h2>-->
                 <div class="product-list js-product-list"></div>
             </div>
         </section>
 
     </main>
-
-
-
-
     <!--FOOTER-->
     <footer class="footerstyling">
         <!--FOOTER COLUMN WRAPPER-->
@@ -212,7 +194,9 @@
     <template class="t-product">
         <article class="product">
             <a href="#" class="product__link" data-product-id="">
-                <img class="product__image" src="#" alt="#">
+                <div class="product__image-container">
+                    <img class="product__image" src="#" alt="#">
+                </div>
                 <h3 class="product__name"></h3>
             </a>
             <a class="product__category-link" href=""></a>
@@ -220,23 +204,35 @@
         </article>
     </template>
 
+    <template class="t-category-box">
+        <section class="category-box">
+            <h1 class="category-box__title"></h1>
+            <p class="category-box__description"></p>
+        </section>
+    </template>
+
     <script src="/JS/global.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", init);
 
+        let findCategory;
+
+        const categoryBox = document.querySelector(".js-category-box");
+        const categoryBoxTemplate = document.querySelector(".t-category-box");
+
         const categoriesUrl = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/categories';
         const productsUrl = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/produkt?per_page=100';
         const productTemplate = document.querySelector(".t-product");
-        const productListTitle = document.querySelector(".js-product-list-title");
+        //        const productListTitle = document.querySelector(".js-product-list-title");
         const productList = document.querySelector(".js-product-list");
 
         let queryString = window.location.search;
-        console.log(queryString);
+        //        console.log(queryString);
         let urlParams = new URLSearchParams(queryString);
-        console.log(urlParams);
+        //        console.log(urlParams);
 
         let urlFilter = urlParams.get('filter');
-        console.log('urlFilter', urlFilter);
+        //        console.log('urlFilter', urlFilter);
 
         let filter;
 
@@ -280,11 +276,11 @@
             // Nulstil produktlisten
             productList.innerHTML = '';
 
-            const findCategory = categories.find(category => category.slug === filter);
-            console.log('findCategory', findCategory);
+            findCategory = categories.find(category => category.slug === filter);
+            //            console.log('findCategory', findCategory);
 
             // Opdater H1 kategorititel
-            productListTitle.textContent = findCategory.name;
+            //            productListTitle.textContent = findCategory.name;
 
             // Opdaterer URL'en med det nye filter parametre :)
             window.history.replaceState(null, null, `?filter=${filter}`);
@@ -294,26 +290,26 @@
 
                 let productCategoriesList = [];
 
-                console.log('product.categories', product.categories);
+                //                console.log('product.categories', product.categories);
 
                 product.categories.forEach((category, index) => {
-                    console.log('category', category);
+                    //                    console.log('category', category);
 
                     let findProductCategory = categories.find(productCategory => productCategory.id === category);
 
                     console.log('findProductCategory', findProductCategory);
 
                     if (findProductCategory !== null) {
-                        console.log('virker');
+                        //                        console.log('virker');
                         productCategoriesList.push(findProductCategory);
                     }
                 });
 
-                console.log('productCategoriesList', productCategoriesList);
+                //                console.log('productCategoriesList', productCategoriesList);
 
 
                 let findMatch = productCategoriesList.find(category => category.slug === filter);
-                console.log('findMatch', findMatch);
+                //                console.log('findMatch', findMatch);
 
                 if (filter === 'alle-produkter' || findMatch !== undefined) {
 
@@ -334,6 +330,7 @@
                 }
             });
 
+            createCategoryBox(filter);
         }
 
         function initCategoryButtons() {
@@ -356,6 +353,25 @@
             console.log('filter', filter);
 
             showProducts(products);
+        }
+
+        function createCategoryBox(category) {
+            console.log('createCategoryBox');
+            console.log('category', category);
+
+            categoryBox.innerHTML = "";
+
+
+            const categoryBoxClone = categoryBoxTemplate.content.cloneNode(true);
+
+            categoryBoxClone.querySelector(".category-box__title").textContent = findCategory.name;
+            if (findCategory.description == "") {
+                categoryBoxClone.querySelector(".category-box__description").textContent = "Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar.";
+            } else {
+                categoryBoxClone.querySelector(".category-box__description").textContent = findCategory.description;
+            }
+            categoryBox.appendChild(categoryBoxClone);
+
         }
     </script>
 </body></html>

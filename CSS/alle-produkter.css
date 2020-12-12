@@ -1,7 +1,29 @@
-/* Category slider end */
+.category-box {
+    background-color: var(--red-color);
+    padding: 4rem;
+}
 
 .product-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-    grid-gap: 32px;
+    grid-column-gap: 3.2rem;
+    grid-row-gap: 6.2rem;
+}
+
+
+.product__image-container {
+    position: relative;
+    padding-bottom: 100%;
+}
+
+
+.product__image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
 }
