@@ -274,7 +274,6 @@ header {
     background-color: white;
     position: sticky;
     top: 0;
-    margin-bottom: 20px;
     z-index: 1;
 }
 
@@ -335,7 +334,6 @@ header {
 
 @media only screen and (min-width: 700px) {
     header {
-        margin-bottom: 40px;
         padding-bottom: 15px;
     }
 
