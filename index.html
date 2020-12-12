@@ -31,7 +31,7 @@
                 <nav class="js_globalmenu css_globalmenu css_globalmenu_hidden js_globalmenu_hidden">
                     <ul>
                         <div class="dropdown">
-                            <li class="overpunkter"> <a href="#">Shop</a></li>
+                            <li class="overpunkter"> <a href="alle-produkter.html">Shop</a></li>
                             <ul class="underpunkter">
                                 <li><a href="alle-produkter.html?filter=tasker">Tasker</a></li>
                                 <li><a href="alle-produkter.html?filter=toj">Tøj</a></li>
@@ -62,9 +62,11 @@
     <section class="css_splash">
     </section>
 
-    <main class="container">
+    <main class="">
 
-        <section class="js_dynamic_content"></section>
+        <div class="container">
+            <section class="js_dynamic_content"></section>
+        </div>
 
         <!--
     <article class="grid-container">
@@ -82,10 +84,10 @@
             <figure class="grid_gallery_img2">
                 <img class="gallery_img" src="img/colorblock_taske.png" alt="">
             </figure>
-
         </article>
 
 -->
+        <!--
         <section class="category-slider">
             <h2 class="category-slider__title">Produkter</h2>
             <ul class="category-list">
@@ -148,6 +150,54 @@
                 </li>
             </ul>
         </section>
+-->
+
+
+        <section class="instagram-slider">
+            <div class="container">
+                <h2 class="instagram-slider__title">Følg med på Instagram</h2>
+            </div>
+            <ul class="instagram-list">
+
+                <li class="instagram-list__item">
+                    <a href="https://www.instagram.com/p/CIQwz2uBpu5/" class="instagram-list__link" target="_blank">
+                        <div class="instagram-list__icon-container">
+                            <img src="img/instagram1.png" alt="" class="instagram-list__icon">
+                        </div>
+                    </a>
+                </li>
+                <li class="instagram-list__item">
+                    <a href="https://www.instagram.com/p/CIINxaehhOw/" class="instagram-list__link" target="_blank">
+                        <div class="instagram-list__icon-container">
+                            <img src="img/instagram2.png" alt="" class="instagram-list__icon">
+                        </div>
+                    </a>
+                </li>
+                <li class="instagram-list__item">
+                    <a href="https://www.instagram.com/p/CIXfCoKBptB/" class="instagram-list__link" target="_blank">
+                        <div class="instagram-list__icon-container">
+                            <img src="img/instagram3.png" alt="" class="instagram-list__icon">
+                        </div>
+                    </a>
+                </li>
+                <li class="instagram-list__item">
+                    <a href="https://www.instagram.com/p/CH8UU7HhPgC/" class="instagram-list__link" target="_blank">
+                        <div class="instagram-list__icon-container">
+                            <img src="img/instagram4.png" alt="" class="instagram-list__icon">
+                        </div>
+                    </a>
+                </li>
+                <li class="instagram-list__item">
+                    <a href="https://www.instagram.com/p/CHkoi4dBSSB/" class="instagram-list__link" target="_blank">
+                        <div class="instagram-list__icon-container">
+                            <img src="img/instagram5.png" alt="" class="instagram-list__icon">
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+            <!--            </div>-->
+        </section>
     </main>
 
 
@@ -155,6 +205,7 @@
     <!--FOOTER-->
     <footer class="footerstyling">
         <!--FOOTER COLUMN WRAPPER-->
+
         <div class="footerinfo">
             <!--FOOTER COLUMN-->
             <div class="footercolumn">
@@ -174,8 +225,8 @@
                 <input class="footer_nyhedsbrev_input" type="text" placeholder="Email" name="mail" required>
 
                 <div class="footer_nyhedsbrev_checkbox">
-                    <button>
-                        Tilmeld
+                    <button class="cta-primary">
+                        Tilmeld mig
                     </button>
                 </div>
             </div>
@@ -208,6 +259,7 @@
         <!--END FOOTER COLUMN WRAPPER-->
     </footer>
 
+    <script src="/JS/global.js"></script>
     <script>
         //Venter på DOMContent er loaded, starter hentData, opretter JSON-url som variabel.
         document.addEventListener("DOMContentLoaded", hentData);
