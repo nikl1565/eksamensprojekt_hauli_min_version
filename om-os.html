@@ -37,15 +37,15 @@
                 <nav class="js_globalmenu css_globalmenu css_globalmenu_hidden js_globalmenu_hidden">
                     <ul>
                         <div class="dropdown">
-                            <li class="overpunkter"> <a href="#">Shop</a></li>
+                            <li class="overpunkter"> <a href="alle-produkter.html">Shop</a></li>
                             <ul class="underpunkter">
-                                <li><a href="#">Tasker</a></li>
-                                <li><a href="#">Tøj</a></li>
-                                <li><a href="#">Mundbind</a></li>
+                                <li><a href="alle-produkter.html?filter=tasker">Tasker</a></li>
+                                <li><a href="alle-produkter.html?filter=toj">Tøj</a></li>
+                                <li><a href="alle-produkter.html?filter=mundbind">Mundbind</a></li>
                             </ul>
                         </div>
                         <li class="overpunkter"> <a href="#">Kontakt</a></li>
-                        <li class="overpunkter"> <a href="#">Om HAULI</a></li>
+                        <li class="overpunkter"> <a href="om-os.html">Om HAULI</a></li>
                     </ul>
                 </nav>
 
@@ -71,6 +71,8 @@
         </section>
     </main>
 
+
+
     <!--FOOTER-->
     <footer class="footerstyling">
         <!--FOOTER COLUMN WRAPPER-->
@@ -82,7 +84,7 @@
                     <li><a class="footer_link" href="https://goo.gl/maps/QZTs9b3uJH38N15x6" target="_blank">Kronprinsessegade 24, 1306 Kbh K</a></li>
                     <li><a class="footer_link" href="tel:+45 21 96 32 61">+45 21 96 32 61</a></li>
                     <li><a class="footer_link" href="mailto:info@hauli.dk">info@hauli.dk</a></li>
-                    <li><a class="footer_link" href="omos.html">CVR: 35902619</a></li>
+                    <li><a class="footer_link" href="om-os.html">CVR: 35902619</a></li>
                 </ul>
             </div>
             <!---->
@@ -105,7 +107,7 @@
                     <li><a class="footer_link" href="https://goo.gl/maps/QZTs9b3uJH38N15x6" target="_blank">Kronprinsessegade 24, 1306 Kbh K</a></li>
                     <li><a class="footer_link" href="tel:+45 21 96 32 61">+45 21 96 32 61</a></li>
                     <li><a class="footer_link" href="mailto:info@hauli.dk">info@hauli.dk</a></li>
-                    <li><a class="footer_link" href="omos.html">CVR: 35902619</a></li>
+                    <li><a class="footer_link" href="om-os.html">CVR: 35902619</a></li>
                 </ul>
 
                 <div class="socialmediabox">
@@ -127,7 +129,7 @@
         <!--END FOOTER COLUMN WRAPPER-->
     </footer>
 
-    <!--    <script src="/JS/global.js"></script>-->
+        <script src="/JS/global.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", init);
 
@@ -135,7 +137,6 @@
             let url = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/pages?slug=om-os';
             getData(url);
 
-            document.querySelector(".js_header_burger_icon").addEventListener("click", toggleHeaderBurgerIcon);
         }
 
         async function getData(url) {
@@ -150,26 +151,5 @@
             //            console.log(data);
             document.querySelector(".about_content").innerHTML = data[0].content.rendered;
         }
-
-
-        document.querySelector(".js_header_burger_icon").addEventListener("click", toggleHeaderBurgerIcon);
-
-
-        function toggleHeaderBurgerIcon() {
-            console.log("toggle menu");
-            document.querySelector(".css_header_mobile").classList.toggle("css_header_mobile_open");
-
-            let isOpen = document.querySelector(".css_header_mobile").classList.contains("css_header_mobile_open");
-
-            if (isOpen == true) {
-                document.querySelector(".js_header_burger_icon").innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
-            } else {
-                document.querySelector(".js_header_burger_icon").innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
-            }
-
-        }
-
     </script>
-</body>
-
-</html>
+</body></html>

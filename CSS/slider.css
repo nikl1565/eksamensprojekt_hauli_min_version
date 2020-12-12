@@ -8,9 +8,11 @@
     align-items: center;
 }
 
+/*
 body {
     background-color: #e6e6e6;
 }
+*/
 
 /* Fjern bagefter DEMO */
 
@@ -81,4 +83,99 @@ body {
     height: 80px;
     width: 80px;
     max-width: none;
+}
+
+/* Instagram slider */
+.section-slider {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+/*
+body {
+    background-color: #e6e6e6;
+}
+*/
+
+/* Fjern bagefter DEMO */
+
+/* Global */
+
+/*
+.container {
+    margin: 0 auto;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+*/
+
+/* Global */
+
+.instagram-slider {
+    background-color: #fff;
+    padding: 2rem 0;
+    width: 100%;
+}
+
+.instagram-slider__title {
+    padding: 0 2rem;
+    margin-bottom: 1rem;
+}
+
+.instagram-list {
+    display: flex;
+    list-style: none;
+    width: 100%;
+    overflow: scroll;
+    scroll-snap-type: x mandatory;
+    padding: 1rem 0;
+}
+
+.instagram-list__item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-left: 2rem;
+    flex-grow: 1;
+    scroll-snap-align: start;
+}
+
+.instagram-list__link {
+    text-decoration: none;
+    color: #000;
+}
+
+/*
+
+.instagram-list__link:hover > .instagram-list__icon-container {
+    background-color: #e6e6e6;
+}
+*/
+
+.instagram-list__item:last-child {
+    padding-right: 2rem;
+}
+
+.instagram-list__icon-container {
+    /*    border: 1px solid #e6e6e6;*/
+    /*    border-radius: 50%;*/
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    transition: background .25s ease-in-out;
+}
+
+.instagram-list__icon {
+    height: 300px;
+
+    max-width: none;
+}
+
+@media only screen and (min-width: 700px) {
+
+    .instagram-list__icon {
+        height: 500px;
+    }
 }

@@ -11,7 +11,51 @@
 
 <body>
     <header>
-        <a href="index.html">Forside</a>
+        <div class="header_menu_width">
+
+            <div class="css_header_mobile">
+                <div class="css_header_burger_icon js_header_burger_icon"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg></div>
+
+                <div class="css_header_logo">
+                    <a href="index.html">
+                        <img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/LOG-LOGO-LOGO-e1587302092398.png" alt="Logo for HAULI" class="css_header_logo_image">
+                    </a>
+                </div>
+
+
+                <nav class="js_globalmenu css_globalmenu css_globalmenu_hidden js_globalmenu_hidden">
+                    <ul>
+                        <div class="dropdown">
+                            <li class="overpunkter"> <a href="alle-produkter.html">Shop</a></li>
+                            <ul class="underpunkter">
+                                <li><a href="#">Tasker</a></li>
+                                <li><a href="#">Tøj</a></li>
+                                <li><a href="#">Mundbind</a></li>
+                            </ul>
+                        </div>
+                        <li class="overpunkter"> <a href="#">Kontakt</a></li>
+                        <li class="overpunkter"> <a href="om-os.html">Om HAULI</a></li>
+                    </ul>
+                </nav>
+
+                <div class="css_header_menu_cart_icon">
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="39" viewBox="0 0 35 39">
+                            <g id="Icon_Shopping_Bag" data-name="Icon Shopping Bag" transform="translate(1 1)">
+                                <path id="Path_9" data-name="Path 9" d="M11.5,4,6,11.4V37.3A3.683,3.683,0,0,0,9.667,41H35.333A3.683,3.683,0,0,0,39,37.3V11.4L33.5,4Z" transform="translate(-6 -4)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                                <path id="Path_10" data-name="Path 10" d="M6,12H39" transform="translate(-6 -4.6)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                                <path id="Path_11" data-name="Path 11" d="M29,20c0,4.418-2.91,8-6.5,8S16,24.418,16,20" transform="translate(-6 -5.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                            </g>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </header>
     <main>
 
@@ -79,7 +123,65 @@
         </section>
 
     </main>
-    <footer></footer>
+
+
+
+
+    <!--FOOTER-->
+    <footer class="footerstyling">
+        <!--FOOTER COLUMN WRAPPER-->
+        <div class="footerinfo">
+            <!--FOOTER COLUMN-->
+            <div class="footercolumn">
+                <h3 class="footer_title">KONTAKT HAULI</h3>
+                <ul>
+                    <li><a class="footer_link" href="https://goo.gl/maps/QZTs9b3uJH38N15x6" target="_blank">Kronprinsessegade 24, 1306 Kbh K</a></li>
+                    <li><a class="footer_link" href="tel:+45 21 96 32 61">+45 21 96 32 61</a></li>
+                    <li><a class="footer_link" href="mailto:info@hauli.dk">info@hauli.dk</a></li>
+                    <li><a class="footer_link" href="om-os.html">CVR: 35902619</a></li>
+                </ul>
+            </div>
+            <!---->
+            <!---->
+            <div class="footercolumn">
+                <h3 class="footer_title">Nyhedsbrev</h3>
+                <img class="footer_nyhedsbrev" src="img/nyhedsbrev_logo.svg" alt="nyhedsbev logo">
+                <input class="footer_nyhedsbrev_input" type="text" placeholder="Email" name="mail" required>
+
+                <div class="footer_nyhedsbrev_checkbox">
+                    <button>
+                        Tilmeld
+                    </button>
+                </div>
+            </div>
+            <!---->
+            <div class="footercolumn">
+                <h3 class="footer_title">KONTAKT HAULI</h3>
+                <ul>
+                    <li><a class="footer_link" href="https://goo.gl/maps/QZTs9b3uJH38N15x6" target="_blank">Kronprinsessegade 24, 1306 Kbh K</a></li>
+                    <li><a class="footer_link" href="tel:+45 21 96 32 61">+45 21 96 32 61</a></li>
+                    <li><a class="footer_link" href="mailto:info@hauli.dk">info@hauli.dk</a></li>
+                    <li><a class="footer_link" href="om-os.html">CVR: 35902619</a></li>
+                </ul>
+
+                <div class="socialmediabox">
+                    <!--FOOTER SOCIALMEDIA LINK-->
+
+                    <a href="https://www.instagram.com/hauli_official/" target="_blank">
+                        <img class="socials_icon" src="img/Icon%20awesome-instagram.png" alt="instagram social icon">
+                    </a>
+
+                    <a href="https://www.facebook.com/HAULI-108749427480091/" target="_blank">
+                        <img class="socials_icon" src="img/Icon%20awesome-facebook-square.png" alt="facebook social icon">
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!--END FOOTER COLUMN WRAPPER-->
+    </footer>
 
     <template class="t-product">
         <a href="#" class="product" data-product-id="">
@@ -89,6 +191,7 @@
         </a>
     </template>
 
+    <script src="/JS/global.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", init);
 

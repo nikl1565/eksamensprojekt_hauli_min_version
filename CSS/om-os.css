@@ -6,6 +6,10 @@ img {
     margin: 0 auto;
 }
 
+.heading-margin {
+    margin: 0 0 20px 10px;
+}
+
 .box-size {
     width: 90%;
     /*    max-width: 20%;*/
@@ -75,8 +79,16 @@ img {
         margin-top: 150px;
     }
 
+    .heading-margin {
+        margin: 0 0 20px 10px;
+    }
+
     .wp-block-group__inner-container {
         display: flex;
+    }
+
+    .wp-block-group:nth-of-type(4) .wp-block-group__inner-container {
+        display: block;
     }
 
     .heading-width,
@@ -84,6 +96,10 @@ img {
     .wp-block-group:nth-of-type(2) {
         max-width: 1000px;
         margin: 0 auto;
+    }
+
+    .heading-margin {
+        padding: 0 0 20px 25px;
     }
 
     .wp-block-group:nth-of-type(2) {
