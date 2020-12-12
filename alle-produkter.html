@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="CSS/global.css">
+    <link rel="stylesheet" href="CSS/slider.css">
     <link rel="stylesheet" href="CSS/alle-produkter.css">
 </head>
 
@@ -64,7 +65,7 @@
             <ul class="category-list">
 
                 <li class="category-list__item">
-                    <a href="#" class="category-list__link js-category-button" data-category="alle-produkter">
+                    <a href="alle-produkter.html?filter=alle-produkter" class="category-list__link js-category-button" data-category="alle-produkter">
                         <div class="category-list__icon-container">
                             <img src="img/alle-produkter.svg" alt="" class="category-list__icon">
                         </div>
@@ -73,7 +74,7 @@
                 </li>
 
                 <li class="category-list__item">
-                    <a href="#" class="category-list__link js-category-button" data-category="tasker">
+                    <a href="alle-produkter.html?filter=tasker" class="category-list__link js-category-button" data-category="tasker">
                         <div class="category-list__icon-container">
                             <img src="img/taske.svg" alt="" class="category-list__icon">
                         </div>
@@ -81,7 +82,7 @@
                     </a>
                 </li>
                 <li class="category-list__item">
-                    <a href="#" class="category-list__link js-category-button" data-category="mundbind">
+                    <a href="alle-produkter.html?filter=mundbind" class="category-list__link js-category-button" data-category="mundbind">
                         <div class="category-list__icon-container">
                             <img src="img/mundbind.svg" alt="" class="category-list__icon">
                         </div>
@@ -89,7 +90,15 @@
                     </a>
                 </li>
                 <li class="category-list__item">
-                    <a href="#" class="category-list__link js-category-button" data-category="overdele">
+                    <a href="alle-produkter.html?filter=toj" class="category-list__link js-category-button" data-category="toj">
+                        <div class="category-list__icon-container">
+                            <img src="img/toj-2.svg" alt="" class="category-list__icon">
+                        </div>
+                        <h3 class="category-list__category-title">Tøj</h3>
+                    </a>
+                </li>
+                <li class="category-list__item">
+                    <a href="alle-produkter.html?filter=overdele" class="category-list__link js-category-button" data-category="overdele">
                         <div class="category-list__icon-container">
                             <img src="img/overdel.svg" alt="" class="category-list__icon">
                         </div>
@@ -97,7 +106,7 @@
                     </a>
                 </li>
                 <li class="category-list__item">
-                    <a href="#" class="category-list__link js-category-button" data-category="kjoler">
+                    <a href="alle-produkter.html?filter=kjoler" class="category-list__link js-category-button" data-category="kjoler">
                         <div class="category-list__icon-container">
                             <img src="img/overdel-2.svg" alt="" class="category-list__icon">
                         </div>
@@ -105,7 +114,7 @@
                     </a>
                 </li>
                 <li class="category-list__item">
-                    <a href="#" class="category-list__link js-category-button" data-category="colorblock-collection">
+                    <a href="alle-produkter.html?filter=colorblock-colletion" class="category-list__link js-category-button" data-category="colorblock-collection">
                         <div class="category-list__icon-container">
                             <img src="img/colorblock-collection.svg" alt="" class="category-list__icon">
                         </div>
@@ -115,6 +124,7 @@
 
             </ul>
         </section>
+
         <section class="products">
             <div class="container">
                 <h2 class="js-product-list-title"></h2>
@@ -184,12 +194,24 @@
     </footer>
 
     <template class="t-product">
+        <article class="product">
+            <a href="#" class="product__link" data-product-id="">
+                <img class="product__image" src="#" alt="#">
+                <h3 class="product__name"></h3>
+            </a>
+            <a class="product__category-link" href=""></a>
+            <p class="product__price-text"><span class="product__price"></span> DKK</p>
+        </article>
+    </template>
+
+    <!--
         <a href="#" class="product" data-product-id="">
             <img class="product__image" src="#" alt="#">
             <h3 class="product__name"></h3>
+            <a class="product__category-link" href=""></a>
             <p class="product__price-text"><span class="product__price"></span> DKK</p>
         </a>
-    </template>
+-->
 
     <script src="/JS/global.js"></script>
     <script>
@@ -291,10 +313,13 @@
                     const productClone = productTemplate.content.cloneNode(true);
 
                     productClone.querySelector(".product").setAttribute('data-product-id', product.id);
-                    productClone.querySelector(".product").href = `produkt.html?name=${product.slug}`;
+                    productClone.querySelector(".product__link").href = `produkt.html?name=${product.slug}`;
                     productClone.querySelector(".product__image").src = product.billede_thumbnail.guid;
                     productClone.querySelector(".product__image").alt = product.title.rendered;
                     productClone.querySelector(".product__name").textContent = product.title.rendered;
+
+                    productClone.querySelector(".product__category-link").textContent = productCategoriesList[0].name;
+                    productClone.querySelector(".product__category-link").href = `alle-produkter.html?filter=${productCategoriesList[0].slug}`;
                     productClone.querySelector(".product__price").textContent = product.pris;
 
                     productList.appendChild(productClone);
@@ -315,8 +340,10 @@
             });
         }
 
-        function filterProducts() {
+        function filterProducts(event) {
             console.log(this);
+
+            event.preventDefault();
 
             filter = this.dataset.category;
             console.log('filter', filter);
