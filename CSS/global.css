@@ -272,7 +272,12 @@ header {
     top: 0;
     margin-bottom: 20px;
     z-index: 1;
+}
 
+
+.overpunkter,
+.underpunkter {
+    list-style-type: none;
 }
 
 .header_menu_width {
@@ -280,14 +285,12 @@ header {
     margin: 0 auto;
 }
 
-.css_globalmenu {
+.height {
     height: 100vh;
 }
 
-/* Class til at skjule menuen */
-.css_globalmenu_hidden {
+.css_globalmenu {
     display: none;
-    height: 100%;
 }
 
 .css_header_mobile {
@@ -295,6 +298,7 @@ header {
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .css_header_logo {
@@ -304,6 +308,7 @@ header {
 .css_header_logo_image {
     width: 200px;
     display: inline-block;
+    vertical-align: middle;
 }
 
 .css_header_spacing {
@@ -323,26 +328,44 @@ header {
     margin-right: auto;
 }
 
-/*
-.css_header_menu_cart_icon {
-    margin-left: auto;
-}
-*/
 
-@media only screen and (min-width: 1000px) {
+@media only screen and (min-width: 700px) {
     header {
         margin-bottom: 40px;
         padding-bottom: 15px;
     }
 
-    .css_header_width {
-        display: flex;
-        align-content: center;
-        flex-direction: column;
+    .overpunkter {
+        display: inline-block;
     }
 
-    .css_header_spacing {
+    .dropdown {
+        display: inline-block;
+        position: relative;
+    }
+
+    .underpunkter {
         display: none;
+        position: absolute;
+
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+        padding: 12px 16px;
+
+        z-index: 1;
+        text-align: left;
+    }
+
+    .dropdown:hover .underpunkter {
+        display: block;
+    }
+
+
+    .header_menu_width {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
     }
 
     .css_header_burger_icon {
@@ -358,11 +381,38 @@ header {
         padding: 20px 0;
         margin: 0 auto;
         /*        ! */
-        /*        display: block;*/
+        display: block;
     }
 
     .css_header_logo_image {
         width: 180px;
+    }
+
+    /*
+    .css_header_menu_cart_icon {
+        position: absolute;
+        right: 0;
+    }
+*/
+}
+
+@media only screen and (max-width: 699px) {
+    .css_header_mobile.css_header_mobile_open .css_header_burger_icon {
+        order: 2;
+    }
+
+    .css_header_mobile.css_header_mobile_open .css_header_logo {
+        order: 1;
+    }
+
+    .css_header_mobile.css_header_mobile_open .css_globalmenu {
+        order: 3;
+        width: 100%;
+        display: block;
+    }
+
+    .css_header_mobile.css_header_mobile_open .css_header_menu_cart_icon {
+        order: 4;
     }
 }
 
