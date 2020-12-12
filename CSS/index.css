@@ -14,13 +14,28 @@
 }
 
 .css_splash_txt {
-    padding-top: 550px;
+    padding-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    flex-direction: column;
+}
+
+.cta_wrapper {
+}
+
+.css_backgroundcolor {
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .splash_title {
-    padding-left: 10px;
     color: white;
-    box-shadow: 2px 2px 5px rgba(60, 60, 60, 0.20);
+    font-size: 11rem;
+    font-weight: 600;
+    text-shadow: 1px 1px 10px rgba(80, 80, 80, 0.45);
 }
 
 .grid-container {
@@ -149,11 +164,7 @@
     }
 }
 
-@media only screen and (min-width: 750px) {
-
-    .css_splash_txt {
-    margin-left: 50%;
-    }
+@media only screen and (min-width: 750px)
 
     .flytmigbund {
         margin-bottom: 0px;
