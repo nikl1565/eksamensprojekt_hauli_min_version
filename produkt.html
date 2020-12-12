@@ -175,11 +175,14 @@
             // Product price
             productClone.querySelector(".product__price").textContent = `${product.pris} DKK`;
             // Product description
-            productClone.querySelector(".product-description__text").textContent = product.produktbeskrivelse;
+            productClone.querySelector(".product-description__text").innerHTML = product.produktbeskrivelse;
             // Product information
-            productClone.querySelector(".product-information__text").textContent = product.produktinformation;
+            productClone.querySelector(".product-information__text").innerHTML = product.produktinformation;
 
             productContainer.appendChild(productClone);
         }
+
     </script>
-</body></html>
+</body>
+
+</html>
