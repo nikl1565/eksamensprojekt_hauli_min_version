@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="CSS/global.css">
+    <link rel="stylesheet" href="CSS/produkt.css">
+</head>
+
+<body>
+
+    <header></header>
+
+    <main class="js-product-container">
+
+
+
+    </main>
+
+    <!--FOOTER-->
+    <footer class="footerstyling">
+        <!--FOOTER COLUMN WRAPPER-->
+        <div class="footerinfo">
+            <!--FOOTER COLUMN-->
+            <div class="footercolumn">
+                <h3 class="footer_title">KONTAKT HAULI</h3>
+                <ul>
+                    <li><a class="footer_link" href="https://goo.gl/maps/QZTs9b3uJH38N15x6" target="_blank">Kronprinsessegade 24, 1306 Kbh K</a></li>
+                    <li><a class="footer_link" href="tel:+45 21 96 32 61">+45 21 96 32 61</a></li>
+                    <li><a class="footer_link" href="mailto:info@hauli.dk">info@hauli.dk</a></li>
+                    <li><a class="footer_link" href="omos.html">CVR: 35902619</a></li>
+                </ul>
+            </div>
+            <!---->
+            <!---->
+            <div class="footercolumn">
+                <h3 class="footer_title">Nyhedsbrev</h3>
+                <img class="footer_nyhedsbrev" src="img/nyhedsbrev_logo.svg" alt="nyhedsbev logo">
+                <input class="footer_nyhedsbrev_input" type="text" placeholder="Email" name="mail" required>
+
+                <div class="footer_nyhedsbrev_checkbox">
+                    <button>
+                        Tilmeld
+                    </button>
+                </div>
+            </div>
+            <!---->
+            <div class="footercolumn">
+                <h3 class="footer_title">KONTAKT HAULI</h3>
+                <ul>
+                    <li><a class="footer_link" href="https://goo.gl/maps/QZTs9b3uJH38N15x6" target="_blank">Kronprinsessegade 24, 1306 Kbh K</a></li>
+                    <li><a class="footer_link" href="tel:+45 21 96 32 61">+45 21 96 32 61</a></li>
+                    <li><a class="footer_link" href="mailto:info@hauli.dk">info@hauli.dk</a></li>
+                    <li><a class="footer_link" href="omos.html">CVR: 35902619</a></li>
+                </ul>
+
+                <div class="socialmediabox">
+                    <!--FOOTER SOCIALMEDIA LINK-->
+
+                    <a href="https://www.instagram.com/hauli_official/" target="_blank">
+                        <img class="socials_icon" src="img/Icon%20awesome-instagram.png" alt="instagram social icon">
+                    </a>
+
+                    <a href="https://www.facebook.com/HAULI-108749427480091/" target="_blank">
+                        <img class="socials_icon" src="img/Icon%20awesome-facebook-square.png" alt="facebook social icon">
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+        <!--END FOOTER COLUMN WRAPPER-->
+    </footer>
+
+    <template class="t-product-page">
+        <div class="container">
+            <article class="product">
+                <img src="" alt="" class="product__image">
+                <h1 class="product__title"></h1>
+                <p class="product__price"></p>
+
+
+                <div class="product__button-group">
+                    <input type="number">
+                    <button>Læg i kurv</button>
+                </div>
+
+                <div class="product-colors">
+                    <ul class="product-colors__list">
+                        <li class="product-colors__color">
+                            <a class="product-colors__color-link" href=""></a>
+                        </li>
+                        <li class="product-colors__color">
+                            <a class="product-colors__color-link" href=""></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="product-description">
+                    <h2 class="product-description__title">Beskrivelse</h2>
+                    <p class="product-description__text"></p>
+                </div>
+
+                <div class="product-information">
+                    <h2 class="product-information__title">Information</h2>
+                    <p class="product-information__text"></p>
+                </div>
+            </article>
+        </div>
+    </template>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", init);
+
+        const categoriesUrl = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/categories';
+        const productUrl = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/produkt';
+        const productTemplate = document.querySelector(".t-product-page");
+
+        const productContainer = document.querySelector(".js-product-container");
+
+        let queryString = window.location.search;
+        console.log(queryString);
+        let urlParams = new URLSearchParams(queryString);
+        console.log(urlParams);
+
+        let urlProductNameSlug = urlParams.get('name');
+        console.log('urlProductNameSlug', urlProductNameSlug);
+
+        let productNameSlug = urlProductNameSlug;
+        console.log(productNameSlug)
+
+        let product;
+        let categories;
+
+        async function init() {
+            await getCategories();
+        }
+
+        async function getCategories() {
+            console.log('getCategories');
+
+            const response = await fetch(categoriesUrl);
+            categories = await response.json();
+            console.log(categories);
+
+            getProduct();
+        }
+
+        async function getProduct() {
+            console.log('getProducts');
+
+            const response = await fetch(`${productUrl}?slug=${productNameSlug}`);
+            product = await response.json();
+            console.log(product);
+
+            product = product[0];
+            console.log(product);
+            showProduct();
+        }
+
+        function showProduct() {
+            console.log('showProduct');
+
+            const productClone = productTemplate.content.cloneNode(true);
+
+            // Product Image link
+            productClone.querySelector(".product__image").src = product.primary_billede.guid;
+            // Product Image alt
+            productClone.querySelector(".product__image").alt = product.primary_billede.post_title;
+            // Product title
+            productClone.querySelector(".product__title").textContent = product.title.rendered;
+            // Product price
+            productClone.querySelector(".product__price").textContent = `${product.pris} DKK`;
+            // Product description
+            productClone.querySelector(".product-description__text").textContent = product.produktbeskrivelse;
+            // Product information
+            productClone.querySelector(".product-information__text").textContent = product.produktinformation;
+
+            productContainer.appendChild(productClone);
+        }
+    </script>
+</body></html>

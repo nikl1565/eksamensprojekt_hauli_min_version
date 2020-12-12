@@ -10,7 +10,9 @@
 </head>
 
 <body>
-    <header></header>
+    <header>
+        <a href="index.html">Forside</a>
+    </header>
     <main>
 
         <section class="category-slider">
@@ -78,7 +80,7 @@
         </section>
         <section class="products">
             <div class="container">
-                <h2 class="js-product-list-title">Alle produkter</h2>
+                <h2 class="js-product-list-title"></h2>
                 <div class="product-list js-product-list"></div>
             </div>
         </section>
@@ -102,7 +104,22 @@
         const productTemplate = document.querySelector(".t-product");
         const productListTitle = document.querySelector(".js-product-list-title");
         const productList = document.querySelector(".js-product-list");
-        let filter = "alle-produkter";
+
+        let queryString = window.location.search;
+        console.log(queryString);
+        let urlParams = new URLSearchParams(queryString);
+        console.log(urlParams);
+
+        let urlFilter = urlParams.get('filter');
+        console.log('urlFilter', urlFilter);
+
+        let filter;
+
+        if (urlFilter === null) {
+            filter = "alle-produkter";
+        } else {
+            filter = urlFilter;
+        }
 
         let products;
         let categories;
@@ -137,6 +154,14 @@
 
             productList.innerHTML = '';
 
+            const findCategory = categories.find(category => category.slug === filter);
+            console.log('findCategory', findCategory);
+
+            productListTitle.textContent = findCategory.name;
+
+            // Opdaterer URL'en med det nye filter parametre :)
+            window.history.replaceState(null, null, `?filter=${filter}`);
+
             products.forEach(product => {
                 let findProductCategory = categories.find(category => category.id === product.categories[0]);
 
@@ -145,12 +170,11 @@
                     const productClone = productTemplate.content.cloneNode(true);
 
                     productClone.querySelector(".product").setAttribute('data-product-id', product.id);
+                    productClone.querySelector(".product").href = `produkt.html?name=${product.slug}`;
                     productClone.querySelector(".product__image").src = product.billede_thumbnail.guid;
                     productClone.querySelector(".product__image").alt = product.title.rendered;
                     productClone.querySelector(".product__name").textContent = product.title.rendered;
                     productClone.querySelector(".product__price").textContent = product.pris;
-
-                    productClone.querySelector(".product").addEventListener("click", productClick);
 
                     productList.appendChild(productClone);
 
@@ -176,18 +200,10 @@
             filter = this.dataset.category;
             console.log('filter', filter);
 
-            const findCategory = categories.find(category => category.slug === filter);
-            console.log('findCategory', findCategory);
-
-            productListTitle.textContent = findCategory.name;
-
             showProducts(products);
         }
 
-        function productClick(event) {
-            console.log('productClick');
-            event.preventDefault();
-
-        }
     </script>
-</body></html>
+</body>
+
+</html>
