@@ -100,7 +100,7 @@
         document.addEventListener("DOMContentLoaded", init);
 
         const categoriesUrl = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/categories';
-        const productsUrl = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/produkt';
+        const productsUrl = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/produkt?per_page=100';
         const productTemplate = document.querySelector(".t-product");
         const productListTitle = document.querySelector(".js-product-list-title");
         const productList = document.querySelector(".js-product-list");
@@ -152,20 +152,45 @@
         function showProducts(products) {
             console.log('showProducts');
 
+            // Nulstil produktlisten
             productList.innerHTML = '';
 
             const findCategory = categories.find(category => category.slug === filter);
             console.log('findCategory', findCategory);
 
+            // Opdater H1 kategorititel
             productListTitle.textContent = findCategory.name;
 
             // Opdaterer URL'en med det nye filter parametre :)
             window.history.replaceState(null, null, `?filter=${filter}`);
 
+            // Loop igennem alle produkter
             products.forEach(product => {
-                let findProductCategory = categories.find(category => category.id === product.categories[0]);
 
-                if (filter === 'alle-produkter' || filter === findProductCategory.slug) {
+                let productCategoriesList = [];
+
+                console.log('product.categories', product.categories);
+
+                product.categories.forEach((category, index) => {
+                    console.log('category', category);
+
+                    let findProductCategory = categories.find(productCategory => productCategory.id === category);
+
+                    console.log('findProductCategory', findProductCategory);
+
+                    if (findProductCategory !== null) {
+                        console.log('virker');
+                        productCategoriesList.push(findProductCategory);
+                    }
+                });
+
+                console.log('productCategoriesList', productCategoriesList);
+
+
+                let findMatch = productCategoriesList.find(category => category.slug === filter);
+                console.log('findMatch', findMatch);
+
+                if (filter === 'alle-produkter' || findMatch !== undefined) {
 
                     const productClone = productTemplate.content.cloneNode(true);
 
@@ -202,8 +227,5 @@
 
             showProducts(products);
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
