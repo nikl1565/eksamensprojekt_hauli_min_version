@@ -211,6 +211,24 @@ a:hover {
     color: var(--a-font-color-hover);
 }
 
+.overpunkter_styling {
+    font-family: var(--font-family-playfair);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--h5-font-size);
+    line-height: var(--h3-font-line-height);
+    color: var(--h3-font-color);
+    padding-right: 15px;
+}
+
+.underpunkt_styling {
+    font-family: var(--font-family-roboto);
+    color: var(--a-font-color);
+    font-weight: var(--font-weight-light);
+    text-decoration: none;
+    font-size: 2rem;
+    line-height: var(--a-font-line-height);
+
+}
 
 /*         Knapper */
 .cta-primary {
@@ -282,6 +300,22 @@ header {
 .overpunkter,
 .underpunkter {
     list-style-type: none;
+}
+
+.underpunkt_padding {
+    padding: 5px 0 10px 20px;
+}
+
+.mobile_styling {
+    padding: 5px 0 10px 15px;
+}
+
+.kurv {
+    display: none;
+}
+
+.kurv_kom_frem {
+    display: inline-block;
 }
 
 .header_menu_width {
@@ -358,6 +392,10 @@ header {
 
         z-index: 1;
         text-align: left;
+    }
+
+    .underpunkt_padding {
+        padding: 5px 0 5px 10px;
     }
 
     .dropdown:hover .underpunkter {
