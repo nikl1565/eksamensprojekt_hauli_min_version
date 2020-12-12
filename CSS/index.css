@@ -5,12 +5,22 @@
 .css_splash {
     width: 100%;
 
-    background-image: url(../img/hauli_splash01.jpg);
+    background-image: url(../img/hauli_splash02.png);
     background-size: cover;
     background-position: 29.5% 50%;
     max-width: 1920px;
     width: 100%;
     height: 100vh;
+}
+
+.css_splash_txt {
+    padding-top: 550px;
+}
+
+.splash_title {
+    padding-left: 10px;
+    color: white;
+    box-shadow: 2px 2px 5px rgba(60, 60, 60, 0.20);
 }
 
 .grid-container {
@@ -140,6 +150,10 @@
 }
 
 @media only screen and (min-width: 750px) {
+
+    .css_splash_txt {
+    margin-left: 50%;
+    }
 
     .flytmigbund {
         margin-bottom: 0px;
