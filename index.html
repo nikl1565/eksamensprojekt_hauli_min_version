@@ -31,7 +31,7 @@
                 <nav class="js_globalmenu css_globalmenu css_globalmenu_hidden js_globalmenu_hidden">
                     <ul>
                         <div class="dropdown">
-                            <li class="overpunkter"> <a href="#">Shop</a></li>
+                            <li class="overpunkter"> <a href="alle-produkter.html">Shop</a></li>
                             <ul class="underpunkter">
                                 <li><a href="alle-produkter.html?filter=tasker">Tasker</a></li>
                                 <li><a href="alle-produkter.html?filter=toj">Tøj</a></li>
@@ -259,6 +259,7 @@
         <!--END FOOTER COLUMN WRAPPER-->
     </footer>
 
+    <script src="/JS/global.js"></script>
     <script>
         //Venter på DOMContent er loaded, starter hentData, opretter JSON-url som variabel.
         document.addEventListener("DOMContentLoaded", hentData);
@@ -275,9 +276,6 @@
 
             document.querySelector(".js_dynamic_content").innerHTML = landingpage[0].content.rendered;
         }
-
     </script>
 
-</body>
-
-</html>
+</body></html>

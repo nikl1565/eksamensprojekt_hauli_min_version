@@ -424,6 +424,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     background-color: #EBEBEB;
+    margin-top: 70px;
 }
 
 
