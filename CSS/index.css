@@ -11,6 +11,12 @@
 }
 
 
+.splash-logo {
+    max-width: 300px;
+    margin: auto auto 6rem;
+}
+
+
 
 .css_splash_video_container {
     position: relative;
@@ -39,18 +45,35 @@
     flex-direction: column;
 }
 
-.cta_wrapper {}
+.cta_wrapper {
+    text-align: center;
+}
+
+.cta_wrapper > a {
+    width: 240px;
+    padding: 2rem 4rem;
+    font-family: 'Roboto', sans-serif;
+}
 
 .css_backgroundcolor {
     padding-left: 10px;
     padding-right: 10px;
+    text-align: center;
 }
 
 .splash_title {
     color: white;
-    font-size: 9rem;
-    font-weight: 600;
+    font-size: 10rem;
+    font-weight: bold;
     text-shadow: 1px 1px 10px rgba(80, 80, 80, 0.45);
+}
+
+.splash_subtitle {
+    color: var(--main-color);
+    text-shadow: 1px 1px 10px rgba(80, 80, 80, 0.45);
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    margin-bottom: 6rem;
 }
 
 .grid-container {
