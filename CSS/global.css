@@ -267,7 +267,7 @@ a:hover {
     /*    Tekst */
     font-family: var(--font-family-roboto);
     font-size: var(--cta-text-font-size);
-    font-weight: var(--cta-font-weight);
+    font-weight: var(--font-weight-light);
     color: var(--cta-primary-text-font-color);
     text-decoration: none;
 }
@@ -291,7 +291,7 @@ a:hover {
     /*    Tekst */
     font-family: var(--font-family-roboto);
     font-size: var(--cta-text-font-size);
-    font-weight: var(--cta-font-weight);
+    font-weight: var(--font-weight-light);
     color: var(--cta-secondary-text-font-color);
     text-decoration: none;
 }
