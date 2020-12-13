@@ -143,3 +143,8 @@ img {
         display: flex;
     }
 }
+
+.blue .wp-block-image {
+    width: 130px;
+    margin: 0 auto;
+}
