@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <link rel="stylesheet" href="CSS/global.css">
+    <link rel="stylesheet" href="CSS/slider.css">
     <link rel="stylesheet" href="CSS/produkt.css">
 </head>
 
@@ -59,9 +60,16 @@
 
     </header>
 
-    <main class="js-product-container">
+    <main>
 
+        <section class="js-product-container"></section>
 
+        <section class="recommended-products-slider">
+            <h2 class="recommended-products-slider__title">Lignende produkter</h2>
+            <ul class="recommended-products-list">
+
+            </ul>
+        </section>
 
     </main>
 
@@ -161,6 +169,19 @@
         </div>
     </template>
 
+    <template class="t-similar-product">
+        <article class="similar-product">
+            <a href="#" class="similar-product__link" data-similar-product-id="">
+                <div class="similar-product__image-container">
+                    <img class="similar-product__image" src="#" alt="#">
+                </div>
+                <h3 class="similar-product__name"></h3>
+            </a>
+            <a class="similar-product__category-link" href=""></a>
+            <p class="similar-product__price-text"><span class="similar-product__price"></span> DKK</p>
+        </article>
+    </template>
+
     <script src="/JS/global.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", init);
@@ -231,6 +252,24 @@
 
             productContainer.appendChild(productClone);
         }
+
+        //                        if (filter === 'alle-produkter' || findMatch !== undefined) {
+        //
+        //                    const productClone = productTemplate.content.cloneNode(true);
+        //
+        //                    productClone.querySelector(".product").setAttribute('data-product-id', product.id);
+        //                    productClone.querySelector(".product__link").href = `produkt.html?name=${product.slug}`;
+        //                    productClone.querySelector(".product__image").src = product.billede_thumbnail.guid;
+        //                    productClone.querySelector(".product__image").alt = product.title.rendered;
+        //                    productClone.querySelector(".product__name").textContent = product.title.rendered;
+        //
+        //                    productClone.querySelector(".product__category-link").textContent = productCategoriesList[0].name;
+        //                    productClone.querySelector(".product__category-link").href = `alle-produkter.html?filter=${productCategoriesList[0].slug}`;
+        //                    productClone.querySelector(".product__price").textContent = product.pris;
+        //
+        //                    productList.appendChild(productClone);
+        //
+        //                }
 
     </script>
 </body>
