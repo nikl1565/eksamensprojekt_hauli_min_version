@@ -88,6 +88,11 @@ html {
     /*             Denne padding skal jo nok overskrives nogle steder med noget mindre */
     --cta-secondary-padding: 10px;
 
+
+    --space-sm: 1.5rem;
+    --space-md: 3rem;
+    --space-lg: 6rem;
+    --space-xl: 9rem;
 }
 
 @media only screen and (min-width: 700px) {
@@ -303,15 +308,18 @@ a:hover {
     margin-right: auto;
 }
 
+svg {
+    display: block;
+}
+
 
 /********************HEADER********************/
 header {
     background-color: white;
     position: sticky;
     top: 0;
-    z-index: 1;
-    box-shadow: 0px 1px 5px rgba(221, 221, 221, 0.47);
-    padding: 10px;
+    z-index: 3;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, .125);
 }
 
 /*
@@ -339,11 +347,6 @@ header {
 
 .kurv_kom_frem {
     display: inline-block;
-}
-
-.header_menu_width {
-    max-width: 1000px;
-    margin: 0 auto;
 }
 
 .height {
@@ -384,6 +387,15 @@ header {
     vertical-align: middle;
     display: block;
     font-size: 4rem;
+}
+
+.css_header_burger_icon {
+    cursor: pointer;
+}
+
+.css_header_menu_cart_icon svg {
+    height: auto;
+    width: 30px;
 }
 
 .header_burger_icon {
@@ -515,8 +527,8 @@ header {
 footer {
     display: flex;
     flex-wrap: wrap;
-    background-color: #EBEBEB;
-    margin-top: 70px;
+    color: var(--cta-primary-text-font-color);
+    background-color: var(--cta-secondary-text-font-color-hover);
 }
 
 
@@ -629,4 +641,14 @@ footer {
     width: 180px;
     margin: 0 0;
 
+}
+
+
+/* Utilities */
+.section-padding-bottom {
+    padding-bottom: 9rem;
+}
+
+.section-margin-bottom {
+    margin-bottom: 9rem;
 }
