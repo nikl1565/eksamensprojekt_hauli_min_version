@@ -312,6 +312,11 @@ svg {
     display: block;
 }
 
+.cart-link {
+    display: block;
+    padding: 0;
+}
+
 
 /********************HEADER********************/
 header {
@@ -320,6 +325,7 @@ header {
     top: 0;
     z-index: 3;
     box-shadow: 0 0 5px 5px rgba(0, 0, 0, .125);
+    padding: 1rem 0;
 }
 
 /*
@@ -364,6 +370,7 @@ header {
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
+    padding: 0 3rem;
 }
 
 .css_header_logo {
@@ -410,10 +417,13 @@ header {
 
     .css_header_mobile {
         width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .overpunkter {
         display: inline-block;
+        vertical-align: middle;
     }
 
     .dropdown {
