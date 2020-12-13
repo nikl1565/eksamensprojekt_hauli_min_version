@@ -311,6 +311,7 @@ header {
     top: 0;
     z-index: 1;
     box-shadow: 0px 1px 5px rgba(221, 221, 221, 0.47);
+    padding: 10px;
 }
 
 /*
@@ -351,6 +352,7 @@ header {
 
 .css_globalmenu {
     display: none;
+    margin-top: 30px;
 }
 
 .css_header_mobile {
@@ -449,6 +451,7 @@ header {
         display: block;
         text-align: center;
         margin-left: auto;
+        margin-top: 0px;
     }
 
     .css_header_logo {
@@ -483,21 +486,25 @@ header {
 }
 
 @media only screen and (max-width: 699px) {
-    .css_header_mobile.css_header_mobile_open .css_header_burger_icon {
+    header.css_header_mobile_open {
+        height: 100vh;
+    }
+
+    header.css_header_mobile_open .css_header_burger_icon {
         order: 2;
     }
 
-    .css_header_mobile.css_header_mobile_open .css_header_logo {
+    header.css_header_mobile_open .css_header_logo {
         order: 1;
     }
 
-    .css_header_mobile.css_header_mobile_open .css_globalmenu {
+    header.css_header_mobile_open .css_globalmenu {
         order: 3;
         width: 100%;
         display: block;
     }
 
-    .css_header_mobile.css_header_mobile_open .css_header_menu_cart_icon {
+    header.css_header_mobile_open .css_header_menu_cart_icon {
         order: 4;
     }
 
