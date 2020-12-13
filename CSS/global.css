@@ -17,13 +17,13 @@ html {
     --font-family-roboto: 'Roboto', sans-serif;
 
     /*    Font sizes  */
-    --h1-font-size: 6rem;
-    --h2-font-size: 5rem;
+    --h1-font-size: 4.6rem;
+    --h2-font-size: 3.9rem;
     --h3-font-size: 3.5rem;
     --h4-font-size: 3rem;
     --h5-font-size: 2.6rem;
     --h6-font-size: 2.1rem;
-    --p-font-size: 1.6rem;
+    --p-font-size: 1.5rem;
     --citat-font-size: 1.7rem;
     --a-font-size: 1.7rem;
     --cta-text-font-size: 1.7rem;
@@ -93,6 +93,22 @@ html {
     --space-md: 3rem;
     --space-lg: 6rem;
     --space-xl: 9rem;
+}
+
+@media only screen and (min-width: 700px) {
+    :root {
+        /*    Font sizes  */
+        --h1-font-size: 6rem;
+        --h2-font-size: 5rem;
+        --h3-font-size: 3.5rem;
+        --h4-font-size: 3rem;
+        --h5-font-size: 2.6rem;
+        --h6-font-size: 2.1rem;
+        --p-font-size: 1.6rem;
+        --citat-font-size: 1.7rem;
+        --a-font-size: 1.7rem;
+        --cta-text-font-size: 1.7rem;
+    }
 }
 
 img,
@@ -306,6 +322,11 @@ header {
     box-shadow: 0 0 5px 5px rgba(0, 0, 0, .125);
 }
 
+/*
+.placering {
+    margin-left: auto;
+}
+*/
 
 .overpunkter,
 .underpunkter {
@@ -334,11 +355,12 @@ header {
 
 .css_globalmenu {
     display: none;
+    margin-top: 30px;
 }
 
 .css_header_mobile {
     display: flex;
-    justify-content: space-between;
+    /*    justify-content: space-between;*/
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
@@ -349,7 +371,7 @@ header {
 }
 
 .css_header_logo_image {
-    width: 200px;
+    width: 60px;
     display: inline-block;
     vertical-align: middle;
 }
@@ -383,7 +405,11 @@ header {
 
 @media only screen and (min-width: 700px) {
     header {
-        padding-bottom: 15px;
+        padding: 20px 0;
+    }
+
+    .css_header_mobile {
+        width: 1000px;
     }
 
     .overpunkter {
@@ -399,10 +425,10 @@ header {
         display: none;
         position: absolute;
 
-        background-color: #f9f9f9;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
-        padding: 12px 16px;
+        background-color: #fff;
+        min-width: 150px;
+        box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+        padding: 20px 20px;
 
         z-index: 1;
         text-align: left;
@@ -416,6 +442,10 @@ header {
         display: block;
     }
 
+    .placering {
+        display: flex;
+        justify-content: flex-end;
+    }
 
     .header_menu_width {
         display: flex;
@@ -425,22 +455,38 @@ header {
 
     .css_header_burger_icon {
         display: none;
+        font-size: 4rem;
+        margin-left: 15px;
     }
 
     .css_globalmenu {
         display: block;
         text-align: center;
+        margin-left: auto;
+        margin-top: 0px;
     }
 
     .css_header_logo {
-        padding: 20px 0;
-        margin: 0 auto;
+        /*        padding: 20px 0;*/
+        margin: 0 0;
         /*        ! */
         display: block;
     }
 
     .css_header_logo_image {
-        width: 180px;
+        width: 80px;
+    }
+
+    .shop:hover {
+        color: #c4e8ff;
+    }
+
+    .kontakt:hover {
+        color: #f8b2b2;
+    }
+
+    .om:hover {
+        color: #cdebbf;
     }
 
     /*
@@ -452,23 +498,28 @@ header {
 }
 
 @media only screen and (max-width: 699px) {
-    .css_header_mobile.css_header_mobile_open .css_header_burger_icon {
+    header.css_header_mobile_open {
+        height: 100vh;
+    }
+
+    header.css_header_mobile_open .css_header_burger_icon {
         order: 2;
     }
 
-    .css_header_mobile.css_header_mobile_open .css_header_logo {
+    header.css_header_mobile_open .css_header_logo {
         order: 1;
     }
 
-    .css_header_mobile.css_header_mobile_open .css_globalmenu {
+    header.css_header_mobile_open .css_globalmenu {
         order: 3;
         width: 100%;
         display: block;
     }
 
-    .css_header_mobile.css_header_mobile_open .css_header_menu_cart_icon {
+    header.css_header_mobile_open .css_header_menu_cart_icon {
         order: 4;
     }
+
 }
 
 /********************FOOTER********************/
