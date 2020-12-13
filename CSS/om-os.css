@@ -17,11 +17,34 @@ img {
     position: relative;
 }
 
+.box-size_green {
+    width: 100%;
+    /*    max-width: 20%;*/
+    padding: 30px 0;
+    position: relative;
+}
+
+/*
+.zindex {
+    z-index: 0;
+}
+*/
+
+/*
+.box-size_green h2 {
+    padding: 0 30px;
+}
+*/
+
 .left {
     margin-left: auto;
 }
 
 .right {
+    margin-right: auto;
+}
+
+.rightmini {
     margin-right: auto;
 }
 
@@ -45,13 +68,22 @@ img {
     background-color: var(--yellow-color);
 }
 
-
 .flytmigbund {
     margin-bottom: -80px;
 }
 
 .flytmigtop {
     margin-top: -40px;
+}
+
+.ned {
+    margin-bottom: -10px;
+}
+
+.wp-block-group:nth-of-type(3),
+.wp-block-group:nth-of-type(4) {
+    margin-top: 50px;
+    margin-bottom: 30px;
 }
 
 @media only screen and (min-width: 400px) {
@@ -75,6 +107,14 @@ img {
         padding: 100px;
     }
 
+    .box-sizemini {
+        padding: 50px;
+    }
+
+    .box-size_green {
+        padding: 30px;
+    }
+
     .wp-block-group {
         margin-top: 150px;
     }
@@ -87,13 +127,14 @@ img {
         display: flex;
     }
 
-    .wp-block-group:nth-of-type(4) .wp-block-group__inner-container {
-        display: block;
+    .wp-block-group:nth-of-type(3) .wp-block-group__inner-container {
+        /*        display: block;*/
     }
 
     .heading-width,
     .wp-block-group:nth-of-type(1),
-    .wp-block-group:nth-of-type(2) {
+    .wp-block-group:nth-of-type(2),
+    .wp-block-group:nth-of-type(3) {
         max-width: 1000px;
         margin: 0 auto;
     }
@@ -102,13 +143,13 @@ img {
         padding: 0 0 20px 25px;
     }
 
-    .wp-block-group:nth-of-type(2) {
+    .wp-block-group:nth-of-type(2),
+    .wp-block-group:nth-of-type(3) {
 
         margin: 150px auto;
     }
 
     .wp-block-group:nth-of-type(1) {
-
         margin: 30px auto 150px auto;
     }
 
@@ -130,32 +171,35 @@ img {
         margin-left: -80px;
     }
 
+    .leftmini {
+        margin-right: -20px;
+        margin-top: -20px;
+    }
+
     .right {
         margin-right: -80px;
     }
 
-    .wp-block-group:nth-of-type(3) .wp-block-group__inner-container div p {
+    .wp-block-group:nth-of-type(4) .wp-block-group__inner-container div p {
         max-width: 370px;
         flex-grow: 0;
     }
 
-    .wp-block-group:nth-of-type(3) .wp-block-group__inner-container div {
+    .wp-block-group:nth-of-type(4) .wp-block-group__inner-container div {
         display: flex;
         flex-direction: column;
         justify-content: center;
         flex-grow: 1;
-
     }
-
 }
 
 @media only screen and (min-width: 750px) and (max-width: 840px) {
-    .wp-block-group:nth-of-type(3) .wp-block-group__inner-container img {
+    .wp-block-group:nth-of-type(4) .wp-block-group__inner-container img {
         object-fit: cover;
         object-position: right;
     }
 
-    .wp-block-group:nth-of-type(3) .wp-block-group__inner-container figure {
+    .wp-block-group:nth-of-type(4) .wp-block-group__inner-container figure {
         display: flex;
     }
 }
