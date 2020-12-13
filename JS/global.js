@@ -4,8 +4,6 @@ function init() {
     document.querySelector(".js_header_burger_icon").addEventListener("click", toggleHeaderBurgerIcon);
 }
 
-document.querySelector(".js_header_burger_icon").addEventListener("click", toggleHeaderBurgerIcon);
-
 
 function toggleHeaderBurgerIcon() {
     console.log("toggle menu");

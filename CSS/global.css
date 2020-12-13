@@ -310,8 +310,14 @@ header {
     position: sticky;
     top: 0;
     z-index: 1;
+    box-shadow: 0px 1px 5px rgba(221, 221, 221, 0.47);
 }
 
+/*
+.placering {
+    margin-left: auto;
+}
+*/
 
 .overpunkter,
 .underpunkter {
@@ -349,7 +355,7 @@ header {
 
 .css_header_mobile {
     display: flex;
-    justify-content: space-between;
+    /*    justify-content: space-between;*/
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
@@ -360,7 +366,7 @@ header {
 }
 
 .css_header_logo_image {
-    width: 200px;
+    width: 60px;
     display: inline-block;
     vertical-align: middle;
 }
@@ -385,7 +391,11 @@ header {
 
 @media only screen and (min-width: 700px) {
     header {
-        padding-bottom: 15px;
+        padding: 20px 0;
+    }
+
+    .css_header_mobile {
+        width: 1000px;
     }
 
     .overpunkter {
@@ -401,10 +411,10 @@ header {
         display: none;
         position: absolute;
 
-        background-color: #f9f9f9;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
-        padding: 12px 16px;
+        background-color: #fff;
+        min-width: 150px;
+        box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.1);
+        padding: 20px 20px;
 
         z-index: 1;
         text-align: left;
@@ -418,6 +428,10 @@ header {
         display: block;
     }
 
+    .placering {
+        display: flex;
+        justify-content: flex-end;
+    }
 
     .header_menu_width {
         display: flex;
@@ -427,22 +441,37 @@ header {
 
     .css_header_burger_icon {
         display: none;
+        font-size: 4rem;
+        margin-left: 15px;
     }
 
     .css_globalmenu {
         display: block;
         text-align: center;
+        margin-left: auto;
     }
 
     .css_header_logo {
-        padding: 20px 0;
-        margin: 0 auto;
+        /*        padding: 20px 0;*/
+        margin: 0 0;
         /*        ! */
         display: block;
     }
 
     .css_header_logo_image {
-        width: 180px;
+        width: 80px;
+    }
+
+    .shop:hover {
+        color: #c4e8ff;
+    }
+
+    .kontakt:hover {
+        color: #f8b2b2;
+    }
+
+    .om:hover {
+        color: #cdebbf;
     }
 
     /*
@@ -471,6 +500,7 @@ header {
     .css_header_mobile.css_header_mobile_open .css_header_menu_cart_icon {
         order: 4;
     }
+
 }
 
 /********************FOOTER********************/
