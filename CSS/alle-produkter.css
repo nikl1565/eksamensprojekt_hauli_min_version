@@ -10,10 +10,16 @@
     grid-row-gap: 6.2rem;
 }
 
+.product {}
+
+.product:hover .product__image {
+    transform: scale(1.025);
+}
 
 .product__image-container {
     position: relative;
     padding-bottom: 100%;
+    overflow: hidden;
 }
 
 
@@ -26,4 +32,7 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
+    will-change: transform;
+    transition: transform .25s ease-out;
+    transform: scale(1);
 }
