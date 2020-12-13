@@ -287,13 +287,18 @@ a:hover {
     margin-right: auto;
 }
 
+svg {
+    display: block;
+}
+
 
 /********************HEADER********************/
 header {
     background-color: white;
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 3;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, .125);
 }
 
 
@@ -316,11 +321,6 @@ header {
 
 .kurv_kom_frem {
     display: inline-block;
-}
-
-.header_menu_width {
-    max-width: 1000px;
-    margin: 0 auto;
 }
 
 .height {
@@ -360,6 +360,15 @@ header {
     vertical-align: middle;
     display: block;
     font-size: 4rem;
+}
+
+.css_header_burger_icon {
+    cursor: pointer;
+}
+
+.css_header_menu_cart_icon svg {
+    height: auto;
+    width: 30px;
 }
 
 .header_burger_icon {
