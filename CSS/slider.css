@@ -1,41 +1,17 @@
-/* Fjern bagefter DEMO */
+/******************** Category Slider ********************/
 
-.section-slider {
-    display: flex;
-    min-height: 100vh;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-}
-
-/*
-body {
-    background-color: #e6e6e6;
-}
-*/
-
-/* Fjern bagefter DEMO */
-
-/* Global */
-
-/*
-.container {
-    margin: 0 auto;
-    padding-right: 2rem;
-    padding-left: 2rem;
-}
-*/
-
-/* Global */
-
+/* Category slider */
 .category-slider {
     background-color: #fff;
     padding: 2rem 0;
     width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1400px;
 }
 
 .category-slider__title {
-    padding: 0 2rem;
+    padding: 0 3rem;
     margin-bottom: 1rem;
 }
 
@@ -52,38 +28,51 @@ body {
     display: flex;
     flex-direction: column;
     text-align: center;
-    padding-left: 2rem;
+    padding-left: 3rem;
     flex-grow: 1;
     scroll-snap-align: start;
-
+    flex-wrap: wrap;
+    flex-basis: 0;
 }
 
 .category-list__link {
     text-decoration: none;
     color: #000;
-}
-
-.category-list__link:hover > .category-list__icon-container {
-    background-color: #e6e6e6;
+    display: flex;
+    flex-direction: column;
 }
 
 .category-list__item:last-child {
-    padding-right: 2rem;
+    padding-right: 3rem;
 }
 
 .category-list__icon-container {
     border: 1px solid #e6e6e6;
     border-radius: 50%;
-    padding: 1rem;
+    padding: 0.3rem;
     margin-bottom: 0.5rem;
-    transition: background .25s ease-in-out;
+    max-height: 142px;
+    max-width: 142px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .category-list__icon {
-    height: 80px;
-    width: 80px;
+    height: 120px;
+    width: 120px;
     max-width: none;
+    background-color: var(--red-color);
+    border-radius: 50%;
+    padding: 1rem;
 }
+
+.category-list__category-title {
+    font-family: var(--font-family-roboto);
+    font-weight: var(--font-weight-light);
+    font-size: var(--h6-font-size);
+}
+
+/********************END Category Slider ********************/
 
 /* Instagram slider */
 .section-slider {
@@ -93,26 +82,6 @@ body {
     justify-content: center;
     align-items: center;
 }
-
-/*
-body {
-    background-color: #e6e6e6;
-}
-*/
-
-/* Fjern bagefter DEMO */
-
-/* Global */
-
-/*
-.container {
-    margin: 0 auto;
-    padding-right: 2rem;
-    padding-left: 2rem;
-}
-*/
-
-/* Global */
 
 .instagram-slider {
     background-color: #fff;
@@ -179,3 +148,79 @@ body {
         height: 500px;
     }
 }
+
+/******************** Category Slider ********************/
+
+/* similar-products slider */
+.similar-products-slider {
+    background-color: #fff;
+    padding: 2rem 0;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1400px;
+}
+
+.similar-products-slider__title {
+    padding: 0 3rem;
+    margin-bottom: 1rem;
+}
+
+.similar-products-list {
+    display: flex;
+    list-style: none;
+    width: 100%;
+    overflow: scroll;
+    scroll-snap-type: x mandatory;
+    padding: 1rem 0;
+}
+
+.similar-products-list__item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-left: 3rem;
+    flex-grow: 1;
+    scroll-snap-align: start;
+    flex-wrap: wrap;
+    flex-basis: 0;
+}
+
+.similar-products-list__link {
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+}
+
+.similar-products-list__item:last-child {
+    padding-right: 3rem;
+}
+
+.similar-products-list__icon-container {
+    border: 1px solid #e6e6e6;
+    border-radius: 50%;
+    padding: 0.3rem;
+    margin-bottom: 0.5rem;
+    max-height: 142px;
+    max-width: 142px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.similar-products-list__icon {
+    height: 120px;
+    width: 120px;
+    max-width: none;
+    background-color: var(--red-color);
+    border-radius: 50%;
+    padding: 1rem;
+}
+
+.similar-products-list__similar-products-title {
+    font-family: var(--font-family-roboto);
+    font-weight: var(--font-weight-light);
+    font-size: var(--h6-font-size);
+}
+
+/********************END similar$-products Slider ********************/
