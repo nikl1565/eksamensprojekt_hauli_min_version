@@ -239,14 +239,19 @@
 
 /**** OM SEKTION ***/
 .box-size {
-    width: 90%;
+    /*    width: 90%;*/
     /*    max-width: 20%;*/
     padding: 30px;
     position: relative;
+    max-width: none;
 }
 
-.middle {
-    margin: 0 auto;
+.mod_venstre {
+    margin-left: auto;
+}
+
+.wp-block-group .wp-block-group__inner-container {
+    max-width: none;
 }
 
 .blue {
@@ -261,7 +266,7 @@
 @media only screen and (min-width: 400px) {
     .box-size {
         width: 75%;
-        padding: 40px;
+        padding: 100px;
     }
 }
 
@@ -273,9 +278,6 @@
     margin-top: 0px;
 }
 
-.box-size {
-    padding: 100px;
-}
 
 .wp-block-group {
     margin-top: 150px;
@@ -288,8 +290,8 @@
 .heading-width,
 .wp-block-group:nth-of-type(1),
 .wp-block-group:nth-of-type(2) {
-    max-width: 1000px;
-    margin: 0 auto;
+    max-width: 1400px;
+    margin-left: auto;
 }
 
 .wp-block-group:nth-of-type(2) .wp-block-group__inner-container {
