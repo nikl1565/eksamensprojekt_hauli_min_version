@@ -88,6 +88,11 @@ html {
     /*             Denne padding skal jo nok overskrives nogle steder med noget mindre */
     --cta-secondary-padding: 10px;
 
+
+    --space-sm: 1.5rem;
+    --space-md: 3rem;
+    --space-lg: 6rem;
+    --space-xl: 9rem;
 }
 
 img,
@@ -471,8 +476,8 @@ header {
 footer {
     display: flex;
     flex-wrap: wrap;
-    background-color: #EBEBEB;
-    margin-top: 70px;
+    color: var(--cta-primary-text-font-color);
+    background-color: var(--cta-secondary-text-font-color-hover);
 }
 
 
@@ -585,4 +590,14 @@ footer {
     width: 180px;
     margin: 0 0;
 
+}
+
+
+/* Utilities */
+.section-padding-bottom {
+    padding-bottom: 9rem;
+}
+
+.section-margin-bottom {
+    margin-bottom: 9rem;
 }
