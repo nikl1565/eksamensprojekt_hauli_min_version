@@ -11,13 +11,8 @@
 
 @media (min-width: 700px) {
     .index header {
-        transform: translateY(-120px);
+        transform: translateY(-90px);
     }
-
-}
-
-.container {
-    margin: 0 auto;
 }
 
 .css_splash {
@@ -161,14 +156,9 @@
 
 .grid-container {
     display: grid;
-    /*
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-*/
     grid-gap: 3rem;
+    margin-bottom: var(--space-md);
 }
-
-.grid-container {}
 
 .grid-container img {
     object-fit: cover;
