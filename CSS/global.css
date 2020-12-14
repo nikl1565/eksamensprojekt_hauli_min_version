@@ -535,6 +535,35 @@ header {
         order: 4;
     }
 
+    header.css_header_mobile_open .cart-link {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 20px 30px 20px 0px;
+        cursor: pointer;
+
+        background-color: var(--cta-primary-background-color);
+        border-radius: var(--cta-primary-border-radius);
+        box-shadow: var(--cta-primary-box-shadow);
+        padding: var(--cta-primary-padding);
+        border: none;
+
+        /*    Tekst */
+        font-family: var(--font-family-roboto);
+        /*        font-size: var(--cta-text-font-size);*/
+        font-weight: var(--font-weight-light);
+        color: var(--cta-primary-text-font-color);
+        text-decoration: none;
+    }
+
+    .cart-link svg {
+        display: inline-block;
+        height: auto;
+    }
+
+    header.css_header_mobile_open .cart-link svg g path {
+        stroke: #fff;
+    }
+
 }
 
 /********************FOOTER********************/
