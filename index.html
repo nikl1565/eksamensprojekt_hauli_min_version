@@ -90,7 +90,6 @@
             </div>
 
         </section>
-
         <section class="usp-slider u-margin-bottom u-margin-top">
             <div class="container">
                 <ul class="usp-list">
@@ -232,7 +231,7 @@
         <!--END FOOTER COLUMN WRAPPER-->
     </footer>
 
-    <script src="/JS/global.js"></script>
+    <script src="JS/global.js"></script>
     <script>
         //Venter på DOMContent er loaded, starter hentData, opretter JSON-url som variabel.
         document.addEventListener("DOMContentLoaded", start);
@@ -257,7 +256,7 @@
 
             document.querySelector(".js_dynamic_content").innerHTML = landingpage[0].content.rendered;
         }
-
+      
         function showHideHeader() {
             let headerHeight = header.offsetHeight;
             console.log('headerHeight', headerHeight);
@@ -276,4 +275,6 @@
         }
     </script>
 
-</body></html>
+</body>
+
+</html>
