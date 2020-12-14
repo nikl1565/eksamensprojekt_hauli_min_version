@@ -377,11 +377,8 @@
             const categoryBoxClone = categoryBoxTemplate.content.cloneNode(true);
 
             categoryBoxClone.querySelector(".category-box__title").textContent = findCategory.name;
-            if (findCategory.description == "") {
-                categoryBoxClone.querySelector(".category-box__description").textContent = "Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar. Lorem ipsum dolar.";
-            } else {
-                categoryBoxClone.querySelector(".category-box__description").textContent = findCategory.description;
-            }
+            categoryBoxClone.querySelector(".category-box__description").textContent = findCategory.description;
+
             categoryBox.appendChild(categoryBoxClone);
 
         }
