@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="da">
 
 <head>
     <meta charset="utf-8">
@@ -80,17 +80,71 @@
         </div>
     </header>
 
-    <main>
+    <main class="">
 
         <section class="js-product-container"></section>
 
+        <section class="similar-products-slider section-margin-bottom">
+            <!--            <div class="container">-->
+            <h2 class="similar-products-slider__title">Lignende produkter</h2>
+            <!--            </div>-->
+            <ul class="similar-products-list">
+
+                <li class="similar-productsgram-list__item">
+                    <a href="#" class="similar-products-list__link" target="_blank">
+                        <div class="similar-list__icon-container">
+                            <img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/EBFEB8AC-134D-4A83-A3DE-87BE1CC09AD2-4FCB9DC2-A04F-40AF-949C-E15E17B84FA4-scaled.jpeg" alt="" class="similar-products-list__icon">
+
+                        </div>
+
+                    </a>
+
+                </li>
+
+                <li class="similar-productsgram-list__item">
+                    <a href="#" class="similar-products-list__link" target="_blank">
+                        <div class="similar-list__icon-container">
+                            <img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/bubble-bag-bubblegum-lyserod-gul-scaled.jpg" alt="" class="similar-products-list__icon">
+                        </div>
+                    </a>
+                </li>
+
+                <li class="similar-productsgram-list__item">
+                    <a href="#" class="similar-products-list__link" target="_blank">
+                        <div class="similar-list__icon-container">
+                            <img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/bubble-bag-cappuccino-kaffe-beige-scaled.jpg" alt="" class="similar-products-list__icon">
+                        </div>
+                    </a>
+                </li>
+
+                <li class="similar-productsgram-list__item">
+                    <a href="#" class="similar-products-list__link" target="_blank">
+                        <div class="similar-list__icon-container">
+                            <img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/bucket-bag-olivegreen-gron-gron-scaled.jpg" alt="" class="similar-products-list__icon">
+                        </div>
+                    </a>
+                </li>
+
+                <li class="similar-productsgram-list__item">
+                    <a href="#" class="similar-products-list__link" target="_blank">
+                        <div class="similar-list__icon-container">
+                            <img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/colorblock_taske.png" alt="" class="similar-products-list__icon">
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </section>
+
+        <!--
         <section class="recommended-products-slider">
             <h2 class="recommended-products-slider__title">Lignende produkter</h2>
             <ul class="recommended-products-list">
 
             </ul>
-        </section>
 
+        </section>
+-->
     </main>
 
 
@@ -154,40 +208,51 @@
     </footer>
 
     <template class="t-product-page">
-        <div class="container">
-            <article class="product">
-                <img src="" alt="" class="product__image">
-                <h1 class="product__title"></h1>
-                <p class="product__price"></p>
+        <!--        <div class="container">-->
+        <article class="product">
+
+            <div class="column">
+
+                <img src="" alt="" class="product__image grow">
+                <div class="grow">
+                    <h1 class="product__title"></h1>
+                    <p class="product__price"></p>
 
 
-                <div class="product__button-group">
-                    <input type="number">
-                    <button class="cta-primary">Læg i kurv</button>
+                    <div class="product__button-group">
+                        <input type="number" placeholder="Vælg antal" min="0">
+                        <button class="cta-primary">Læg i kurv</button>
+                    </div>
+
                 </div>
+            </div>
 
-                <div class="product-colors">
-                    <ul class="product-colors__list">
-                        <li class="product-colors__color">
-                            <a class="product-colors__color-link" href=""></a>
-                        </li>
-                        <li class="product-colors__color">
-                            <a class="product-colors__color-link" href=""></a>
-                        </li>
-                    </ul>
-                </div>
+            <!--
+            <div class="product-colors">
+                <ul class="product-colors__list">
+                    <li class="product-colors__color">
+                        <a class="product-colors__color-link" href=""></a>
+                    </li>
+                    <li class="product-colors__color">
+                        <a class="product-colors__color-link" href=""></a>
+                    </li>
+                </ul>
+            </div>
+-->
+            <div class="column container">
 
-                <div class="product-description">
+                <div class="product-description grow">
                     <h2 class="product-description__title">Beskrivelse</h2>
                     <p class="product-description__text"></p>
                 </div>
 
-                <div class="product-information">
+                <div class="product-information grow">
                     <h2 class="product-information__title">Information</h2>
                     <p class="product-information__text"></p>
                 </div>
-            </article>
-        </div>
+            </div>
+        </article>
+        <!--        </div>-->
     </template>
 
     <template class="t-similar-product">

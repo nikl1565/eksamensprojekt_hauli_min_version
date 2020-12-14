@@ -62,6 +62,8 @@ img {
 
 .green {
     background-color: var(--green-color);
+
+    z-index: 2;
 }
 
 .yellow {
@@ -88,6 +90,62 @@ img {
 .wp-block-group:nth-of-type(4) {
     margin-top: 50px;
     margin-bottom: 30px;
+}
+
+/****** VIDEO *****/
+
+.wp-block-video-container {
+    position: relative;
+}
+
+.wp-block-video-overlay {
+    position: absolute;
+    background-color: rgba(126, 93, 134, 0.2);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.wp-block-video-button {
+    height: 96px;
+    width: 96px;
+    background-color: var(--red-color);
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wp-block-video-icon {
+    height: 48px;
+    width: 48px;
+    margin-left: 5px;
+}
+
+.is-hidden {
+    display: none;
+}
+/****** VIDEO *****/
+.blue .wp-block-image {
+    width: 130px;
+    margin: 0 auto;
+}
+
+.wp-block-quote {
+    display: flex;
+    align-items: flex-start;
+}
+
+.quote-marks {
+    font-size: 8rem;
+    margin-top: 14px;
 }
 
 @media only screen and (min-width: 400px) {
@@ -195,10 +253,10 @@ img {
         flex-grow: 1;
     }
 
-    .wp-block-quote p {
-        /*        color: aqua;*/
+    .quote-marks {
+        font-size: 10rem;
+        margin-top: 14px;
     }
-
 
     .ned2 {
         margin-bottom: -30px;
@@ -214,9 +272,4 @@ img {
     .wp-block-group:nth-of-type(4) .wp-block-group__inner-container figure {
         display: flex;
     }
-}
-
-.blue .wp-block-image {
-    width: 130px;
-    margin: 0 auto;
 }
