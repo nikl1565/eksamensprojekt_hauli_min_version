@@ -86,7 +86,6 @@
 }
 
 .category-list__icon-container {
-    border: 1px solid #e6e6e6;
     border-radius: 50%;
     padding: 0.var(--space-md);
     margin-bottom: 0.5rem;
@@ -177,12 +176,14 @@
     max-width: none;
 }
 
+/*
 @media only screen and (min-width: 700px) {
 
     .instagram-list__icon {
         height: 500px;
     }
 }
+*/
 
 /******************** Category Slider ********************/
 

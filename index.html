@@ -10,8 +10,61 @@
     <link rel="stylesheet" href="CSS/slider.css">
 </head>
 
-<body>
+<body class="index">
+    <header>
 
+        <div class="header_menu_width container">
+
+            <div class="css_header_mobile">
+                <div class="css_header_burger_icon js_header_burger_icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg></div>
+
+                <div class="css_header_logo">
+                    <a href="index.html">
+                        <img src="img/nyhedsbrev_logo.svg" alt="Logo for HAULI" class="css_header_logo_image">
+                        <!--                        <img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/LOG-LOGO-LOGO-e1587302092398.png" alt="Logo for HAULI" class="css_header_logo_image">-->
+                    </a>
+                </div>
+
+                <!--                <div class="placering">-->
+                <nav class="js_globalmenu css_globalmenu css_globalmenu_hidden js_globalmenu_hidden">
+                    <ul class="">
+                        <ul class="dropdown">
+                            <li class="overpunkter mobile_styling"> <a href="alle-produkter.html" class="overpunkter_styling shop">Shop</a></li>
+                            <ul class="underpunkter">
+                                <li class="underpunkt_padding"><a href="alle-produkter.html?filter=tasker" class="underpunkt_styling">Tasker</a></li>
+                                <li class="underpunkt_padding"><a href="alle-produkter.html?filter=toj" class="underpunkt_styling">Tøj</a></li>
+                                <li class="underpunkt_padding"><a href="alle-produkter.html?filter=mundbind" class="underpunkt_styling">Mundbind</a></li>
+                            </ul>
+                        </ul>
+                        <li class="overpunkter mobile_styling"> <a href="#" class="overpunkter_styling kontakt">Kontakt</a></li>
+                        <li class="overpunkter mobile_styling"> <a href="om-os.html" class="overpunkter_styling om">Om HAULI</a></li>
+                    </ul>
+                </nav>
+
+                <div class="css_header_menu_cart_icon">
+                    <ul>
+                        <li class="overpunkter mobile_styling">
+                            <a href="#" class="overpunkter_styling cart-link"> <span class="kurv">Kurv</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="39" viewBox="0 0 35 39">
+                                    <g id="Icon_Shopping_Bag" data-name="Icon Shopping Bag" transform="translate(1 1)">
+                                        <path id="Path_9" data-name="Path 9" d="M11.5,4,6,11.4V37.3A3.683,3.683,0,0,0,9.667,41H35.333A3.683,3.683,0,0,0,39,37.3V11.4L33.5,4Z" transform="translate(-6 -4)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                                        <path id="Path_10" data-name="Path 10" d="M6,12H39" transform="translate(-6 -4.6)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                                        <path id="Path_11" data-name="Path 11" d="M29,20c0,4.418-2.91,8-6.5,8S16,24.418,16,20" transform="translate(-6 -5.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                                    </g>
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--        </div>-->
+    </header>
 
     <main class="">
 
@@ -29,41 +82,6 @@
                     <h1 class="splash_title">Velkommen til HAULI</h1>
                     <h2 class="splash_subtitle">Håndlavet og holdbart tøj lavet i små produktioner</h2>
 
-                    <section class="usp-slider">
-                        <div class="container">
-                            <ul class="usp-list">
-
-                                <li class="usp-list__item">
-                                    <div class="usp-list__icon-container">
-                                        <img src="img/usp-handlavet.svg" alt="Ikon der viser at produkterne er håndlavede" class="usp-list__icon">
-                                    </div>
-                                    <h4 class="usp-list__heading">Håndlavet</h4>
-                                </li>
-
-                                <li class="usp-list__item">
-                                    <div class="usp-list__icon-container">
-                                        <img src="img/usp-lokalt.svg" alt="Ikon der viser at produkterne er lokalt produceret" class="usp-list__icon">
-                                    </div>
-                                    <h4 class="usp-list__heading">Lokalt</h4>
-                                </li>
-
-                                <li class="usp-list__item">
-                                    <div class="usp-list__icon-container">
-                                        <img src="img/usp-unika.svg" alt="Ikon der viser at produkterne er unika" class="usp-list__icon">
-                                    </div>
-                                    <h4 class="usp-list__heading">Unika</h4>
-                                </li>
-
-                                <li class="usp-list__item">
-                                    <div class="usp-list__icon-container">
-                                        <img src="img/usp_holdbart2.svg" alt="Ikon der viser at produkterne er holdbare" class="usp-list__icon">
-                                    </div>
-                                    <h4 class="usp-list__heading">Holdbart</h4>
-                                </li>
-                            </ul>
-                        </div>
-                    </section>
-
                     <div class="cta_wrapper">
                         <a href="alle-produkter.html" class="cta-primary">TIL WEBSHOP</a>
                         <a href="om-os.html" class="cta-primary">MERE OM HAULI</a>
@@ -73,149 +91,92 @@
 
         </section>
 
-        <div class="index-splash">
-            <header>
+        <section class="usp-slider u-margin-bottom u-margin-top">
+            <div class="container">
+                <ul class="usp-list">
 
-                <div class="header_menu_width container">
-
-                    <div class="css_header_mobile">
-                        <div class="css_header_burger_icon js_header_burger_icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
-                                <line x1="3" y1="12" x2="21" y2="12"></line>
-                                <line x1="3" y1="6" x2="21" y2="6"></line>
-                                <line x1="3" y1="18" x2="21" y2="18"></line>
-                            </svg></div>
-
-                        <div class="css_header_logo">
-                            <a href="index.html">
-                                <img src="img/nyhedsbrev_logo.svg" alt="Logo for HAULI" class="css_header_logo_image">
-                                <!--                        <img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/LOG-LOGO-LOGO-e1587302092398.png" alt="Logo for HAULI" class="css_header_logo_image">-->
-                            </a>
+                    <li class="usp-list__item">
+                        <div class="usp-list__icon-container">
+                            <img src="img/usp-handlavet.svg" alt="Ikon der viser at produkterne er håndlavede" class="usp-list__icon">
                         </div>
+                        <h4 class="usp-list__heading">Håndlavede produkter</h4>
+                    </li>
 
-                        <!--                <div class="placering">-->
-                        <nav class="js_globalmenu css_globalmenu css_globalmenu_hidden js_globalmenu_hidden">
-                            <ul class="">
-                                <ul class="dropdown">
-                                    <li class="overpunkter mobile_styling"> <a href="alle-produkter.html" class="overpunkter_styling shop">Shop</a></li>
-                                    <ul class="underpunkter">
-                                        <li class="underpunkt_padding"><a href="alle-produkter.html?filter=tasker" class="underpunkt_styling">Tasker</a></li>
-                                        <li class="underpunkt_padding"><a href="alle-produkter.html?filter=toj" class="underpunkt_styling">Tøj</a></li>
-                                        <li class="underpunkt_padding"><a href="alle-produkter.html?filter=mundbind" class="underpunkt_styling">Mundbind</a></li>
-                                    </ul>
-                                </ul>
-                                <li class="overpunkter mobile_styling"> <a href="#" class="overpunkter_styling kontakt">Kontakt</a></li>
-                                <li class="overpunkter mobile_styling"> <a href="om-os.html" class="overpunkter_styling om">Om HAULI</a></li>
-                            </ul>
-                        </nav>
-
-                        <div class="css_header_menu_cart_icon">
-                            <ul>
-                                <li class="overpunkter mobile_styling">
-                                    <a href="#" class="overpunkter_styling cart-link"> <span class="kurv">Kurv</span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="39" viewBox="0 0 35 39">
-                                            <g id="Icon_Shopping_Bag" data-name="Icon Shopping Bag" transform="translate(1 1)">
-                                                <path id="Path_9" data-name="Path 9" d="M11.5,4,6,11.4V37.3A3.683,3.683,0,0,0,9.667,41H35.333A3.683,3.683,0,0,0,39,37.3V11.4L33.5,4Z" transform="translate(-6 -4)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
-                                                <path id="Path_10" data-name="Path 10" d="M6,12H39" transform="translate(-6 -4.6)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
-                                                <path id="Path_11" data-name="Path 11" d="M29,20c0,4.418-2.91,8-6.5,8S16,24.418,16,20" transform="translate(-6 -5.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
-                                            </g>
-                                        </svg>
-                                    </a>
-                                </li>
-                            </ul>
+                    <li class="usp-list__item">
+                        <div class="usp-list__icon-container">
+                            <img src="img/usp-lokalt.svg" alt="Ikon der viser at produkterne er lokalt produceret" class="usp-list__icon">
                         </div>
-                    </div>
-                </div>
-                <!--        </div>-->
-            </header>
-
-            <section class="usp-slider">
-                <div class="container">
-                    <ul class="usp-list">
-
-                        <li class="usp-list__item">
-                            <div class="usp-list__icon-container">
-                                <img src="img/usp-handlavet.svg" alt="Ikon der viser at produkterne er håndlavede" class="usp-list__icon">
-                            </div>
-                            <h4 class="usp-list__heading">Håndlavet</h4>
-                        </li>
-
-                        <li class="usp-list__item">
-                            <div class="usp-list__icon-container">
-                                <img src="img/usp-lokalt.svg" alt="Ikon der viser at produkterne er lokalt produceret" class="usp-list__icon">
-                            </div>
-                            <h4 class="usp-list__heading">Lokalt</h4>
-                        </li>
-
-                        <li class="usp-list__item">
-                            <div class="usp-list__icon-container">
-                                <img src="img/usp-unika.svg" alt="Ikon der viser at produkterne er unika" class="usp-list__icon">
-                            </div>
-                            <h4 class="usp-list__heading">Unika</h4>
-                        </li>
-
-                        <li class="usp-list__item">
-                            <div class="usp-list__icon-container">
-                                <img src="img/usp_holdbart2.svg" alt="Ikon der viser at produkterne er holdbare" class="usp-list__icon">
-                            </div>
-                            <h4 class="usp-list__heading">Holdbart</h4>
-                        </li>
-                    </ul>
-                </div>
-            </section>
-            <section class="js_dynamic_content"></section>
-
-            <section class="instagram-slider section-margin-bottom">
-                <div class="container">
-                    <h2 class="instagram-slider__title">Følg med på Instagram</h2>
-                </div>
-                <ul class="instagram-list">
-
-                    <li class="instagram-list__item">
-                        <a href="https://www.instagram.com/p/CIQwz2uBpu5/" class="instagram-list__link" target="_blank">
-                            <div class="instagram-list__icon-container">
-                                <img src="img/instagram1.png" alt="" class="instagram-list__icon">
-                            </div>
-                        </a>
-                    </li>
-                    <li class="instagram-list__item">
-                        <a href="https://www.instagram.com/p/CIINxaehhOw/" class="instagram-list__link" target="_blank">
-                            <div class="instagram-list__icon-container">
-                                <img src="img/instagram2.png" alt="" class="instagram-list__icon">
-                            </div>
-                        </a>
-                    </li>
-                    <li class="instagram-list__item">
-                        <a href="https://www.instagram.com/p/CIXfCoKBptB/" class="instagram-list__link" target="_blank">
-                            <div class="instagram-list__icon-container">
-                                <img src="img/instagram3.png" alt="" class="instagram-list__icon">
-                            </div>
-                        </a>
-                    </li>
-                    <li class="instagram-list__item">
-                        <a href="https://www.instagram.com/p/CH8UU7HhPgC/" class="instagram-list__link" target="_blank">
-                            <div class="instagram-list__icon-container">
-                                <img src="img/instagram4.png" alt="" class="instagram-list__icon">
-                            </div>
-                        </a>
-                    </li>
-                    <li class="instagram-list__item">
-                        <a href="https://www.instagram.com/p/CHkoi4dBSSB/" class="instagram-list__link" target="_blank">
-                            <div class="instagram-list__icon-container">
-                                <img src="img/instagram5.png" alt="" class="instagram-list__icon">
-                            </div>
-                        </a>
+                        <h4 class="usp-list__heading">Lokalt produceret</h4>
                     </li>
 
+                    <li class="usp-list__item">
+                        <div class="usp-list__icon-container">
+                            <img src="img/usp-unika.svg" alt="Ikon der viser at produkterne er unika" class="usp-list__icon">
+                        </div>
+                        <h4 class="usp-list__heading">Unika</h4>
+                    </li>
+
+                    <li class="usp-list__item">
+                        <div class="usp-list__icon-container">
+                            <img src="img/usp_holdbart2.svg" alt="Ikon der viser at produkterne er holdbare" class="usp-list__icon">
+                        </div>
+                        <h4 class="usp-list__heading">Holdbare produkter</h4>
+                    </li>
                 </ul>
-            </section>
-        </div>
+            </div>
+        </section>
+        <section class="js_dynamic_content"></section>
+
+        <section class="instagram-slider">
+            <div class="container">
+                <h2 class="instagram-slider__title">Følg med på Instagram</h2>
+            </div>
+            <ul class="instagram-list">
+
+                <li class="instagram-list__item">
+                    <a href="https://www.instagram.com/p/CIQwz2uBpu5/" class="instagram-list__link" target="_blank">
+                        <div class="instagram-list__icon-container">
+                            <img src="img/instagram1.png" alt="" class="instagram-list__icon">
+                        </div>
+                    </a>
+                </li>
+                <li class="instagram-list__item">
+                    <a href="https://www.instagram.com/p/CIINxaehhOw/" class="instagram-list__link" target="_blank">
+                        <div class="instagram-list__icon-container">
+                            <img src="img/instagram2.png" alt="" class="instagram-list__icon">
+                        </div>
+                    </a>
+                </li>
+                <li class="instagram-list__item">
+                    <a href="https://www.instagram.com/p/CIXfCoKBptB/" class="instagram-list__link" target="_blank">
+                        <div class="instagram-list__icon-container">
+                            <img src="img/instagram3.png" alt="" class="instagram-list__icon">
+                        </div>
+                    </a>
+                </li>
+                <li class="instagram-list__item">
+                    <a href="https://www.instagram.com/p/CH8UU7HhPgC/" class="instagram-list__link" target="_blank">
+                        <div class="instagram-list__icon-container">
+                            <img src="img/instagram4.png" alt="" class="instagram-list__icon">
+                        </div>
+                    </a>
+                </li>
+                <li class="instagram-list__item">
+                    <a href="https://www.instagram.com/p/CHkoi4dBSSB/" class="instagram-list__link" target="_blank">
+                        <div class="instagram-list__icon-container">
+                            <img src="img/instagram5.png" alt="" class="instagram-list__icon">
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </section>
     </main>
 
 
 
     <!--FOOTER-->
-    <footer class="footerstyling">
+    <footer class="footerstyling u-margin-top">
         <!--FOOTER COLUMN WRAPPER-->
 
         <div class="footerinfo">
@@ -274,8 +235,16 @@
     <script src="/JS/global.js"></script>
     <script>
         //Venter på DOMContent er loaded, starter hentData, opretter JSON-url som variabel.
-        document.addEventListener("DOMContentLoaded", hentData);
+        document.addEventListener("DOMContentLoaded", start);
         var url = "https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/pages?slug=landingpage";
+
+        let splash = document.querySelector(".css_splash");
+        let header = document.querySelector("header");
+
+        function start() {
+            hentData();
+            document.addEventListener("scroll", showHideHeader);
+        }
 
         async function hentData() {
             const respons = await fetch(url);
@@ -287,6 +256,23 @@
             console.log(landingpage);
 
             document.querySelector(".js_dynamic_content").innerHTML = landingpage[0].content.rendered;
+        }
+
+        function showHideHeader() {
+            let headerHeight = header.offsetHeight;
+            console.log('headerHeight', headerHeight);
+
+            let splashHeight = splash.offsetHeight;
+            console.log('splashHeight', splashHeight);
+
+            let clientHeight = window.pageYOffset;
+            console.log('clientHeight', clientHeight);
+
+            if (clientHeight >= splashHeight) {
+                header.classList.add("is-shown");
+            } else {
+                header.classList.remove("is-shown");
+            }
         }
     </script>
 

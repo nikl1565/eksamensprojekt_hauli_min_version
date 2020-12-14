@@ -43,7 +43,7 @@ html {
     --cta-primary-text-font-color: #ffffff;
     --cta-primary-text-font-color-hover: #847673;
     --cta-secondary-text-font-color: #ffffff;
-    --cta-secondary-text-font-color-hover: #3B3635;
+    --cta-secondary-text-font-color-hover: #000000;
 
 
     /*    Font lineheight */
@@ -68,7 +68,7 @@ html {
     --blue-color: #EEF6FB;
     --green-color: #ECFBE5;
     --yellow-color: #FFFDE6;
-    --body-color: #fff;
+    --body-color: #ffffff;
     --main-color: #ffffff;
 
     /*    CTA knapper*/
@@ -86,7 +86,7 @@ html {
     --cta-secondary-border-radius: 2px;
     --cta-secondary-box-shadow: 1.5px 1.5px 3px rgba(16, 31, 72, 0.22);
     /*             Denne padding skal jo nok overskrives nogle steder med noget mindre */
-    --cta-secondary-padding: 10px;
+    --cta-secondary-padding: 1.25rem 2rem;
 
 
     --space-sm: 1.5rem;
@@ -291,13 +291,15 @@ a:hover {
     /*    Tekst */
     font-family: var(--font-family-roboto);
     font-size: var(--cta-text-font-size);
-    font-weight: var(--font-weight-light);
+    font-weight: var(--font-weight-regular);
     color: var(--cta-secondary-text-font-color);
     text-decoration: none;
+    transition: color .25s ease-out, background .25s ease-out;
 }
 
 .cta-secondary:hover {
     color: var(--cta-secondary-text-font-color-hover);
+    background-color: var(--cta-secondary-text-font-color);
 }
 
 .container {
@@ -653,12 +655,19 @@ footer {
 
 }
 
-
 /* Utilities */
-.section-padding-bottom {
-    padding-bottom: 9rem;
+.u-padding-top {
+    padding-top: var(--space-xl);
 }
 
-.section-margin-bottom {
-    margin-bottom: 9rem;
+.u-padding-bottom {
+    padding-bottom: var(--space-xl);
+}
+
+.u-margin-bottom {
+    margin-bottom: var(--space-xl);
+}
+
+.u-margin-top {
+    margin-top: var(--space-xl);
 }
