@@ -133,6 +133,20 @@ img {
     display: none;
 }
 /****** VIDEO *****/
+.blue .wp-block-image {
+    width: 130px;
+    margin: 0 auto;
+}
+
+.wp-block-quote {
+    display: flex;
+    align-items: flex-start;
+}
+
+.quote-marks {
+    font-size: 8rem;
+    margin-top: 14px;
+}
 
 @media only screen and (min-width: 400px) {
     .box-size {
@@ -238,12 +252,12 @@ img {
         justify-content: center;
         flex-grow: 1;
     }
-
-    .wp-block-quote p {
-        /*        color: aqua;*/
+  
+    .quote-marks {
+        font-size: 10rem;
+        margin-top: 14px;
     }
-
-
+  
     .ned2 {
         margin-bottom: -30px;
     }
@@ -258,9 +272,4 @@ img {
     .wp-block-group:nth-of-type(4) .wp-block-group__inner-container figure {
         display: flex;
     }
-}
-
-.blue .wp-block-image {
-    width: 130px;
-    margin: 0 auto;
 }
