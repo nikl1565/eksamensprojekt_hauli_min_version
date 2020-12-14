@@ -64,13 +64,25 @@
     </header>
 
 
-    <main>
+    <main class="u-margin-bottom">
         <section class="about_content">
-            <h1 class="heading-width heading-margin">Shop</h1>
-            <div class="container js-category-box">
-
+            <div class="container js-category-box u-margin-bottom"></div>
+            <!--
+            <div class="container">
+                <div class="grid-container u-margin-top">
+                    <div class="grid_txt_container">
+                        <div class="grid_txt">
+                            <h2>COLORBLOCK COLLECTION</h2>
+                            <p>Den nye COLORBLOCK COLLECTION af HAULI</p>
+                            <a href="alle-produkter.html?filter=colorblock-collection" class="cta-secondary">Se hele kollektionen</a>
+                        </div>
+                    </div>
+                    <figure class="wp-block-image size-large grid_gallery_img1"><img loading="lazy" width="724" height="1020" src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/colorblock_kjole.jpeg" alt="hauli colorblock kjole" class="wp-image-205" srcset="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/colorblock_kjole.jpeg 724w, https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/colorblock_kjole-213x300.jpeg 213w" sizes="(max-width: 724px) 100vw, 724px"></figure>
+                    <figure class="wp-block-image size-large grid_gallery_img2"><img loading="lazy" width="1024" height="512" src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/colorblock_taske-1024x512.png" alt="hauli colorblock taske" class="wp-image-206" srcset="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/colorblock_taske-1024x512.png 1024w, https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/colorblock_taske-300x150.png 300w, https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/colorblock_taske-768x384.png 768w, https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/colorblock_taske.png 1200w" sizes="(max-width: 1024px) 100vw, 1024px"></figure>
+                </div>
             </div>
-            <section class="category-slider">
+-->
+            <section class="category-slider u-margin-bottom">
                 <h2 class="category-slider__title">Kategorier</h2>
                 <div class="category-list-container">
                     <ul class="category-list">
@@ -137,7 +149,7 @@
                 </div>
             </section>
 
-            <section class="products">
+            <section class="products u-margin-bottom">
                 <div class="container">
                     <!--                <h2 class="js-product-list-title"></h2>-->
                     <div class="product-list js-product-list"></div>
@@ -217,8 +229,8 @@
     </template>
 
     <template class="t-category-box">
-        <section class="category-box">
-            <h1 class="category-box__title"></h1>
+        <section class="category-box u-margin-top">
+            <h1 class="category-box__title">Beskrivelse</h1>
             <p class="category-box__description"></p>
         </section>
     </template>
@@ -377,13 +389,11 @@
             const categoryBoxClone = categoryBoxTemplate.content.cloneNode(true);
 
             categoryBoxClone.querySelector(".category-box__title").textContent = findCategory.name;
+
             categoryBoxClone.querySelector(".category-box__description").textContent = findCategory.description;
 
             categoryBox.appendChild(categoryBoxClone);
 
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
