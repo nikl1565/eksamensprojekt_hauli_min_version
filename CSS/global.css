@@ -40,7 +40,8 @@ html {
     --p-font-color: #000000;
     --citat-font-color: #000000;
     /*    --a-font-color: #5788f5;*/
-    --a-font-color-hover: #3B3635;
+    --a-font-color-hover: #847673;
+    /*    --a-font-color-hover: #3B3635;*/
     --cta-primary-text-font-color: #ffffff;
     --cta-primary-text-font-color-hover: #847673;
     --cta-secondary-text-font-color: #ffffff;
@@ -574,7 +575,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     color: var(--cta-primary-text-font-color);
-    background-color: var(--cta-secondary-text-font-color-hover);
+    background-color: var(--cta-primary-background-color);
 }
 
 
@@ -584,17 +585,18 @@ footer {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    margin: 40px 40px;
+    max-width: 1200px;
+    margin: 40px auto;
     justify-content: space-between;
-    place-content: center;
+    /*    place-content: center;*/
 }
 
 /*FOOTER COLUMN*/
 
 .footercolumn {
-    flex-basis: 460px;
+    /*    flex-basis: 460px;*/
     padding: 10px;
-    width: inherit;
+    /*    width: inherit;*/
 }
 
 .footercolumn ul {
@@ -637,7 +639,7 @@ footer {
 
 .socialmediabox {
     display: flex;
-    justify-content: center;
+    /*    justify-content: center;*/
     margin-top: 20px;
 }
 
@@ -660,7 +662,7 @@ footer {
 }*/
 
 .socials_icon {
-    height: 30px;
+    height: 35px;
     width: auto;
     margin-bottom: 20px;
     margin-left: 5px;
@@ -678,14 +680,22 @@ footer {
 .footer_nyhedsbrev_input {
     width: 180px;
     padding: 10px;
-    background-color: #f8f8f8;
-    border: 10px solid white;
+    background-color: white;
+    border: 3px solid #e0e0e0;
+    border-radius: var(--cta-secondary-border-radius);
     margin-top: 10px;
+    padding: var(--cta-secondary-padding);
+
+    font-family: var(--font-family-roboto);
+    font-size: var(--cta-text-font-size);
+    font-weight: var(--font-weight-regular);
+    text-align: center;
 }
+
 
 .footer_nyhedsbrev_checkbox button {
     width: 180px;
-    margin: 0 0;
+    margin: 2px 0;
 
 }
 
