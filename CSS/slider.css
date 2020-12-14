@@ -1,12 +1,117 @@
 /******************** Category Slider ********************/
 
+/* USP Slider */
+.usp-slider {
+    width: 100%;
+    padding: var(--space-xl) 0;
+}
+
+.usp-slider__title {
+    margin-bottom: var(--space-lg);
+    text-align: center;
+}
+
+.usp-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.usp-list__heading {
+    font-family: var(--font-family-roboto);
+    font-size: 1.8rem;
+}
+
+.usp-list__item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+}
+
+.usp-list__item:nth-of-type(3),
+.usp-list__item:nth-of-type(4) {
+    margin-bottom: 0;
+}
+
+.usp-list__link {
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+}
+
+.usp-list__icon-container {
+    border-radius: 50%;
+    padding: 0.var(--space-md);
+    margin-bottom: 1rem;
+    max-height: 102px;
+    max-width: 102px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.usp-list__icon {
+    height: 80px;
+    width: 80px;
+    max-width: none;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 1rem;
+}
+
+.usp-list__usp-title {
+    font-family: var(--font-family-roboto);
+    font-weight: var(--font-weight-light);
+    font-size: var(--h6-font-size);
+}
+
+@media (min-width: 342px) {
+    .usp-list {
+        flex-direction: row;
+    }
+
+    .usp-list__item {
+        flex-basis: 50%;
+    }
+}
+
+@media (min-width: 640px) {
+    .usp-list__item {
+        flex-basis: 25%;
+    }
+}
+
+@media (min-width: 900px) {
+    .usp-list__icon-container {
+        max-width: 162px;
+        max-height: 162px;
+    }
+
+    .usp-list__icon {
+        height: 140px;
+        width: 140px;
+    }
+
+    .usp-list__heading {
+        font-size: 2.6rem;
+    }
+
+}
+
+
 /* Category slider */
 .category-slider {
+    background-color: #fff;
     background-color: #fff;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
-    max-width: 1400px;
+    max-width: 1200px;
 }
 
 .category-slider__title {

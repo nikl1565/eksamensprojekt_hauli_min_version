@@ -235,7 +235,7 @@ a:hover {
 .overpunkter_styling {
     font-family: var(--font-family-playfair);
     font-weight: var(--font-weight-regular);
-    font-size: var(--h5-font-size);
+    font-size: 2rem;
     line-height: var(--h3-font-line-height);
     color: var(--h3-font-color);
     padding-right: 15px;
@@ -303,7 +303,7 @@ a:hover {
 }
 
 .container {
-    max-width: 1400px;
+    max-width: 1200px;
     padding-left: 3rem;
     padding-right: 3rem;
     margin-left: auto;
@@ -372,7 +372,6 @@ header {
     flex-direction: row;
     align-items: center;
     flex-wrap: wrap;
-    padding: 0 3rem;
 }
 
 .css_header_logo {
@@ -414,13 +413,11 @@ header {
 
 @media only screen and (min-width: 700px) {
     header {
-        padding: 20px 0;
+        padding: 15px 0;
     }
 
     .css_header_mobile {
-        width: 1000px;
-        margin-left: auto;
-        margin-right: auto;
+        width: 100%;
     }
 
     .overpunkter {
@@ -486,7 +483,7 @@ header {
     }
 
     .css_header_logo_image {
-        width: 80px;
+        width: 60px;
     }
 
     .shop:hover {
