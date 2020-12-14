@@ -5,7 +5,7 @@
 
 .product-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-column-gap: 3.2rem;
     grid-row-gap: 6.2rem;
 }
@@ -47,4 +47,91 @@
 
 .heading-margin {
     padding: 0 0 20px 25px;
+}
+
+.product__name,
+.product__category-link,
+.product__price-text {
+    padding-left: 1rem;
+    word-wrap: break-word;
+    max-width: 330px;
+}
+
+.product__name {
+    font-size: 2.5rem;
+}
+
+
+@media only screen and (min-width: 400px) {
+    .container_products {
+        max-width: 1200px;
+        padding-left: 3rem;
+        padding-right: 3rem;
+        margin: 0 auto;
+    }
+
+    .product-list {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-column-gap: 3rem;
+        grid-row-gap: 6rem;
+    }
+
+    .product__name,
+    .product__category-link,
+    .product__price-text {
+        padding-left: 0rem;
+        word-wrap: initial;
+    }
+}
+
+@media only screen and (min-width: 500px) {
+    .product-list {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-column-gap: 3rem;
+        grid-row-gap: 6rem;
+    }
+
+}
+
+@media only screen and (min-width: 570px) {
+    .product-list {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-column-gap: 4rem;
+        grid-row-gap: 6rem;
+    }
+
+}
+
+@media only screen and (min-width: 600px) {
+    .product-list {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-column-gap: 4rem;
+        grid-row-gap: 7rem;
+    }
+
+    .product__name {
+        font-size: 3.5rem;
+    }
+
+    .product__category-link .product__price-text {
+        font-size: 1.8rem;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .product-list {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-column-gap: 4rem;
+        grid-row-gap: 7rem;
+    }
+
+}
+
+@media only screen and (min-width: 1160px) {
+    .product-list {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-column-gap: 7rem;
+        grid-row-gap: 7rem;
+    }
+
 }
