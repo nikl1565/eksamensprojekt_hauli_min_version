@@ -149,12 +149,50 @@
             const data = await response.json();
             console.log(data);
             showData(data);
+
         }
 
         function showData(data) {
             //            console.log(data);
             document.querySelector(".about_content").innerHTML = data[0].content.rendered;
+
+            initVideoPlayer();
         }
+
+
+        /*  VIDEO PLAYER    */
+
+        function initVideoPlayer() {
+            const videoPlayerButton = document.querySelector(".js-block-video-button");
+            const videoPlayerVideo = document.querySelector(".js-block-video");
+            const videoPlayerOverlay = document.querySelector(".js-block-video-overlay");
+
+            console.log('initVideoPlayer');
+
+            videoPlayerVideo.volume = 0.5;
+
+            videoPlayerVideo.onpause = function() {
+                videoPlayerOverlay.classList.remove('is-hidden');
+            }
+
+            videoPlayerButton.addEventListener("click", videoPlayerPlayPause);
+
+            function videoPlayerPlayPause() {
+
+            if (videoPlayerVideo.paused) {
+                console.log('Play video');
+                videoPlayerVideo.play();
+                videoPlayerOverlay.classList.add("is-hidden");
+                videoPlayerVideo.setAttribute("controls", "controls");
+            } else {
+                console.log('Pause video');
+                videoPlayerVideo.pause();
+            }
+        }
+        }
+
+
+
 
     </script>
 </body>
