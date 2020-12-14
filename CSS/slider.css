@@ -184,11 +184,13 @@
     max-width: none;
 }
 
+/*
 @media only screen and (min-width: 700px) {
 
     .instagram-list__icon {
         height: 500px;
     }
 }
+*/
 
 /******************** Category Slider ********************/
