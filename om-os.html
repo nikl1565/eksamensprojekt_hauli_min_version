@@ -19,7 +19,6 @@
 
     <header>
         <div class="header_menu_width container">
-
             <div class="css_header_mobile">
                 <div class="css_header_burger_icon js_header_burger_icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu">
@@ -31,11 +30,10 @@
                 <div class="css_header_logo">
                     <a href="index.html">
                         <img src="img/nyhedsbrev_logo.svg" alt="Logo for HAULI" class="css_header_logo_image">
-                        <!--                        <img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/LOG-LOGO-LOGO-e1587302092398.png" alt="Logo for HAULI" class="css_header_logo_image">-->
                     </a>
                 </div>
 
-                <!--                <div class="placering">-->
+
                 <nav class="js_globalmenu css_globalmenu css_globalmenu_hidden js_globalmenu_hidden">
                     <ul class="">
                         <ul class="dropdown">
@@ -52,9 +50,9 @@
                 </nav>
 
                 <div class="css_header_menu_cart_icon">
-                    <ul class="">
+                    <ul>
                         <li class="overpunkter mobile_styling">
-                            <a href="#" class="overpunkter_styling"> <span class="kurv">Kurv</span>
+                            <a href="#" class="overpunkter_styling cart-link"> <span class="kurv">Kurv</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="39" viewBox="0 0 35 39">
                                     <g id="Icon_Shopping_Bag" data-name="Icon Shopping Bag" transform="translate(1 1)">
                                         <path id="Path_9" data-name="Path 9" d="M11.5,4,6,11.4V37.3A3.683,3.683,0,0,0,9.667,41H35.333A3.683,3.683,0,0,0,39,37.3V11.4L33.5,4Z" transform="translate(-6 -4)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
@@ -68,7 +66,6 @@
                 </div>
             </div>
         </div>
-        <!--        </div>-->
     </header>
 
 
@@ -158,5 +155,8 @@
             //            console.log(data);
             document.querySelector(".about_content").innerHTML = data[0].content.rendered;
         }
+
     </script>
-</body></html>
+</body>
+
+</html>
