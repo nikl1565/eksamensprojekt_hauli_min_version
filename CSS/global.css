@@ -24,7 +24,8 @@ html {
     --h5-font-size: 2.6rem;
     --h6-font-size: 2.1rem;
     --p-font-size: 1.5rem;
-    --citat-font-size: 1.7rem;
+    --citat-font-size: 1.8rem;
+    --citat-font-size2: 1.7rem;
     --a-font-size: 1.7rem;
     --cta-text-font-size: 1.7rem;
 
@@ -54,7 +55,7 @@ html {
     --h5-font-line-height: 1.6;
     --h6-font-line-height: 1.6;
     --p-font-line-height: 1.7;
-    --citat-font-line-height: 1.6;
+    --citat-font-line-height: 1.8;
 
     /*    Font weights  */
     --font-weight-medium: 500;
@@ -105,7 +106,7 @@ html {
         --h5-font-size: 2.6rem;
         --h6-font-size: 2.1rem;
         --p-font-size: 1.6rem;
-        --citat-font-size: 1.7rem;
+        --citat-font-size2: 1.9rem;
         --a-font-size: 1.7rem;
         --cta-text-font-size: 1.7rem;
     }
@@ -212,11 +213,15 @@ p {
 
 .citation {
     font-family: var(--font-family-roboto);
-    font-weight: var(--font-weight-regular);
-    font-size: var(--citat-font-size);
+    font-weight: var(--font-weight-light);
+    font-size: var(--citat-font-size2);
     line-height: var(--citat-font-line-height);
     color: var(--citat-font-color);
-    font-style: italic
+    font-style: italic;
+
+    margin-left: 15px;
+    margin-top: 20px;
+    max-width: 350px;
 }
 
 a {
