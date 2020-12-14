@@ -90,6 +90,21 @@ img {
     margin-bottom: 30px;
 }
 
+.blue .wp-block-image {
+    width: 130px;
+    margin: 0 auto;
+}
+
+.wp-block-quote {
+    display: flex;
+    align-items: flex-start;
+}
+
+.quote-marks {
+    font-size: 8rem;
+    margin-top: 14px;
+}
+
 @media only screen and (min-width: 400px) {
     .box-size {
         width: 75%;
@@ -195,8 +210,9 @@ img {
         flex-grow: 1;
     }
 
-    .wp-block-quote p {
-        /*        color: aqua;*/
+    .quote-marks {
+        font-size: 10rem;
+        margin-top: 14px;
     }
 
 
@@ -214,9 +230,4 @@ img {
     .wp-block-group:nth-of-type(4) .wp-block-group__inner-container figure {
         display: flex;
     }
-}
-
-.blue .wp-block-image {
-    width: 130px;
-    margin: 0 auto;
 }
