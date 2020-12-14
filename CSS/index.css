@@ -381,8 +381,8 @@
     height: 50%;
     align-self: center;
 }
-<<<<<<< HEAD
 
+<<<<<<< HEAD
 /***** USP BILLEDER *****/
 
 .usp-slider {
@@ -399,8 +399,6 @@
     display: flex;
     list-style: none;
     width: 100%;
-    overflow: scroll;
-    scroll-snap-type: x mandatory;
     padding: 1rem 0;
 }
 
@@ -410,7 +408,6 @@
     text-align: center;
     padding-left: 2rem;
     flex-grow: 1;
-    scroll-snap-align: start;
 }
 
 .usp-list__link {
@@ -435,5 +432,5 @@
     width: 50px;
     max-width: none;
 }
-=======
->>>>>>> origin/master
+
+======= > > > > > > > origin/master
