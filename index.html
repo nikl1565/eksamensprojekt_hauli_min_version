@@ -96,13 +96,12 @@
                 <h2 class="usp-slider__title">Kvaliteter ved produkterne</h2>
                 <ul class="usp-list">
 
-                    <li class="usp-list__item">
-                        <div class="usp-list__icon-container">
-                            <img src="img/usp-handlavet.svg" alt="Ikon der viser at produkterne er håndlavede" class="usp-list__icon">
-                        </div>
-                        <h3 class="usp-list__heading">Håndlavet</h3>
-                    </li>
-
+                        <li class="usp-list__item">
+                            <div class="usp-list__icon-container">
+                                <img src="img/usp-handlavet.svg" alt="Ikon der viser at produkterne er håndlavede" class="usp-list__icon">
+                            </div>
+                            <h4 class="usp-list__heading">Håndlavet</h4>
+                        </li>
                     <li class="usp-list__item">
                         <div class="usp-list__icon-container">
                             <img src="img/usp-lokalt.svg" alt="Ikon der viser at produkterne er lokalt produceret" class="usp-list__icon">
@@ -233,7 +232,7 @@
         <!--END FOOTER COLUMN WRAPPER-->
     </footer>
 
-    <script src="/JS/global.js"></script>
+    <script src="JS/global.js"></script>
     <script>
         //Venter på DOMContent er loaded, starter hentData, opretter JSON-url som variabel.
         document.addEventListener("DOMContentLoaded", start);
@@ -258,7 +257,7 @@
 
             document.querySelector(".js_dynamic_content").innerHTML = landingpage[0].content.rendered;
         }
-
+      
         function showHideHeader() {
             let headerHeight = header.offsetHeight;
             console.log('headerHeight', headerHeight);
@@ -277,4 +276,6 @@
         }
     </script>
 
-</body></html>
+</body>
+
+</html>

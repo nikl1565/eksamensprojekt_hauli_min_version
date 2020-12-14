@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="da">
 
 <head>
     <meta charset="utf-8">
@@ -26,11 +26,10 @@
                 <div class="css_header_logo">
                     <a href="index.html">
                         <img src="img/nyhedsbrev_logo.svg" alt="Logo for HAULI" class="css_header_logo_image">
-                        <!--                        <img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/LOG-LOGO-LOGO-e1587302092398.png" alt="Logo for HAULI" class="css_header_logo_image">-->
                     </a>
                 </div>
 
-                <!--                <div class="placering">-->
+
                 <nav class="js_globalmenu css_globalmenu css_globalmenu_hidden js_globalmenu_hidden">
                     <ul class="">
                         <ul class="dropdown">
@@ -47,9 +46,9 @@
                 </nav>
 
                 <div class="css_header_menu_cart_icon">
-                    <ul class="">
+                    <ul>
                         <li class="overpunkter mobile_styling">
-                            <a href="#" class="overpunkter_styling"> <span class="kurv">Kurv</span>
+                            <a href="#" class="overpunkter_styling cart-link"> <span class="kurv">Kurv</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="39" viewBox="0 0 35 39">
                                     <g id="Icon_Shopping_Bag" data-name="Icon Shopping Bag" transform="translate(1 1)">
                                         <path id="Path_9" data-name="Path 9" d="M11.5,4,6,11.4V37.3A3.683,3.683,0,0,0,9.667,41H35.333A3.683,3.683,0,0,0,39,37.3V11.4L33.5,4Z" transform="translate(-6 -4)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
@@ -63,20 +62,73 @@
                 </div>
             </div>
         </div>
-        <!--        </div>-->
     </header>
 
-    <main>
+    <main class="">
 
         <section class="js-product-container"></section>
 
+        <section class="similar-products-slider section-margin-bottom">
+            <!--            <div class="container">-->
+            <h2 class="similar-products-slider__title">Lignende produkter</h2>
+            <!--            </div>-->
+            <ul class="similar-products-list">
+
+                <li class="similar-productsgram-list__item">
+                    <a href="#" class="similar-products-list__link" target="_blank">
+                        <div class="similar-list__icon-container">
+                            <img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/EBFEB8AC-134D-4A83-A3DE-87BE1CC09AD2-4FCB9DC2-A04F-40AF-949C-E15E17B84FA4-scaled.jpeg" alt="" class="similar-products-list__icon">
+
+                        </div>
+
+                    </a>
+
+                </li>
+
+                <li class="similar-productsgram-list__item">
+                    <a href="#" class="similar-products-list__link" target="_blank">
+                        <div class="similar-list__icon-container">
+                            <img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/bubble-bag-bubblegum-lyserod-gul-scaled.jpg" alt="" class="similar-products-list__icon">
+                        </div>
+                    </a>
+                </li>
+
+                <li class="similar-productsgram-list__item">
+                    <a href="#" class="similar-products-list__link" target="_blank">
+                        <div class="similar-list__icon-container">
+                            <img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/bubble-bag-cappuccino-kaffe-beige-scaled.jpg" alt="" class="similar-products-list__icon">
+                        </div>
+                    </a>
+                </li>
+
+                <li class="similar-productsgram-list__item">
+                    <a href="#" class="similar-products-list__link" target="_blank">
+                        <div class="similar-list__icon-container">
+                            <img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/bucket-bag-olivegreen-gron-gron-scaled.jpg" alt="" class="similar-products-list__icon">
+                        </div>
+                    </a>
+                </li>
+
+                <li class="similar-productsgram-list__item">
+                    <a href="#" class="similar-products-list__link" target="_blank">
+                        <div class="similar-list__icon-container">
+                            <img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/colorblock_taske.png" alt="" class="similar-products-list__icon">
+                        </div>
+                    </a>
+                </li>
+
+            </ul>
+        </section>
+
+        <!--
         <section class="recommended-products-slider">
             <h2 class="recommended-products-slider__title">Lignende produkter</h2>
             <ul class="recommended-products-list">
 
             </ul>
-        </section>
 
+        </section>
+-->
     </main>
 
 
@@ -140,40 +192,51 @@
     </footer>
 
     <template class="t-product-page">
-        <div class="container">
-            <article class="product">
-                <img src="" alt="" class="product__image">
-                <h1 class="product__title"></h1>
-                <p class="product__price"></p>
+        <!--        <div class="container">-->
+        <article class="product">
+
+            <div class="column">
+
+                <img src="" alt="" class="product__image grow">
+                <div class="grow">
+                    <h1 class="product__title"></h1>
+                    <p class="product__price"></p>
 
 
-                <div class="product__button-group">
-                    <input type="number">
-                    <button class="cta-primary">Læg i kurv</button>
+                    <div class="product__button-group">
+                        <input type="number" placeholder="Vælg antal" min="0">
+                        <button class="cta-primary">Læg i kurv</button>
+                    </div>
+
                 </div>
+            </div>
 
-                <div class="product-colors">
-                    <ul class="product-colors__list">
-                        <li class="product-colors__color">
-                            <a class="product-colors__color-link" href=""></a>
-                        </li>
-                        <li class="product-colors__color">
-                            <a class="product-colors__color-link" href=""></a>
-                        </li>
-                    </ul>
-                </div>
+            <!--
+            <div class="product-colors">
+                <ul class="product-colors__list">
+                    <li class="product-colors__color">
+                        <a class="product-colors__color-link" href=""></a>
+                    </li>
+                    <li class="product-colors__color">
+                        <a class="product-colors__color-link" href=""></a>
+                    </li>
+                </ul>
+            </div>
+-->
+            <div class="column container">
 
-                <div class="product-description">
+                <div class="product-description grow">
                     <h2 class="product-description__title">Beskrivelse</h2>
                     <p class="product-description__text"></p>
                 </div>
 
-                <div class="product-information">
+                <div class="product-information grow">
                     <h2 class="product-information__title">Information</h2>
                     <p class="product-information__text"></p>
                 </div>
-            </article>
-        </div>
+            </div>
+        </article>
+        <!--        </div>-->
     </template>
 
     <template class="t-similar-product">
@@ -189,7 +252,7 @@
         </article>
     </template>
 
-    <script src="/JS/global.js"></script>
+    <script src="JS/global.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", init);
 
@@ -277,5 +340,8 @@
         //                    productList.appendChild(productClone);
         //
         //                }
+
     </script>
-</body></html>
+</body>
+
+</html>
