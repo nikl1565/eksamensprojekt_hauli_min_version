@@ -40,7 +40,8 @@ html {
     --p-font-color: #000000;
     --citat-font-color: #000000;
     /*    --a-font-color: #5788f5;*/
-    --a-font-color-hover: #3B3635;
+    --a-font-color-hover: #847673;
+    /*    --a-font-color-hover: #3B3635;*/
     --cta-primary-text-font-color: #ffffff;
     --cta-primary-text-font-color-hover: #847673;
     --cta-secondary-text-font-color: #ffffff;
@@ -78,7 +79,7 @@ html {
     --cta-primary-border-radius: 2px;
     --cta-primary-box-shadow: 1.5px 1.5px 3px rgba(59, 54, 53, 0.22);
     /*             Denne padding skal jo nok overskrives nogle steder med noget mindre */
-    --cta-primary-padding: 10px;
+    --cta-primary-padding: 1.25rem 2rem;
 
 
     /*        Sekundære knapper*/
@@ -356,6 +357,7 @@ header {
 
 .kurv {
     display: none;
+    padding-right: 1.5rem;
 }
 
 .kurv_kom_frem {
@@ -409,6 +411,7 @@ header {
 .css_header_menu_cart_icon svg {
     height: auto;
     width: 30px;
+    vertical-align: inherit;
 }
 
 .header_burger_icon {
@@ -537,8 +540,14 @@ header {
     header.css_header_mobile_open .cart-link {
         display: inline-block;
         vertical-align: middle;
-        margin: 20px 30px 20px 0px;
+        margin: 30px 0px;
         cursor: pointer;
+        text-decoration: none;
+        width: 250px;
+        text-align: center;
+
+        position: absolute;
+        bottom: 0;
 
         background-color: var(--cta-primary-background-color);
         border-radius: var(--cta-primary-border-radius);
@@ -571,7 +580,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     color: var(--cta-primary-text-font-color);
-    background-color: var(--cta-secondary-text-font-color-hover);
+    background-color: var(--cta-primary-background-color);
 }
 
 
@@ -581,17 +590,18 @@ footer {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    margin: 40px 40px;
+    max-width: 1200px;
+    margin: 40px auto;
     justify-content: space-between;
-    place-content: center;
+    /*    place-content: center;*/
 }
 
 /*FOOTER COLUMN*/
 
 .footercolumn {
-    flex-basis: 460px;
+    /*    flex-basis: 460px;*/
     padding: 10px;
-    width: inherit;
+    /*    width: inherit;*/
 }
 
 .footercolumn ul {
@@ -634,7 +644,7 @@ footer {
 
 .socialmediabox {
     display: flex;
-    justify-content: center;
+    /*    justify-content: center;*/
     margin-top: 20px;
 }
 
@@ -657,7 +667,7 @@ footer {
 }*/
 
 .socials_icon {
-    height: 30px;
+    height: 35px;
     width: auto;
     margin-bottom: 20px;
     margin-left: 5px;
@@ -675,14 +685,22 @@ footer {
 .footer_nyhedsbrev_input {
     width: 180px;
     padding: 10px;
-    background-color: #f8f8f8;
-    border: 10px solid white;
+    background-color: white;
+    border: 3px solid #e0e0e0;
+    border-radius: var(--cta-secondary-border-radius);
     margin-top: 10px;
+    padding: var(--cta-secondary-padding);
+
+    font-family: var(--font-family-roboto);
+    font-size: var(--cta-text-font-size);
+    font-weight: var(--font-weight-regular);
+    text-align: center;
 }
+
 
 .footer_nyhedsbrev_checkbox button {
     width: 180px;
-    margin: 0 0;
+    margin: 2px 0;
 
 }
 

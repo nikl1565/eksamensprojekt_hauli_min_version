@@ -8,13 +8,20 @@ input {
     font-family: var(--font-family-roboto);
 }
 
-.product__title {
-    margin-top: 3rem;
+.product {
+    margin-top: 4rem;
 }
+
+.product__title {}
 
 .product-description,
 .product-information {
-    margin-top: 4rem;
+    margin-top: 3rem;
+}
+
+.product-description {
+    background-color: var(--green-color);
+    padding: 3rem;
 }
 
 .recommended-products-slider__title {
@@ -23,6 +30,12 @@ input {
     margin: 40px 0;
 }
 
+.js-product-container {
+    margin: 2rem;
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 3rem;
+}
 
 
 /* related-products slider */
@@ -147,33 +160,83 @@ input {
     font-size: var(--h6-font-size);
 }
 
+/*** Vælg farve ****/
+
+.product-colors {
+    display: flex;
+    flex-direction: row;
+}
+.product-colors__list {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+
+    margin-top: 4px;
+    margin-left: 5px;
+}
 
 
 
+.product-colors__color {
+    margin-left: 5px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid var(--cta-primary-background-color);
+    box-shadow: 1px 1px 5px rgba(140, 140, 140, 0.5);
+
+    cursor: pointer;
+}
+
+.product-colors__title {
+    margin-top: 3px;
+}
+
+.product-colors__color:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+.product-colors__color:active {
+    border: 1.5px solid #fff;
+    background-color: red;
+}
+
+.product-colors__color:nth-of-type(1) {
+    background-color: var(--red-color);
+}
 
 
-/********************END related$-products Slider ********************/
+
+.product-colors__color:nth-of-type(2) {
+    background-color: var(--blue-color);
+}
+
+.product-colors__color:nth-of-type(3) {
+    background-color: var(--green-color);
+}
+
+.product-colors__color:nth-of-type(4) {
+    background-color: var(--yellow-color);
+}
+/********************END similar$-products Slider ********************/
 
 @media only screen and (min-width: 700px) {
 
+    .product-description {
+        margin-left: 3rem;
+    }
+
     .column {
         display: flex;
-        /*        flex-basis: 500px;*/
-        /*        flex-grow: 1;*/
-
     }
 
     .product__image {
-        max-width: 800px;
+        max-width: 500px;
         /*        height: 100%;*/
         margin-right: 4rem;
         object-fit: contain;
         /*        margin: 0 auto;*/
-    }
-
-    .product-description,
-    .product-information {
-        margin-top: 4rem;
     }
 
     .grow {

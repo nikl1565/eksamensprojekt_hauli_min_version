@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="da">
 
 <head>
     <meta charset="utf-8">
@@ -8,11 +8,26 @@
     <link rel="stylesheet" href="CSS/index.css">
     <link rel="stylesheet" href="CSS/global.css">
     <link rel="stylesheet" href="CSS/slider.css">
+
+
+    <!--    Fonte-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!--    Favicon    -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="img/site.webmanifest">
+    <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="msapplication-config" content="img/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
 </head>
 
 <body class="index">
     <header>
-
         <div class="header_menu_width container">
 
             <div class="css_header_mobile">
@@ -49,7 +64,7 @@
                 <div class="css_header_menu_cart_icon">
                     <ul>
                         <li class="overpunkter mobile_styling">
-                            <a href="#" class="overpunkter_styling cart-link"> <span class="kurv">Kurv</span>
+                            <a href="#" class="overpunkter_styling cart-link"> <span class="kurv">Gå til kurv</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="39" viewBox="0 0 35 39">
                                     <g id="Icon_Shopping_Bag" data-name="Icon Shopping Bag" transform="translate(1 1)">
                                         <path id="Path_9" data-name="Path 9" d="M11.5,4,6,11.4V37.3A3.683,3.683,0,0,0,9.667,41H35.333A3.683,3.683,0,0,0,39,37.3V11.4L33.5,4Z" transform="translate(-6 -4)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
@@ -86,41 +101,47 @@
                         <a href="alle-produkter.html" class="cta-primary">TIL WEBSHOP</a>
                         <a href="om-os.html" class="cta-primary">MERE OM HAULI</a>
                     </div>
+
+                    <a class="c-introduction__arrow-link" href="#usp-slider">
+
+                        <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-down c-icon c-introduction__button-arrow a-up-down">
+                            <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                    </a>
                 </div>
             </div>
 
         </section>
-
-        <section class="usp-slider red u-margin-bottom">
+        <section id="usp-slider" class="usp-slider u-margin-bottom u-margin-top">
             <div class="container">
                 <h2 class="usp-slider__title">Kvaliteter ved produkterne</h2>
                 <ul class="usp-list">
 
-                        <li class="usp-list__item">
-                            <div class="usp-list__icon-container">
-                                <img src="img/usp-handlavet.svg" alt="Ikon der viser at produkterne er håndlavede" class="usp-list__icon">
-                            </div>
-                            <h4 class="usp-list__heading">Håndlavet</h4>
-                        </li>
+                    <li class="usp-list__item">
+                        <div class="usp-list__icon-container">
+                            <img src="img/usp-handlavet.svg" alt="Ikon der viser at produkterne er håndlavede" class="usp-list__icon">
+                        </div>
+                        <h4 class="usp-list__heading">Håndlavet</h4>
+                    </li>
                     <li class="usp-list__item">
                         <div class="usp-list__icon-container">
                             <img src="img/usp-lokalt.svg" alt="Ikon der viser at produkterne er lokalt produceret" class="usp-list__icon">
                         </div>
-                        <h3 class="usp-list__heading">Lokalt produceret</h3>
+                        <h4 class="usp-list__heading">Lokalt produceret</h4>
                     </li>
 
                     <li class="usp-list__item">
                         <div class="usp-list__icon-container">
                             <img src="img/usp-unika.svg" alt="Ikon der viser at produkterne er unika" class="usp-list__icon">
                         </div>
-                        <h3 class="usp-list__heading">Unika</h3>
+                        <h4 class="usp-list__heading">Unika</h4>
                     </li>
 
                     <li class="usp-list__item">
                         <div class="usp-list__icon-container">
                             <img src="img/usp_holdbart2.svg" alt="Ikon der viser at produkterne er holdbare" class="usp-list__icon">
                         </div>
-                        <h3 class="usp-list__heading">Holdbare</h3>
+                        <h4 class="usp-list__heading">Holdbare produkter</h4>
                     </li>
                 </ul>
             </div>
@@ -168,9 +189,45 @@
                         </div>
                     </a>
                 </li>
+                <li class="instagram-list__item">
+                    <a href="https://www.instagram.com/p/CGhtK-1hOwC/" class="instagram-list__link" target="_blank">
+                        <div class="instagram-list__icon-container">
+                            <img src="img/instagram6.png" alt="" class="instagram-list__icon">
+                        </div>
+                    </a>
+                </li>
+                <li class="instagram-list__item">
+                    <a href="https://www.instagram.com/p/CGVh9Qnh-jT/" class="instagram-list__link" target="_blank">
+                        <div class="instagram-list__icon-container">
+                            <img src="img/instagram7.png" alt="" class="instagram-list__icon">
+                        </div>
+                    </a>
+                </li>
+                <li class="instagram-list__item">
+                    <a href="https://www.instagram.com/p/CHz8ZVHhiWj/" class="instagram-list__link" target="_blank">
+                        <div class="instagram-list__icon-container">
+                            <img src="img/instagram8.png" alt="" class="instagram-list__icon">
+                        </div>
+                    </a>
+                </li>
+                <li class="instagram-list__item">
+                    <a href="https://www.instagram.com/p/CG7zCOYBo82/" class="instagram-list__link" target="_blank">
+                        <div class="instagram-list__icon-container">
+                            <img src="img/instagram9.png" alt="" class="instagram-list__icon">
+                        </div>
+                    </a>
+                </li>
+                <li class="instagram-list__item">
+                    <a href="https://www.instagram.com/p/CGuz-OThamy/" class="instagram-list__link" target="_blank">
+                        <div class="instagram-list__icon-container">
+                            <img src="img/instagram10.png" alt="" class="instagram-list__icon">
+                        </div>
+                    </a>
+                </li>
 
             </ul>
         </section>
+
     </main>
 
 
@@ -179,12 +236,12 @@
     <footer class="footerstyling u-margin-top">
         <!--FOOTER COLUMN WRAPPER-->
 
-        <div class="footerinfo">
+        <div class="footerinfo container">
             <!--FOOTER COLUMN-->
             <div class="footercolumn">
                 <h3 class="footer_title">Kontakt HAULI</h3>
                 <ul>
-                    <li><a class="footer_link" href="https://goo.gl/maps/QZTs9b3uJH38N15x6" target="_blank">Kronprinsessegade 24, 1306 Kbh K</a></li>
+                    <li><a class="footer_link" href="https://goo.gl/maps/QZTs9b3uJH38N15x6" target="_blank">Kronprinsessegade 24, <br> 1306 Kbh K</a></li>
                     <li><a class="footer_link" href="tel:+45 21 96 32 61">+45 21 96 32 61</a></li>
                     <li><a class="footer_link" href="mailto:info@hauli.dk">info@hauli.dk</a></li>
                     <li><a class="footer_link" href="om-os.html">CVR: 35902619</a></li>
@@ -195,22 +252,24 @@
             <div class="footercolumn">
                 <h3 class="footer_title">Nyhedsbrev</h3>
                 <img class="footer_nyhedsbrev" src="img/nyhedsbrev_logo.svg" alt="nyhedsbev logo">
-                <input class="footer_nyhedsbrev_input" type="text" placeholder="Email" name="mail" required>
+                <input class="footer_nyhedsbrev_input" type="text" placeholder="Indtast email" name="mail" required>
 
                 <div class="footer_nyhedsbrev_checkbox">
-                    <button class="cta-primary">
+                    <button class="cta-secondary">
                         Tilmeld mig
                     </button>
                 </div>
             </div>
             <!---->
             <div class="footercolumn">
-                <h3 class="footer_title">Kontakt HAULI</h3>
+                <h3 class="footer_title">Information</h3>
                 <ul>
-                    <li><a class="footer_link" href="https://goo.gl/maps/QZTs9b3uJH38N15x6" target="_blank">Kronprinsessegade 24, 1306 Kbh K</a></li>
-                    <li><a class="footer_link" href="tel:+45 21 96 32 61">+45 21 96 32 61</a></li>
-                    <li><a class="footer_link" href="mailto:info@hauli.dk">info@hauli.dk</a></li>
-                    <li><a class="footer_link" href="om-os.html">CVR: 35902619</a></li>
+                    <li><a class="footer_link" href="om-os.html">Om HAULI</a></li>
+                    <li><a class="footer_link" href="#">Handelsbetingelser</a></li>
+                    <li><a class="footer_link" href="#">Privatlivspolitik</a></li>
+                    <li><a class="footer_link" href="#">Levering og returnering</a></li>
+                    <li><a class="footer_link" href="#">Kundeservice</a></li>
+
                 </ul>
 
                 <div class="socialmediabox">
@@ -257,7 +316,7 @@
 
             document.querySelector(".js_dynamic_content").innerHTML = landingpage[0].content.rendered;
         }
-      
+
         function showHideHeader() {
             let headerHeight = header.offsetHeight;
             console.log('headerHeight', headerHeight);
@@ -274,6 +333,7 @@
                 header.classList.remove("is-shown");
             }
         }
+
     </script>
 
 </body>

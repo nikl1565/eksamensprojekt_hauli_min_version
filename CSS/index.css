@@ -1,3 +1,8 @@
+html {
+    scroll-behavior: smooth;
+}
+
+
 .index header {
     transform: translateY(-80px);
     position: fixed;
@@ -29,10 +34,8 @@
 
 .splash-logo {
     max-width: 140px;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
-
-
 
 .css_splash_video_container {
     position: relative;
@@ -76,7 +79,7 @@
 }
 
 .cta_wrapper > a + a {
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .css_backgroundcolor {
@@ -102,7 +105,36 @@
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     font-size: 2.4rem;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
+}
+
+.c-introduction__arrow-link {
+    display: inline-block;
+    margin: 1rem auto 0 auto;
+}
+
+.a-up-down {
+    animation: k-up-down 1.8s infinite alternate;
+
+}
+
+@keyframes k-up-down {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-20px);
+    }
+}
+
+.c-introduction__button-arrow {
+    cursor: pointer;
+}
+
+.c-icon {
+    width: 64px;
+    height: 64px;
 }
 
 @media (min-width: 480px) {
@@ -117,6 +149,16 @@
     .splash-logo {
         max-width: 180px;
     }
+
+    .c-introduction__arrow-link {
+        display: inline-block;
+        margin: 7rem auto 0 auto;
+    }
+
+    .c-icon {
+        width: 84px;
+        height: 84px;
+    }
 }
 
 @media (min-width: 700px) {
@@ -130,6 +172,11 @@
 
     .splash-logo {
         max-width: 240px;
+    }
+
+    .c-icon {
+        width: 94px;
+        height: 94px;
     }
 }
 
@@ -317,67 +364,133 @@
 
 
 /**** OM SEKTION ***/
+.fjern_billede {
+    display: none;
+}
+
 .box-size {
-    /*    width: 90%;*/
-    /*    max-width: 20%;*/
+    width: 90%;
     padding: 30px;
-    position: relative;
-    max-width: none;
-}
-
-.mod_venstre {
-    margin-left: auto;
-}
-
-.wp-block-group .wp-block-group__inner-container {
-    max-width: none;
-}
-
-.blue {
-    background-color: var(--blue-color);
-}
-
-.flytmigbund {
-    margin-bottom: -80px;
+    background-color: var(--green-color);
 }
 
 
-@media only screen and (min-width: 400px) {
+.wp-block-group__inner-container {
+    display: block;
+}
+
+.wp-block-group:nth-of-type(2) {
+    /*    max-width: 1400px;*/
+    /*    margin-left: auto;*/
+}
+
+
+@media only screen and (min-width: 700px) {
+    .fjern_billede {
+        display: block;
+    }
+
     .box-size {
-        width: 75%;
-        padding: 100px;
+        width: 70%;
+    }
+
+    .wp-block-group {
+        max-height: 500px;
+        overflow: hidden;
+    }
+
+    .wp-block-group__inner-container {
+        display: flex;
+        /*        flex-direction: row-reverse;*/
+    }
+
+    .halv-om-halv {
+        flex-grow: 1;
+        flex-basis: 500px;
+
+        background-color: var(--green-color);
+        /*        width: 100%;*/
+    }
+
+    .forste {
+        order: 1;
+    }
+
+    .anden {
+        order: 2;
+    }
+
+    .tredje {
+        order: 3;
+    }
+
+    .anden p {
+        max-width: 400px;
     }
 }
 
-@media only screen and (min-width: 750px) .flytmigbund {
-    margin-bottom: 0px;
+@media only screen and (min-width: 1100px) {
+    .box-size {
+        padding: 120px 100px;
+    }
+
+    .wp-block-group {
+        max-height: 550px;
+    }
+
+    .halv-om-halv {
+        flex-basis: 400px;
+    }
+
 }
 
-.flytmigtop {
-    margin-top: 0px;
+
+/***** USP BILLEDER *****/
+
+.usp-slider {
+    background-color: #fff;
+    width: 100%;
 }
 
-.wp-block-group__inner-container {
+.usp-slider__title {
+    padding: 0 2rem;
+    margin-bottom: 1rem;
+}
+
+.usp-list {
     display: flex;
+    list-style: none;
+    width: 100%;
+    padding: 1rem 0;
 }
 
-.heading-width,
-.wp-block-group:nth-of-type(1),
-.wp-block-group:nth-of-type(2) {
-    max-width: 1400px;
-    margin-left: auto;
-}
-
-.wp-block-group:nth-of-type(2) .wp-block-group__inner-container {
-    flex-direction: row-reverse;
-}
-
-.halv-om-halv {
+.usp-list__item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-left: 2rem;
     flex-grow: 1;
-    flex-basis: 300px;
 }
 
-.box-hojde {
-    height: 50%;
-    align-self: center;
+.usp-list__link {
+    text-decoration: none;
+    color: #000;
+}
+
+.usp-list__item:last-child {
+    padding-right: 2rem;
+}
+
+.usp-list__icon-container {
+    border-radius: 50%;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    max-height: 84px;
+    max-width: 84px;
+}
+
+.usp-list__icon {
+    height: 50px;
+    width: 50px;
+    max-width: none;
 }

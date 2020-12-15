@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="da">
 
 <head>
     <meta charset="utf-8">
@@ -8,6 +8,22 @@
     <link rel="stylesheet" href="CSS/global.css">
     <link rel="stylesheet" href="CSS/slider.css">
     <link rel="stylesheet" href="CSS/alle-produkter.css">
+
+
+    <!--    Fonte-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!--    Favicon    -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="img/site.webmanifest">
+    <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="msapplication-config" content="img/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
@@ -47,7 +63,7 @@
                 <div class="css_header_menu_cart_icon">
                     <ul>
                         <li class="overpunkter mobile_styling">
-                            <a href="#" class="overpunkter_styling cart-link"> <span class="kurv">Kurv</span>
+                            <a href="#" class="overpunkter_styling cart-link"> <span class="kurv">Gå til kurv</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="39" viewBox="0 0 35 39">
                                     <g id="Icon_Shopping_Bag" data-name="Icon Shopping Bag" transform="translate(1 1)">
                                         <path id="Path_9" data-name="Path 9" d="M11.5,4,6,11.4V37.3A3.683,3.683,0,0,0,9.667,41H35.333A3.683,3.683,0,0,0,39,37.3V11.4L33.5,4Z" transform="translate(-6 -4)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
@@ -151,7 +167,6 @@
 
             <section class="products u-margin-bottom">
                 <div class="container">
-                    <!--                <h2 class="js-product-list-title"></h2>-->
                     <div class="product-list js-product-list"></div>
                 </div>
             </section>
@@ -159,15 +174,15 @@
         </section>
     </main>
     <!--FOOTER-->
-    <footer class="footerstyling">
+    <footer class="footerstyling u-margin-top">
         <!--FOOTER COLUMN WRAPPER-->
 
-        <div class="footerinfo">
+        <div class="footerinfo container">
             <!--FOOTER COLUMN-->
             <div class="footercolumn">
                 <h3 class="footer_title">Kontakt HAULI</h3>
                 <ul>
-                    <li><a class="footer_link" href="https://goo.gl/maps/QZTs9b3uJH38N15x6" target="_blank">Kronprinsessegade 24, 1306 Kbh K</a></li>
+                    <li><a class="footer_link" href="https://goo.gl/maps/QZTs9b3uJH38N15x6" target="_blank">Kronprinsessegade 24, <br> 1306 Kbh K</a></li>
                     <li><a class="footer_link" href="tel:+45 21 96 32 61">+45 21 96 32 61</a></li>
                     <li><a class="footer_link" href="mailto:info@hauli.dk">info@hauli.dk</a></li>
                     <li><a class="footer_link" href="om-os.html">CVR: 35902619</a></li>
@@ -178,22 +193,24 @@
             <div class="footercolumn">
                 <h3 class="footer_title">Nyhedsbrev</h3>
                 <img class="footer_nyhedsbrev" src="img/nyhedsbrev_logo.svg" alt="nyhedsbev logo">
-                <input class="footer_nyhedsbrev_input" type="text" placeholder="Email" name="mail" required>
+                <input class="footer_nyhedsbrev_input" type="text" placeholder="Indtast email" name="mail" required>
 
                 <div class="footer_nyhedsbrev_checkbox">
-                    <button class="cta-primary">
+                    <button class="cta-secondary">
                         Tilmeld mig
                     </button>
                 </div>
             </div>
             <!---->
             <div class="footercolumn">
-                <h3 class="footer_title">Kontakt HAULI</h3>
+                <h3 class="footer_title">Information</h3>
                 <ul>
-                    <li><a class="footer_link" href="https://goo.gl/maps/QZTs9b3uJH38N15x6" target="_blank">Kronprinsessegade 24, 1306 Kbh K</a></li>
-                    <li><a class="footer_link" href="tel:+45 21 96 32 61">+45 21 96 32 61</a></li>
-                    <li><a class="footer_link" href="mailto:info@hauli.dk">info@hauli.dk</a></li>
-                    <li><a class="footer_link" href="om-os.html">CVR: 35902619</a></li>
+                    <li><a class="footer_link" href="om-os.html">Om HAULI</a></li>
+                    <li><a class="footer_link" href="#">Handelsbetingelser</a></li>
+                    <li><a class="footer_link" href="#">Privatlivspolitik</a></li>
+                    <li><a class="footer_link" href="#">Levering og returnering</a></li>
+                    <li><a class="footer_link" href="#">Kundeservice</a></li>
+
                 </ul>
 
                 <div class="socialmediabox">
@@ -375,6 +392,9 @@
 
             filter = this.dataset.category;
             console.log('filter', filter);
+
+            document.querySelectorAll(".js-category-button").forEach(category => category.classList.remove("button-clicked"));
+            this.classList.add("button-clicked");
 
             showProducts(products);
         }

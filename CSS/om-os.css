@@ -3,7 +3,7 @@ img {
 }
 
 .about_content {
-    margin: 0 auto;
+    margin: var(--space-xl) auto;
 }
 
 .heading-margin {
@@ -132,6 +132,7 @@ img {
 .is-hidden {
     display: none;
 }
+
 /****** VIDEO *****/
 .blue .wp-block-image {
     width: 130px;
@@ -252,12 +253,12 @@ img {
         justify-content: center;
         flex-grow: 1;
     }
-  
+
     .quote-marks {
         font-size: 10rem;
         margin-top: 14px;
     }
-  
+
     .ned2 {
         margin-bottom: -30px;
     }

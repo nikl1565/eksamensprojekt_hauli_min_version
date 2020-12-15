@@ -8,6 +8,22 @@
     <link rel="stylesheet" href="CSS/global.css">
     <link rel="stylesheet" href="CSS/slider.css">
     <link rel="stylesheet" href="CSS/produkt.css">
+
+
+    <!--    Fonte-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <!--    Favicon    -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="img/site.webmanifest">
+    <link rel="mask-icon" href="img/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="msapplication-config" content="img/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
@@ -33,7 +49,7 @@
                 <nav class="js_globalmenu css_globalmenu css_globalmenu_hidden js_globalmenu_hidden">
                     <ul class="">
                         <ul class="dropdown">
-                            <li class="overpunkter mobile_styling"> <a href="alle-produkter.html" class="overpunkter_styling shop">Shop</a></li>
+                            <li class="overpunkter mobile_styling"><a href="alle-produkter.html" class="overpunkter_styling shop">Shop</a></li>
                             <ul class="underpunkter">
                                 <li class="underpunkt_padding"><a href="alle-produkter.html?filter=tasker" class="underpunkt_styling">Tasker</a></li>
                                 <li class="underpunkt_padding"><a href="alle-produkter.html?filter=toj" class="underpunkt_styling">Tøj</a></li>
@@ -48,7 +64,7 @@
                 <div class="css_header_menu_cart_icon">
                     <ul>
                         <li class="overpunkter mobile_styling">
-                            <a href="#" class="overpunkter_styling cart-link"> <span class="kurv">Kurv</span>
+                            <a href="#" class="overpunkter_styling cart-link"> <span class="kurv">Gå til kurv</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="39" viewBox="0 0 35 39">
                                     <g id="Icon_Shopping_Bag" data-name="Icon Shopping Bag" transform="translate(1 1)">
                                         <path id="Path_9" data-name="Path 9" d="M11.5,4,6,11.4V37.3A3.683,3.683,0,0,0,9.667,41H35.333A3.683,3.683,0,0,0,39,37.3V11.4L33.5,4Z" transform="translate(-6 -4)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
@@ -75,30 +91,21 @@
             <ul class="related-products-list js-related-products-list"></ul>
         </section>
 
-        <!--
-        <section class="recommended-products-slider">
-            <h2 class="recommended-products-slider__title">Lignende produkter</h2>
-            <ul class="recommended-products-list">
-
-            </ul>
-
-        </section>
--->
     </main>
 
 
 
 
     <!--FOOTER-->
-    <footer class="footerstyling">
+    <footer class="footerstyling u-margin-top">
         <!--FOOTER COLUMN WRAPPER-->
 
-        <div class="footerinfo">
+        <div class="footerinfo container">
             <!--FOOTER COLUMN-->
             <div class="footercolumn">
-                <h3 class="footer_title">KONTAKT HAULI</h3>
+                <h3 class="footer_title">Kontakt HAULI</h3>
                 <ul>
-                    <li><a class="footer_link" href="https://goo.gl/maps/QZTs9b3uJH38N15x6" target="_blank">Kronprinsessegade 24, 1306 Kbh K</a></li>
+                    <li><a class="footer_link" href="https://goo.gl/maps/QZTs9b3uJH38N15x6" target="_blank">Kronprinsessegade 24, <br> 1306 Kbh K</a></li>
                     <li><a class="footer_link" href="tel:+45 21 96 32 61">+45 21 96 32 61</a></li>
                     <li><a class="footer_link" href="mailto:info@hauli.dk">info@hauli.dk</a></li>
                     <li><a class="footer_link" href="om-os.html">CVR: 35902619</a></li>
@@ -109,22 +116,24 @@
             <div class="footercolumn">
                 <h3 class="footer_title">Nyhedsbrev</h3>
                 <img class="footer_nyhedsbrev" src="img/nyhedsbrev_logo.svg" alt="nyhedsbev logo">
-                <input class="footer_nyhedsbrev_input" type="text" placeholder="Email" name="mail" required>
+                <input class="footer_nyhedsbrev_input" type="text" placeholder="Indtast email" name="mail" required>
 
                 <div class="footer_nyhedsbrev_checkbox">
-                    <button class="cta-primary">
+                    <button class="cta-secondary">
                         Tilmeld mig
                     </button>
                 </div>
             </div>
             <!---->
             <div class="footercolumn">
-                <h3 class="footer_title">KONTAKT HAULI</h3>
+                <h3 class="footer_title">Information</h3>
                 <ul>
-                    <li><a class="footer_link" href="https://goo.gl/maps/QZTs9b3uJH38N15x6" target="_blank">Kronprinsessegade 24, 1306 Kbh K</a></li>
-                    <li><a class="footer_link" href="tel:+45 21 96 32 61">+45 21 96 32 61</a></li>
-                    <li><a class="footer_link" href="mailto:info@hauli.dk">info@hauli.dk</a></li>
-                    <li><a class="footer_link" href="om-os.html">CVR: 35902619</a></li>
+                    <li><a class="footer_link" href="om-os.html">Om HAULI</a></li>
+                    <li><a class="footer_link" href="#">Handelsbetingelser</a></li>
+                    <li><a class="footer_link" href="#">Privatlivspolitik</a></li>
+                    <li><a class="footer_link" href="#">Levering og returnering</a></li>
+                    <li><a class="footer_link" href="#">Kundeservice</a></li>
+
                 </ul>
 
                 <div class="socialmediabox">
@@ -159,36 +168,42 @@
 
 
                     <div class="product__button-group">
-                        <input type="number" placeholder="Vælg antal" min="0">
+                        <input type="number" placeholder="Vælg antal" value="1">
                         <button class="cta-primary">Læg i kurv</button>
                     </div>
 
+                    <div class="product-colors">
+                       <p class="product-colors__title">VÆLG FARVE |</p>
+                        <ul class="product-colors__list">
+                            <li class="product-colors__color">
+                                <a class="product-colors__color-link" href=""></a>
+                            </li>
+                            <li class="product-colors__color">
+                                <a class="product-colors__color-link" href=""></a>
+                            </li>
+                            <li class="product-colors__color">
+                                <a class="product-colors__color-link" href=""></a>
+                            </li>
+                            <li class="product-colors__color">
+                                <a class="product-colors__color-link" href=""></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="product-information grow">
+                        <h2 class="product-information__title">Information</h2>
+                        <p class="product-information__text"></p>
+                    </div>
                 </div>
             </div>
 
-            <!--
-            <div class="product-colors">
-                <ul class="product-colors__list">
-                    <li class="product-colors__color">
-                        <a class="product-colors__color-link" href=""></a>
-                    </li>
-                    <li class="product-colors__color">
-                        <a class="product-colors__color-link" href=""></a>
-                    </li>
-                </ul>
-            </div>
--->
-            <div class="column u-margin-bottom">
+            <div class="column">
 
                 <div class="product-description grow">
                     <h2 class="product-description__title">Beskrivelse</h2>
                     <p class="product-description__text"></p>
                 </div>
 
-                <div class="product-information grow">
-                    <h2 class="product-information__title">Information</h2>
-                    <p class="product-information__text"></p>
-                </div>
             </div>
         </article>
         <!--        </div>-->
@@ -294,7 +309,7 @@
 
             productContainer.appendChild(productClone);
         }
-
+      
         function showRelatedProducts() {
             console.log('showRelatedProducts');
 
@@ -325,8 +340,5 @@
             });
 
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
