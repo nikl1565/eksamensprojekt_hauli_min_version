@@ -212,7 +212,7 @@ html {
 
 .grid-container {
     display: grid;
-    grid-gap: 3rem;
+    grid-gap: 1.3rem;
     margin-bottom: var(--space-md);
 }
 
@@ -252,6 +252,12 @@ html {
 .grid_txt h2 {
     font-size: 3rem;
     color: white;
+    text-align: center;
+}
+
+.grid_txt a {
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .grid_txt p {
@@ -332,7 +338,7 @@ html {
     display: flex;
     list-style: none;
     width: 100%;
-    overflow: scroll;
+    overflow-x: auto;
     scroll-snap-type: x mandatory;
     padding: 1rem 0;
 }
