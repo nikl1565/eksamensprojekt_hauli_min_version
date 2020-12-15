@@ -83,7 +83,7 @@ img {
 }
 
 .ned2 {
-    margin-bottom: -10px;
+    margin-bottom: 0px;
 }
 
 .wp-block-group:nth-of-type(3) {
@@ -116,8 +116,8 @@ img {
 }
 
 .wp-block-video-button {
-    height: 96px;
-    width: 96px;
+    height: 66px;
+    width: 66px;
     background-color: var(--red-color);
     border-radius: 50%;
     text-align: center;
@@ -128,8 +128,8 @@ img {
 }
 
 .wp-block-video-icon {
-    height: 48px;
-    width: 48px;
+    height: 38px;
+    width: 38px;
     margin-left: 5px;
 }
 
@@ -158,10 +158,27 @@ img {
     font-size: 1.5rem;
 }
 
-@media only screen and (min-width: 400px) {
+@media only screen and (min-width: 420px) {
+    .ned2 {
+        margin-bottom: -10px;
+    }
+
     .box-size {
         width: 75%;
         padding: 40px;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .wp-block-video-button {
+        height: 96px;
+        width: 96px;
+    }
+
+    .wp-block-video-icon {
+        height: 48px;
+        width: 48px;
+        margin-left: 5px;
     }
 }
 
