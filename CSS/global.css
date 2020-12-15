@@ -566,6 +566,7 @@ header {
     .cart-link svg {
         display: inline-block;
         height: auto;
+        vertical-align: middle;
     }
 
     header.css_header_mobile_open .cart-link svg g path {
