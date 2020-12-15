@@ -212,7 +212,7 @@ html {
 
 .grid-container {
     display: grid;
-    grid-gap: 1.3rem;
+    grid-gap: 13px;
     margin-bottom: var(--space-md);
 }
 
@@ -400,7 +400,7 @@ html {
 }
 
 
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 760px) {
     .fjern_billede {
         display: block;
     }
@@ -444,7 +444,13 @@ html {
     }
 }
 
-@media only screen and (min-width: 1100px) {
+@media only screen and (min-width: 1300px) {
+    .box-size {
+        padding: 80px 100px;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
     .box-size {
         padding: 120px 100px;
     }
@@ -456,7 +462,6 @@ html {
     .halv-om-halv {
         flex-basis: 400px;
     }
-
 }
 
 
