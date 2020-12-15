@@ -380,6 +380,9 @@
             filter = this.dataset.category;
             console.log('filter', filter);
 
+            document.querySelectorAll(".js-category-button").forEach(category => category.classList.remove("button-clicked"));
+            this.classList.add("button-clicked");
+
             showProducts(products);
         }
 
@@ -399,6 +402,25 @@
 
         }
 
+
+/*        //button function for at filtre knapper har evenlisteners
+    function buttonEventListeners() {
+        console.log('buttonEventListeners');
+        document.querySelectorAll(".filter").forEach((btn) => {
+            btn.addEventListener("click", filterBTNs);
+        });
+
+    }
+    //function sætter filtre og ændre dermed listview
+    function filterBTNs() {
+        console.log('clicked button' + this.dataset.type);
+        filter = this.dataset.type;
+        document.querySelectorAll(".filter").forEach(btn => btn.classList.remove("buttonClicked")); //fjerner alle styles for ikke klikkede knapper
+        this.classList.add("buttonClicked");
+        hentData(link);
+    }
+
+        */
     </script>
 </body>
 
