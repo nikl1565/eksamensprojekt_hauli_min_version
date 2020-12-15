@@ -149,6 +149,11 @@ img {
     margin-top: 14px;
 }
 
+.navn {
+    font-weight: 400;
+    font-size: 1.5rem;
+}
+
 @media only screen and (min-width: 400px) {
     .box-size {
         width: 75%;
@@ -261,6 +266,10 @@ img {
 
     .ned2 {
         margin-bottom: -30px;
+    }
+
+    .navn {
+        font-size: 1.7rem;
     }
 }
 
