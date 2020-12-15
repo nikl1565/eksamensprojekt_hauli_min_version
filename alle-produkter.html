@@ -382,6 +382,9 @@
             filter = this.dataset.category;
             console.log('filter', filter);
 
+            document.querySelectorAll(".js-category-button").forEach(category => category.classList.remove("button-clicked"));
+            this.classList.add("button-clicked");
+
             showProducts(products);
         }
 
@@ -400,5 +403,6 @@
             categoryBox.appendChild(categoryBoxClone);
 
         }
+
     </script>
 </body></html>
