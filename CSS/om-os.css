@@ -3,7 +3,7 @@ img {
 }
 
 .about_content {
-    margin: var(--space-xl) auto;
+    margin: var(--space-xl) auto 0 auto;
 }
 
 .heading-margin {
@@ -86,10 +86,14 @@ img {
     margin-bottom: -10px;
 }
 
+.wp-block-group:nth-of-type(3) {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
 .wp-block-group:nth-of-type(3),
 .wp-block-group:nth-of-type(4) {
     margin-top: 50px;
-    margin-bottom: 30px;
 }
 
 /****** VIDEO *****/
