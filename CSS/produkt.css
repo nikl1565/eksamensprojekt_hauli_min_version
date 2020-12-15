@@ -25,31 +25,66 @@ input {
 
 
 
-/* similar-products slider */
-.similar-products-slider {
+/* related-products slider */
+.related-products-slider {
     background-color: #fff;
-    padding: 2rem 0;
+    background-color: #fff;
     width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 1400px;
 }
 
-.similar-products-slider__title {
-    /*    padding: 0 var(--space-md);*/
-    margin-bottom: 1rem;
+.related-products-slider__title {
+    margin-bottom: 3rem;
 }
 
-.similar-products-list {
+.related-products-list-container {
+    position: relative;
+}
+
+.related-products-list-container::before {
+    content: '';
+    width: var(--space-md);
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    z-index: 1;
+    background-image: linear-gradient(to left, hsla(0, 0%, 100%, 0) 0, #fff);
+}
+
+.related-products-list-container::after {
+    content: '';
+    background-image: linear-gradient(90deg, hsla(0, 0%, 100%, 0) 0, #fff);
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: var(--space-md);
+    display: block;
+    height: 100%;
+    z-index: 1;
+}
+
+.related-products-list {
     display: flex;
     list-style: none;
     width: 100%;
     overflow: scroll;
     scroll-snap-type: x mandatory;
-    padding: 1rem 0;
+    position: relative;
 }
 
-.similar-products-list__item {
+.related-products-list > .related-product:last-child::after {
+    content: '';
+    width: var(--space-md);
+    height: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #fff;
+    z-index: 2;
+}
+
+.related-product {
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -58,42 +93,49 @@ input {
     scroll-snap-align: start;
     flex-wrap: wrap;
     flex-basis: 0;
+    /* flex-basis: 300px; */
 }
 
-.similar-products-list__link {
+.related-product__link {
     text-decoration: none;
     color: #000;
     display: flex;
     flex-direction: column;
+    /* flex-wrap: wrap; */
 }
 
-.similar-products-list__item:last-child {
+.related-product__link:hover .related-product__image {
+    transform: scale(1.025);
+}
+
+.related-product:last-child {
     padding-right: var(--space-md);
+    position: relative;
 }
 
-.similar-products-list__icon-container {
-    border: 1px solid #e6e6e6;
-    border-radius: 50%;
-    padding: 0.var(--space-md);
-    margin-bottom: 0.5rem;
-    max-height: 142px;
-    max-width: 142px;
-    margin-left: auto;
-    margin-right: auto;
+.related-product__image-container {
+    width: 270px;
+    padding-bottom: 100%;
+    position: relative;
+    /* flex-grow: 1; */
+    /* flex-basis: 0; */
+    overflow: hidden;
 }
 
-.similar-products-list__icon {
-    height: 250px;
-    width: 250px;
-    object-fit: cover;
-    object-position: top;
+.related-product__image {
     max-width: none;
-    /*    background-color: var(--red-color);*/
-    /*    border-radius: 50%;*/
-    padding: 1rem;
+    position: absolute;
+    transition: transform .25s ease-out;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
-.similar-products-list__similar-products-title {
+.related-product__title {
     font-family: var(--font-family-roboto);
     font-weight: var(--font-weight-light);
     font-size: var(--h6-font-size);
@@ -101,7 +143,10 @@ input {
 
 
 
-/********************END similar$-products Slider ********************/
+
+
+
+/********************END related$-products Slider ********************/
 
 @media only screen and (min-width: 700px) {
 
@@ -110,15 +155,12 @@ input {
         /*        flex-basis: 500px;*/
         /*        flex-grow: 1;*/
 
-        max-width: 1400px;
-        margin: 0 auto;
     }
 
     .product__image {
         max-width: 800px;
         /*        height: 100%;*/
         margin-right: 4rem;
-        padding-left: 3rem;
         object-fit: contain;
         /*        margin: 0 auto;*/
     }
@@ -139,7 +181,7 @@ input {
         margin: 0 auto;
     }
 
-    .similar-products-list__icon {
+    .related-products-list__icon {
         height: 500px;
         width: 500px;
     }
