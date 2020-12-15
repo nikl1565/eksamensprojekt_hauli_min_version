@@ -3,7 +3,7 @@ img {
 }
 
 .about_content {
-    margin: 0 auto;
+    margin: var(--space-xl) auto;
 }
 
 .heading-margin {
@@ -132,6 +132,7 @@ img {
 .is-hidden {
     display: none;
 }
+
 /****** VIDEO *****/
 .blue .wp-block-image {
     width: 130px;
