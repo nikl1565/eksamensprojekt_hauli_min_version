@@ -283,6 +283,8 @@
             filter = urlFilter;
         }
 
+        document.querySelector(`.js-category-button[data-category="${filter}"]`).classList.add("button-clicked");
+
         let products;
         let categories;
 
@@ -415,5 +417,8 @@
             categoryBox.appendChild(categoryBoxClone);
 
         }
+
     </script>
-</body></html>
+</body>
+
+</html>
