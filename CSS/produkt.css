@@ -47,6 +47,11 @@ input {
 
 .related-products-slider__title {
     margin-bottom: 3rem;
+    max-width: 1050px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 3rem;
+    padding-right: 3rem;
 }
 
 .related-products-list-container {
@@ -166,6 +171,7 @@ input {
     display: flex;
     flex-direction: row;
 }
+
 .product-colors__list {
     list-style: none;
     display: flex;
@@ -184,7 +190,6 @@ input {
     border-radius: 50%;
     border: 1px solid var(--cta-primary-background-color);
     box-shadow: 1px 1px 5px rgba(140, 140, 140, 0.5);
-
     cursor: pointer;
 }
 
@@ -219,9 +224,18 @@ input {
 .product-colors__color:nth-of-type(4) {
     background-color: var(--yellow-color);
 }
+
+.product__button-group input {
+    max-width: 80px;
+}
+
+.product__button-group .cta-primary {
+    margin-right: 0;
+}
+
 /********************END similar$-products Slider ********************/
 
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 900px) {
 
     .column {
         display: flex;
