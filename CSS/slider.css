@@ -116,7 +116,7 @@
 
 .category-slider__title {
     padding: 0 var(--space-md);
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
 }
 
 .category-list-container {
@@ -209,13 +209,12 @@
     border-radius: 50%;
     padding: 1rem;
     border: 5px solid #fff;
-
+    transition: transform .25s ease-out;
     box-shadow: 1px 1px 5px rgba(155, 155, 155, 0.3);
 }
 
 .category-list__icon:hover {
     transform: scale(1.07);
-    transition: 0.3s;
 }
 
 .category-list__category-title {

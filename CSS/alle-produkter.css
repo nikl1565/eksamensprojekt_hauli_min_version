@@ -1,6 +1,7 @@
 .category-box {
     background-color: var(--red-color);
     padding: 4rem;
+    min-height: 275px;
 }
 
 .product-list {
@@ -37,7 +38,6 @@
     transform: scale(1);
 }
 
-.heading-width,
 .wp-block-group:nth-of-type(1),
 .wp-block-group:nth-of-type(2),
 .wp-block-group:nth-of-type(3) {
@@ -49,6 +49,113 @@
     padding: 0 0 20px 25px;
 }
 
+/* Colorblock */
+
+.grid-container {
+    display: grid;
+    grid-gap: 3rem;
+    margin-bottom: var(--space-md);
+}
+
+.grid-container img {
+    object-fit: cover;
+    height: 100%;
+}
+
+.gallery_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.grid_txt_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+
+    /*
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+*/
+
+    background-color: var(--cta-primary-background-color);
+}
+
+.grid_txt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid_txt h2 {
+    font-size: 3rem;
+    color: white;
+}
+
+.grid_txt p {
+    text-align: center;
+    color: white;
+    font-weight: var(--font-weight-regular);
+}
+
+@media only screen and (min-width: 700px) {
+    .grid-container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .grid_txt_container {
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+
+    .grid_gallery_img1 {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+
+    .grid_gallery_img2 {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 3;
+    }
+
+
+}
+
+@media only screen and (min-width: 1020px) {
+
+    .grid_txt_container {
+        grid-column-start: 2;
+        grid-column-end: 3;
+    }
+
+    .grid_gallery_img1 {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 3;
+    }
+
+
+
+    .grid_gallery_img2 {
+
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 3;
+  }
+}
+  
 .product__name,
 .product__category-link,
 .product__price-text {
@@ -138,7 +245,7 @@
     .product-list {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         grid-column-gap: 5rem;
-        grid-row-gap: 7rem;
+        grid-row-gap: 7rem
     }
 
 }
