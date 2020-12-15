@@ -82,69 +82,15 @@
 
     <main class="">
 
-        <section class="js-product-container"></section>
+        <section class="js-product-container container"></section>
 
-        <section class="similar-products-slider section-margin-bottom">
+        <section class="related-products-slider u-margin-bottom">
             <div class="container">
-                <h2 class="similar-products-slider__title">Lignende produkter</h2>
+                <h2 class="related-products-slider__title">Lignende produkter</h2>
             </div>
-            <ul class="similar-products-list">
-
-                <li class="similar-productsgram-list__item">
-                    <a href="#" class="similar-products-list__link" target="_blank">
-                        <div class="similar-list__icon-container">
-                            <img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/EBFEB8AC-134D-4A83-A3DE-87BE1CC09AD2-4FCB9DC2-A04F-40AF-949C-E15E17B84FA4-scaled.jpeg" alt="" class="similar-products-list__icon">
-
-                        </div>
-
-                    </a>
-
-                </li>
-
-                <li class="similar-productsgram-list__item">
-                    <a href="#" class="similar-products-list__link" target="_blank">
-                        <div class="similar-list__icon-container">
-                            <img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/bubble-bag-bubblegum-lyserod-gul-scaled.jpg" alt="" class="similar-products-list__icon">
-                        </div>
-                    </a>
-                </li>
-
-                <li class="similar-productsgram-list__item">
-                    <a href="#" class="similar-products-list__link" target="_blank">
-                        <div class="similar-list__icon-container">
-                            <img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/bubble-bag-cappuccino-kaffe-beige-scaled.jpg" alt="" class="similar-products-list__icon">
-                        </div>
-                    </a>
-                </li>
-
-                <li class="similar-productsgram-list__item">
-                    <a href="#" class="similar-products-list__link" target="_blank">
-                        <div class="similar-list__icon-container">
-                            <img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/bucket-bag-olivegreen-gron-gron-scaled.jpg" alt="" class="similar-products-list__icon">
-                        </div>
-                    </a>
-                </li>
-
-                <li class="similar-productsgram-list__item">
-                    <a href="#" class="similar-products-list__link" target="_blank">
-                        <div class="similar-list__icon-container">
-                            <img src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/colorblock_taske.png" alt="" class="similar-products-list__icon">
-                        </div>
-                    </a>
-                </li>
-
-            </ul>
+            <ul class="related-products-list js-related-products-list"></ul>
         </section>
 
-        <!--
-        <section class="recommended-products-slider">
-            <h2 class="recommended-products-slider__title">Lignende produkter</h2>
-            <ul class="recommended-products-list">
-
-            </ul>
-
-        </section>
--->
     </main>
 
 
@@ -263,17 +209,17 @@
         <!--        </div>-->
     </template>
 
-    <template class="t-similar-product">
-        <article class="similar-product">
-            <a href="#" class="similar-product__link" data-similar-product-id="">
-                <div class="similar-product__image-container">
-                    <img class="similar-product__image" src="#" alt="#">
+    <template class="t-related-product">
+        <li class="related-product">
+            <a href="#" class="related-product__link">
+                <div class="related-product__image-container">
+                    <img class="related-product__image" src="#" alt="#">
                 </div>
-                <h3 class="similar-product__name"></h3>
+                <h3 class="related-product__name"></h3>
             </a>
-            <a class="similar-product__category-link" href=""></a>
-            <p class="similar-product__price-text"><span class="similar-product__price"></span> DKK</p>
-        </article>
+            <a class="related-product__category-link" href=""></a>
+            <p class="related-product__price"></p>
+        </li>
     </template>
 
     <script src="JS/global.js"></script>
@@ -283,8 +229,10 @@
         const categoriesUrl = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/categories';
         const productUrl = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/produkt';
         const productTemplate = document.querySelector(".t-product-page");
+        const relatedProductTemplate = document.querySelector(".t-related-product");
 
         const productContainer = document.querySelector(".js-product-container");
+        const relatedProductsList = document.querySelector(".js-related-products-list");
 
         let queryString = window.location.search;
         console.log(queryString);
@@ -298,6 +246,7 @@
         console.log(productNameSlug)
 
         let product;
+        let relatedProducts;
         let categories;
 
         async function init() {
@@ -323,7 +272,21 @@
 
             product = product[0];
             console.log(product);
+            getRelatedProducts();
             showProduct();
+        }
+
+        async function getRelatedProducts() {
+            console.log('getRelatedProducts');
+
+            let categoryIds = product.categories.join();
+            console.log(categoryIds);
+
+            const response = await fetch(`${productUrl}?per_page=100&categories=${categoryIds}`);
+            relatedProducts = await response.json();
+            console.log('relatedProducts', relatedProducts);
+
+            showRelatedProducts();
         }
 
         function showProduct() {
@@ -346,23 +309,36 @@
 
             productContainer.appendChild(productClone);
         }
+      
+        function showRelatedProducts() {
+            console.log('showRelatedProducts');
 
-        //                        if (filter === 'alle-produkter' || findMatch !== undefined) {
-        //
-        //                    const productClone = productTemplate.content.cloneNode(true);
-        //
-        //                    productClone.querySelector(".product").setAttribute('data-product-id', product.id);
-        //                    productClone.querySelector(".product__link").href = `produkt.html?name=${product.slug}`;
-        //                    productClone.querySelector(".product__image").src = product.billede_thumbnail.guid;
-        //                    productClone.querySelector(".product__image").alt = product.title.rendered;
-        //                    productClone.querySelector(".product__name").textContent = product.title.rendered;
-        //
-        //                    productClone.querySelector(".product__category-link").textContent = productCategoriesList[0].name;
-        //                    productClone.querySelector(".product__category-link").href = `alle-produkter.html?filter=${productCategoriesList[0].slug}`;
-        //                    productClone.querySelector(".product__price").textContent = product.pris;
-        //
-        //                    productList.appendChild(productClone);
-        //
-        //                }
+            relatedProducts.forEach(relatedProduct => {
+                const relatedProductClone = relatedProductTemplate.content.cloneNode(true);
+
+                if (relatedProduct.id !== product.id) {
+                    let findCategory = categories.find(category => category.id === relatedProduct.categories[0]);
+                    console.log(findCategory);
+
+                    // Related product Image link
+                    relatedProductClone.querySelector(".related-product__image").src = relatedProduct.primary_billede.guid;
+                    // Related product Image alt
+                    relatedProductClone.querySelector(".related-product__image").alt = relatedProduct.title.rendered;
+                    // Related product title
+                    relatedProductClone.querySelector(".related-product__name").textContent = relatedProduct.title.rendered;
+                    // Related product link
+                    relatedProductClone.querySelector(".related-product__link").href = `produkt.html?name=${relatedProduct.slug}`;
+                    // related product category link
+                    relatedProductClone.querySelector(".related-product__category-link").href = `alle-produkter.html?filter=${findCategory.slug}`;
+                    // Related product category name / text
+                    relatedProductClone.querySelector(".related-product__category-link").textContent = findCategory.name;
+                    // Related product price
+                    relatedProductClone.querySelector(".related-product__price").textContent = `${relatedProduct.pris} DKK`;
+
+                    relatedProductsList.appendChild(relatedProductClone);
+                }
+            });
+
+        }
     </script>
 </body></html>
