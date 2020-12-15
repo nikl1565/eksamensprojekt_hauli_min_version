@@ -1,3 +1,8 @@
+html {
+    scroll-behavior: smooth;
+}
+
+
 .index header {
     transform: translateY(-80px);
     position: fixed;
@@ -29,10 +34,8 @@
 
 .splash-logo {
     max-width: 140px;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
-
-
 
 .css_splash_video_container {
     position: relative;
@@ -76,7 +79,7 @@
 }
 
 .cta_wrapper > a + a {
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
 .css_backgroundcolor {
@@ -102,7 +105,36 @@
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
     font-size: 2.4rem;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
+}
+
+.c-introduction__arrow-link {
+    display: inline-block;
+    margin: 1rem auto 0 auto;
+}
+
+.a-up-down {
+    animation: k-up-down 1.8s infinite alternate;
+
+}
+
+@keyframes k-up-down {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-20px);
+    }
+}
+
+.c-introduction__button-arrow {
+    cursor: pointer;
+}
+
+.c-icon {
+    width: 64px;
+    height: 64px;
 }
 
 @media (min-width: 480px) {
@@ -117,6 +149,16 @@
     .splash-logo {
         max-width: 180px;
     }
+
+    .c-introduction__arrow-link {
+        display: inline-block;
+        margin: 7rem auto 0 auto;
+    }
+
+    .c-icon {
+        width: 84px;
+        height: 84px;
+    }
 }
 
 @media (min-width: 700px) {
@@ -130,6 +172,11 @@
 
     .splash-logo {
         max-width: 240px;
+    }
+
+    .c-icon {
+        width: 94px;
+        height: 94px;
     }
 }
 
