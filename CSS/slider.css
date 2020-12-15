@@ -214,6 +214,13 @@
 }
 
 .category-list__icon:hover {
+
+    transform: scale(1.06);
+    transition: 0.2s;
+}
+
+.category-list__icon:active {
+    background-color: var(--blue-color);
     transform: scale(1.07);
 }
 
