@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
+    <meta name="description" content="">
     <link rel="stylesheet" href="CSS/index.css">
     <link rel="stylesheet" href="CSS/global.css">
     <link rel="stylesheet" href="CSS/slider.css">
@@ -293,6 +294,9 @@
 
         function start() {
             hentData();
+
+
+
             document.addEventListener("scroll", showHideHeader);
         }
 
@@ -300,6 +304,7 @@
             const respons = await fetch(url);
             const landingpage = await respons.json();
             showLandingpage(landingpage);
+            showSEO(landingpage);
         }
 
         function showLandingpage(landingpage) {
@@ -324,6 +329,18 @@
                 header.classList.remove("is-shown");
             }
         }
+
+        function showSEO(content) {
+            console.log('showSEO');
+
+            let title = document.querySelector("title");
+            let metaDescription = document.querySelector("meta[name='description']");
+            title.textContent = content[0].seo_titletag;
+            metaDescription.setAttribute("content", content[0].seo_metadescription);
+        }
+
     </script>
 
-</body></html>
+</body>
+
+</html>

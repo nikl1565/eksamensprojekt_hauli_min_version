@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
+    <meta name="description" content="">
     <link rel="stylesheet" href="CSS/global.css">
     <link rel="stylesheet" href="CSS/slider.css">
     <link rel="stylesheet" href="CSS/alle-produkter.css">
@@ -92,7 +93,6 @@
             </div>
 -->
             <section class="category-slider u-margin-bottom">
-                <h2 class="category-slider__title">Kategorier</h2>
                 <div class="category-list-container">
                     <ul class="category-list">
 
@@ -257,16 +257,12 @@
         const categoriesUrl = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/categories';
         const productsUrl = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/produkt?per_page=100';
         const productTemplate = document.querySelector(".t-product");
-        //        const productListTitle = document.querySelector(".js-product-list-title");
         const productList = document.querySelector(".js-product-list");
 
         let queryString = window.location.search;
-        //        console.log(queryString);
         let urlParams = new URLSearchParams(queryString);
-        //        console.log(urlParams);
 
         let urlFilter = urlParams.get('filter');
-        //        console.log('urlFilter', urlFilter);
 
         let filter;
 
@@ -313,10 +309,7 @@
             productList.innerHTML = '';
 
             findCategory = categories.find(category => category.slug === filter);
-            //            console.log('findCategory', findCategory);
 
-            // Opdater H1 kategorititel
-            //            productListTitle.textContent = findCategory.name;
 
             // Opdaterer URL'en med det nye filter parametre :)
             window.history.replaceState(null, null, `?filter=${filter}`);
@@ -326,26 +319,18 @@
 
                 let productCategoriesList = [];
 
-                //                console.log('product.categories', product.categories);
-
                 product.categories.forEach((category, index) => {
-                    //                    console.log('category', category);
 
                     let findProductCategory = categories.find(productCategory => productCategory.id === category);
 
                     console.log('findProductCategory', findProductCategory);
 
                     if (findProductCategory !== null) {
-                        //                        console.log('virker');
                         productCategoriesList.push(findProductCategory);
                     }
                 });
 
-                //                console.log('productCategoriesList', productCategoriesList);
-
-
                 let findMatch = productCategoriesList.find(category => category.slug === filter);
-                //                console.log('findMatch', findMatch);
 
                 if (filter === 'alle-produkter' || findMatch !== undefined) {
 
@@ -366,6 +351,7 @@
                 }
             });
 
+            showSEO();
             createCategoryBox(filter);
         }
 
@@ -409,6 +395,16 @@
 
             categoryBox.appendChild(categoryBoxClone);
 
+        }
+
+        function showSEO() {
+            console.log('showSEO');
+
+            console.log('SEO', findCategory);
+            let title = document.querySelector("title");
+            let metaDescription = document.querySelector("meta[name='description']");
+            title.textContent = findCategory.seo_titletag;
+            metaDescription.setAttribute("content", findCategory.seo_metadescription);
         }
     </script>
 </body></html>

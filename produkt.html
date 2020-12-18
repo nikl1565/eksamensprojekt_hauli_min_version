@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
+    <meta name="description" content="">
     <link rel="stylesheet" href="CSS/global.css">
     <link rel="stylesheet" href="CSS/slider.css">
     <link rel="stylesheet" href="CSS/produkt.css">
@@ -265,6 +266,7 @@
             console.log(product);
             getRelatedProducts();
             showProduct();
+            showSEO();
         }
 
         async function getRelatedProducts() {
@@ -282,6 +284,8 @@
 
         function showProduct() {
             console.log('showProduct');
+
+            console.log(product);
 
             const productClone = productTemplate.content.cloneNode(true);
 
@@ -330,6 +334,15 @@
                 }
             });
 
+        }
+
+        function showSEO() {
+            console.log('showSEO');
+
+            let title = document.querySelector("title");
+            let metaDescription = document.querySelector("meta[name='description']");
+            title.textContent = product.seo_titletag;
+            metaDescription.setAttribute("content", product.seo_metadescription);
         }
     </script>
 </body></html>
