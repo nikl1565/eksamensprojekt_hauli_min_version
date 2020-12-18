@@ -315,3 +315,12 @@ img {
     top: 0;
     left: 0;
 }
+
+h1 {
+    font-family: var(--font-family-playfair);
+    font-weight: var(--font-weight-regular);
+    font-size: var(--h2-font-size);
+    line-height: var(--h1-font-line-height);
+    color: var(--h2-font-color);
+    margin-bottom: 10px;
+}

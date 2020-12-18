@@ -287,6 +287,7 @@
             console.log('relatedProducts', relatedProducts);
 
             showRelatedProducts();
+            showSEO();
         }
 
         function showProduct() {
@@ -299,7 +300,7 @@
             // Product Image link
             productClone.querySelector(".product__image").src = product.primary_billede.guid;
             // Product Image alt
-            productClone.querySelector(".product__image").alt = product.primary_billede.post_title;
+            productClone.querySelector(".product__image").alt = product.title.rendered;
             // Product title
             productClone.querySelector(".product__title").textContent = product.title.rendered;
             // Product price
@@ -356,7 +357,7 @@
             console.log('showSEO');
 
             // Indsæt title tag
-            document.querySelector("title").textContent = product.seo_titletag;
+            document.querySelector("title").textContent = `HAULI | ${product.title.rendered}`;
             // Indsæt meta description
             document.querySelector("meta[name='description']").setAttribute("content", product.seo_metadescription);
 
@@ -370,5 +371,8 @@
             // FB Website url tag
             document.querySelector("meta[property='og:url']").setAttribute("content", window.location.href);
         }
+
     </script>
-</body></html>
+</body>
+
+</html>
