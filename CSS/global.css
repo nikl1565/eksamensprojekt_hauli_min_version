@@ -79,7 +79,7 @@ html {
     --cta-primary-border-radius: 2px;
     --cta-primary-box-shadow: 1.5px 1.5px 3px rgba(59, 54, 53, 0.22);
     /*             Denne padding skal jo nok overskrives nogle steder med noget mindre */
-    --cta-primary-padding: 1.25rem 2rem;
+    --cta-primary-padding: 2rem 3rem;
 
 
     /*        Sekundære knapper*/
@@ -88,7 +88,7 @@ html {
     --cta-secondary-border-radius: 2px;
     --cta-secondary-box-shadow: 1.5px 1.5px 3px rgba(16, 31, 72, 0.22);
     /*             Denne padding skal jo nok overskrives nogle steder med noget mindre */
-    --cta-secondary-padding: 1.25rem 2rem;
+    --cta-secondary-padding: 2rem 4rem;
 
 
     --space-sm: 1.5rem;
@@ -118,6 +118,10 @@ video {
     max-width: 100%;
     height: auto;
     display: block;
+}
+
+video {
+    cursor: pointer;
 }
 
 /* til tests */
@@ -244,7 +248,10 @@ a:hover {
     font-size: 2rem;
     line-height: var(--h3-font-line-height);
     color: var(--h3-font-color);
-    padding-right: 15px;
+    padding: 1rem 2rem;
+    display: inline-block;
+    vertical-align: middle;
+    border-bottom: 6px solid transparent;
 }
 
 .underpunkt_styling {
@@ -255,6 +262,18 @@ a:hover {
     font-size: 2rem;
     line-height: var(--a-font-line-height);
 
+}
+
+.overpunkter_styling.shop.is-active {
+    border-color: #c4e8ff;
+}
+
+.overpunkter_styling.kontakt.is-active {
+    border-color: #f8b2b2;
+}
+
+.overpunkter_styling.om.is-active {
+    border-color: #cdebbf;
 }
 
 /*         Knapper */
@@ -352,7 +371,7 @@ header {
 }
 
 .mobile_styling {
-    padding: 5px 0 10px 15px;
+    padding: 5px 0 5px 15px;
 }
 
 .kurv {
@@ -421,7 +440,7 @@ header {
 
 @media only screen and (min-width: 700px) {
     header {
-        padding: 15px 0;
+        padding: 11px 0;
     }
 
     .css_header_mobile {
