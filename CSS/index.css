@@ -409,6 +409,30 @@ html {
         overflow: hidden;
     }
 
+    /*
+    .index-about-hauli__box {
+        flex-grow: 1;
+    }
+
+    .index-about-hauli__box.image-1 {
+        background-image: url("https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/index-om-section-bred.png");
+        height: 100%;
+        width: 25%;
+    }
+
+
+*/
+
+    .index-about-hauli .wp-block-group__inner-container {
+        max-height: 530px;
+    }
+
+    .index-about-hauli .halv-om-halv.anden {
+        flex-basis: auto;
+        max-width: 600px;
+        min-width: 600px;
+    }
+
     .wp-block-group__inner-container {
         display: flex;
     }
@@ -586,6 +610,11 @@ html {
     .box-size {
         width: 90%;
     }
+
+    .index-about-hauli .box-size {
+        margin-bottom: -60px;
+        position: relative;
+    }
 }
 
 @media only screen and (min-width: 420px) {
@@ -697,9 +726,11 @@ html {
 
 .wp-block-group .wp-block-group__inner-container figure {
     display: flex;
+    flex-grow: 1;
 }
 
 .wp-block-group .wp-block-group__inner-container img {
     object-fit: cover;
-    object-position: right;
+    width: 100%;
+    object-position: top;
 }
