@@ -4,7 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO meta tags -->
     <title></title>
+    <meta name="description" content="">
+    <!-- Facebook meta tags -->
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+
     <link rel="stylesheet" href="CSS/global.css">
     <link rel="stylesheet" href="CSS/slider.css">
     <link rel="stylesheet" href="CSS/alle-produkter.css">
@@ -46,9 +54,9 @@
 
                 <nav class="js_globalmenu css_globalmenu css_globalmenu_hidden js_globalmenu_hidden">
                     <ul class="">
-                        <li class="overpunkter mobile_styling"> <a href="alle-produkter.html" class="overpunkter_styling shop">Webshop</a></li>
+                        <li class="overpunkter mobile_styling"> <a href="alle-produkter.html" class="overpunkter_styling shop is-active">Webshop</a></li>
                         <li class="overpunkter mobile_styling"> <a href="om-os.html" class="overpunkter_styling om">Om HAULI</a></li>
-                        <li class="overpunkter mobile_styling"> <a href="#" class="overpunkter_styling kontakt">Kontakt</a></li>
+                        <li class="overpunkter mobile_styling"> <a href="kontakt.html" class="overpunkter_styling kontakt">Kontakt</a></li>
 
                     </ul>
                 </nav>
@@ -76,23 +84,8 @@
     <main class="u-margin-bottom">
         <section class="about_content">
             <div class="container js-category-box u-margin-bottom"></div>
-            <!--
-            <div class="container">
-                <div class="grid-container u-margin-top">
-                    <div class="grid_txt_container">
-                        <div class="grid_txt">
-                            <h2>COLORBLOCK COLLECTION</h2>
-                            <p>Den nye COLORBLOCK COLLECTION af HAULI</p>
-                            <a href="alle-produkter.html?filter=colorblock-collection" class="cta-secondary">Se hele kollektionen</a>
-                        </div>
-                    </div>
-                    <figure class="wp-block-image size-large grid_gallery_img1"><img loading="lazy" width="724" height="1020" src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/colorblock_kjole.jpeg" alt="hauli colorblock kjole" class="wp-image-205" srcset="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/colorblock_kjole.jpeg 724w, https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/colorblock_kjole-213x300.jpeg 213w" sizes="(max-width: 724px) 100vw, 724px"></figure>
-                    <figure class="wp-block-image size-large grid_gallery_img2"><img loading="lazy" width="1024" height="512" src="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/colorblock_taske-1024x512.png" alt="hauli colorblock taske" class="wp-image-206" srcset="https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/colorblock_taske-1024x512.png 1024w, https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/colorblock_taske-300x150.png 300w, https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/colorblock_taske-768x384.png 768w, https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/colorblock_taske.png 1200w" sizes="(max-width: 1024px) 100vw, 1024px"></figure>
-                </div>
-            </div>
--->
+
             <section class="category-slider u-margin-bottom">
-                <h2 class="category-slider__title">Kategorier</h2>
                 <div class="category-list-container">
                     <ul class="category-list">
 
@@ -257,16 +250,12 @@
         const categoriesUrl = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/categories';
         const productsUrl = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/produkt?per_page=100';
         const productTemplate = document.querySelector(".t-product");
-        //        const productListTitle = document.querySelector(".js-product-list-title");
         const productList = document.querySelector(".js-product-list");
 
         let queryString = window.location.search;
-        //        console.log(queryString);
         let urlParams = new URLSearchParams(queryString);
-        //        console.log(urlParams);
 
         let urlFilter = urlParams.get('filter');
-        //        console.log('urlFilter', urlFilter);
 
         let filter;
 
@@ -313,10 +302,7 @@
             productList.innerHTML = '';
 
             findCategory = categories.find(category => category.slug === filter);
-            //            console.log('findCategory', findCategory);
 
-            // Opdater H1 kategorititel
-            //            productListTitle.textContent = findCategory.name;
 
             // Opdaterer URL'en med det nye filter parametre :)
             window.history.replaceState(null, null, `?filter=${filter}`);
@@ -326,26 +312,18 @@
 
                 let productCategoriesList = [];
 
-                //                console.log('product.categories', product.categories);
-
                 product.categories.forEach((category, index) => {
-                    //                    console.log('category', category);
 
                     let findProductCategory = categories.find(productCategory => productCategory.id === category);
 
                     console.log('findProductCategory', findProductCategory);
 
                     if (findProductCategory !== null) {
-                        //                        console.log('virker');
                         productCategoriesList.push(findProductCategory);
                     }
                 });
 
-                //                console.log('productCategoriesList', productCategoriesList);
-
-
                 let findMatch = productCategoriesList.find(category => category.slug === filter);
-                //                console.log('findMatch', findMatch);
 
                 if (filter === 'alle-produkter' || findMatch !== undefined) {
 
@@ -366,6 +344,7 @@
                 }
             });
 
+            showSEO();
             createCategoryBox(filter);
         }
 
@@ -409,6 +388,26 @@
 
             categoryBox.appendChild(categoryBoxClone);
 
+        }
+
+        function showSEO() {
+            console.log('showSEO');
+
+            console.log('SEO', findCategory);
+            // Indsæt title tag
+            document.querySelector("title").textContent = findCategory.seo_titletag;
+            // Indsæt meta description
+            let metaDescription = document.querySelector("meta[name='description']").setAttribute("content", findCategory.seo_metadescription);
+
+            // Indsæt Facebook meta title tags
+            // FB Title tag
+            document.querySelector("meta[property='og:title']").setAttribute("content", findCategory.seo_titletag);
+            // FB description tag
+            document.querySelector("meta[property='og:description']").setAttribute("content", findCategory.seo_metadescription);
+            // FB Image tag
+            document.querySelector("meta[property='og:image']").setAttribute("content", findCategory.seo_image.guid);
+            // FB Website url tag
+            document.querySelector("meta[property='og:url']").setAttribute("content", window.location.href);
         }
     </script>
 </body></html>

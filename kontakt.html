@@ -12,8 +12,9 @@
     <meta property="og:description" content="">
     <meta property="og:image" content="">
     <meta property="og:url" content="">
+
     <link rel="stylesheet" href="CSS/global.css">
-    <link rel="stylesheet" href="CSS/om-os.css">
+    <link rel="stylesheet" href="CSS/kontakt.css">
 
 
     <!--    Fonte-->
@@ -55,8 +56,8 @@
                 <nav class="js_globalmenu css_globalmenu css_globalmenu_hidden js_globalmenu_hidden">
                     <ul class="">
                         <li class="overpunkter mobile_styling"> <a href="alle-produkter.html" class="overpunkter_styling shop">Webshop</a></li>
-                        <li class="overpunkter mobile_styling"> <a href="om-os.html" class="overpunkter_styling om is-active">Om HAULI</a></li>
-                        <li class="overpunkter mobile_styling"> <a href="kontakt.html" class="overpunkter_styling kontakt">Kontakt</a></li>
+                        <li class="overpunkter mobile_styling"> <a href="om-os.html" class="overpunkter_styling om">Om HAULI</a></li>
+                        <li class="overpunkter mobile_styling"> <a href="kontakt.html" class="overpunkter_styling kontakt is-active">Kontakt</a></li>
 
                     </ul>
                 </nav>
@@ -81,9 +82,7 @@
     </header>
 
 
-    <main>
-        <section class="about_content">
-        </section>
+    <main class="contact_content">
     </main>
 
 
@@ -152,7 +151,7 @@
         document.addEventListener("DOMContentLoaded", init);
 
         function init() {
-            let url = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/pages?slug=om-os';
+            let url = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/pages?slug=kontakt-hauli';
             getData(url);
 
         }
@@ -163,48 +162,13 @@
             const data = await response.json();
             console.log(data);
             showData(data);
-
         }
 
         function showData(data) {
             //            console.log(data);
-            document.querySelector(".about_content").innerHTML = data[0].content.rendered;
+            document.querySelector(".contact_content").innerHTML = data[0].content.rendered;
 
             showSEO(data);
-            initVideoPlayer();
-        }
-
-
-        /*  VIDEO PLAYER    */
-
-        function initVideoPlayer() {
-            const videoPlayerButton = document.querySelector(".js-block-video-button");
-            const videoPlayerVideo = document.querySelector(".js-block-video");
-            const videoPlayerOverlay = document.querySelector(".js-block-video-overlay");
-
-            console.log('initVideoPlayer');
-
-            videoPlayerVideo.volume = 0.5;
-
-            videoPlayerVideo.onpause = function() {
-                videoPlayerOverlay.classList.remove('is-hidden');
-            }
-
-            videoPlayerOverlay.addEventListener("click", videoPlayerPlayPause);
-
-            function videoPlayerPlayPause() {
-
-                if (videoPlayerVideo.paused) {
-                    console.log('Play video');
-                    videoPlayerVideo.play();
-                    videoPlayerOverlay.classList.add("is-hidden");
-                    videoPlayerVideo.setAttribute("controls", "controls");
-                } else {
-                    console.log('Pause video');
-                    videoPlayerVideo.pause();
-                }
-            }
-
         }
 
         function showSEO(content) {

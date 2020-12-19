@@ -384,7 +384,7 @@ html {
 }
 
 .box-size {
-    width: 90%;
+    width: 100%;
     padding: 30px;
     background-color: var(--green-color);
 }
@@ -392,11 +392,6 @@ html {
 
 .wp-block-group__inner-container {
     display: block;
-}
-
-.wp-block-group:nth-of-type(2) {
-    /*    max-width: 1400px;*/
-    /*    margin-left: auto;*/
 }
 
 
@@ -410,13 +405,36 @@ html {
     }
 
     .wp-block-group {
-        max-height: 500px;
+        /* max-height: 500px; */
         overflow: hidden;
+    }
+
+    /*
+    .index-about-hauli__box {
+        flex-grow: 1;
+    }
+
+    .index-about-hauli__box.image-1 {
+        background-image: url("https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-content/uploads/2020/12/index-om-section-bred.png");
+        height: 100%;
+        width: 25%;
+    }
+
+
+*/
+
+    .index-about-hauli .wp-block-group__inner-container {
+        max-height: 530px;
+    }
+
+    .index-about-hauli .halv-om-halv.anden {
+        flex-basis: auto;
+        max-width: 600px;
+        min-width: 600px;
     }
 
     .wp-block-group__inner-container {
         display: flex;
-        /*        flex-direction: row-reverse;*/
     }
 
     .halv-om-halv {
@@ -456,7 +474,7 @@ html {
     }
 
     .wp-block-group {
-        max-height: 550px;
+        /* max-height: 550px; */
     }
 
     .halv-om-halv {
@@ -513,4 +531,206 @@ html {
     height: 50px;
     width: 50px;
     max-width: none;
+}
+
+/* Om os design */
+.left {
+    margin-left: auto;
+}
+
+.right {
+    margin-right: auto;
+}
+
+.rightmini {
+    margin-left: auto;
+}
+
+.middle {
+    margin: 0 auto;
+}
+
+.red {
+    background-color: var(--red-color);
+}
+
+.blue {
+    background-color: var(--blue-color);
+}
+
+.green {
+    background-color: var(--green-color);
+
+    z-index: 2;
+}
+
+.yellow {
+    background-color: var(--yellow-color);
+}
+
+.flytmigbund {
+    margin-bottom: -80px;
+}
+
+.flytmigtop {
+    margin-top: -40px;
+}
+
+.ned {
+    margin-bottom: -10px;
+}
+
+.ned2 {
+    margin-bottom: 0px;
+}
+
+.wp-block-group:nth-of-type(3) {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.wp-block-group:nth-of-type(3),
+.wp-block-group:nth-of-type(4) {
+    margin-top: 50px;
+}
+
+.box-hojde {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+}
+
+.box-hojde > a {
+    margin: 2rem 0 0 0;
+}
+
+@media only screen and (min-width: 360px) {
+    .box-size {
+        width: 90%;
+    }
+
+    .index-about-hauli .box-size {
+        margin-bottom: -60px;
+        position: relative;
+    }
+}
+
+@media only screen and (min-width: 420px) {
+    .ned2 {
+        margin-bottom: -10px;
+    }
+
+    .box-size {
+        width: 80%;
+        padding: 40px;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .wp-block-video-button {
+        height: 96px;
+        width: 96px;
+    }
+
+    .wp-block-video-icon {
+        height: 48px;
+        width: 48px;
+        margin-left: 5px;
+    }
+}
+
+@media only screen and (min-width: 760px) {
+
+    .flytmigbund {
+        margin-bottom: 0px;
+    }
+
+    .flytmigtop {
+        margin-top: 0px;
+    }
+
+    .box-size {
+        padding: 100px;
+    }
+
+    .box-sizemini {
+        width: 550px;
+    }
+
+    .box-size_green {
+        padding: 30px;
+    }
+
+    .heading-margin {
+        margin: 0 0 20px 10px;
+    }
+
+    .wp-block-group:nth-of-type(3) .wp-block-group__inner-container {
+        display: block;
+    }
+
+    .heading-margin {
+        padding: 0 0 20px 25px;
+    }
+
+    .halv-om-halv {
+        flex-grow: 1;
+        flex-basis: 300px;
+    }
+
+    .box-hojde {
+        height: 50%;
+        align-self: center;
+    }
+
+    .left {
+        margin-left: -80px;
+    }
+
+    .leftmini {
+        margin-left: 60px;
+        margin-top: -30px;
+    }
+
+    .right {
+        margin-right: -80px;
+    }
+
+    .wp-block-group:nth-of-type(4) .wp-block-group__inner-container div p {
+        max-width: 370px;
+        flex-grow: 0;
+    }
+
+    .wp-block-group:nth-of-type(4) .wp-block-group__inner-container div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex-grow: 1;
+    }
+
+    .quote-marks {
+        font-size: 10rem;
+        margin-top: 14px;
+    }
+
+    .ned2 {
+        margin-bottom: -30px;
+    }
+
+    .navn {
+        font-size: 1.7rem;
+    }
+}
+
+.wp-block-group .wp-block-group__inner-container figure {
+    display: flex;
+    flex-grow: 1;
+}
+
+.wp-block-group .wp-block-group__inner-container img {
+    object-fit: cover;
+    width: 100%;
+    object-position: top;
 }

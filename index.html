@@ -4,7 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO meta tags -->
     <title></title>
+    <meta name="description" content="">
+    <!-- Facebook meta tags -->
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+
     <link rel="stylesheet" href="CSS/index.css">
     <link rel="stylesheet" href="CSS/global.css">
     <link rel="stylesheet" href="CSS/slider.css">
@@ -48,7 +56,7 @@
                     <ul class="">
                         <li class="overpunkter mobile_styling"> <a href="alle-produkter.html" class="overpunkter_styling shop">Webshop</a></li>
                         <li class="overpunkter mobile_styling"> <a href="om-os.html" class="overpunkter_styling om">Om HAULI</a></li>
-                        <li class="overpunkter mobile_styling"> <a href="#" class="overpunkter_styling kontakt">Kontakt</a></li>
+                        <li class="overpunkter mobile_styling"> <a href="kontakt.html" class="overpunkter_styling kontakt">Kontakt</a></li>
 
                     </ul>
                 </nav>
@@ -293,6 +301,9 @@
 
         function start() {
             hentData();
+
+
+
             document.addEventListener("scroll", showHideHeader);
         }
 
@@ -300,6 +311,7 @@
             const respons = await fetch(url);
             const landingpage = await respons.json();
             showLandingpage(landingpage);
+            showSEO(landingpage);
         }
 
         function showLandingpage(landingpage) {
@@ -323,6 +335,25 @@
             } else {
                 header.classList.remove("is-shown");
             }
+        }
+
+        function showSEO(content) {
+            console.log('showSEO');
+
+            // Indsæt title tag
+            document.querySelector("title").textContent = content[0].seo_titletag;
+            // Indsæt meta description
+            document.querySelector("meta[name='description']").setAttribute("content", content[0].seo_metadescription);
+
+            // Indsæt Facebook meta title tags
+            // FB Title tag
+            document.querySelector("meta[property='og:title']").setAttribute("content", content[0].seo_titletag);
+            // FB description tag
+            document.querySelector("meta[property='og:description']").setAttribute("content", content[0].seo_metadescription);
+            // FB Image tag
+            document.querySelector("meta[property='og:image']").setAttribute("content", content[0].seo_image.guid);
+            // FB Website url tag
+            document.querySelector("meta[property='og:url']").setAttribute("content", window.location.href);
         }
     </script>
 

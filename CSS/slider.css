@@ -70,6 +70,12 @@
     font-size: var(--h6-font-size);
 }
 
+.usp-list__heading {
+    font-family: var(--font-family-roboto);
+    font-weight: var(--font-weight-light);
+    font-size: var(--h6-font-size);
+}
+
 @media (min-width: 342px) {
     .usp-list {
         flex-direction: row;
@@ -95,10 +101,6 @@
     .usp-list__icon {
         height: 140px;
         width: 140px;
-    }
-
-    .usp-list__heading {
-        font-size: 2.6rem;
     }
 
 }

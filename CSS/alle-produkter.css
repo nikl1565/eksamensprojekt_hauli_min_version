@@ -4,6 +4,10 @@
     min-height: 275px;
 }
 
+.category-box__description {
+    max-width: 600px;
+}
+
 .product-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -153,9 +157,9 @@
         grid-column-end: 3;
         grid-row-start: 2;
         grid-row-end: 3;
-  }
+    }
 }
-  
+
 .product__name,
 .product__category-link,
 .product__price-text {
@@ -173,7 +177,7 @@
 }
 
 .button-clicked img {
-        background-color: var(--blue-color);
+    background-color: var(--blue-color);
 }
 
 @media only screen and (min-width: 400px) {
