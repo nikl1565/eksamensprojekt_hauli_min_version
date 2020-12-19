@@ -155,6 +155,7 @@ input {
     bottom: 0;
     left: 0;
     object-fit: cover;
+
     width: 100%;
     height: 100%;
 }
@@ -239,6 +240,9 @@ input {
 
     .column {
         display: flex;
+        align-items: flex-start;
+
+
     }
 
     .product__image {
