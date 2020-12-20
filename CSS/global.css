@@ -152,6 +152,10 @@ body {
     background-color: var(--body-color);
 }
 
+body:not(.index) {
+    padding-top: 80px;
+}
+
 main {
     background-color: var(--main-color);
 }
@@ -348,11 +352,13 @@ svg {
 /********************HEADER********************/
 header {
     background-color: white;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
     z-index: 3;
     box-shadow: 0 0 5px 5px rgba(0, 0, 0, .125);
     padding: 1rem 0;
+    width: 100%;
 }
 
 /*
@@ -445,6 +451,10 @@ header {
 
     .css_header_mobile {
         width: 100%;
+    }
+
+    body:not(.index) {
+        padding-top: 90px;
     }
 
     .overpunkter {
