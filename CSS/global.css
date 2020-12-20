@@ -433,6 +433,10 @@ header {
     cursor: pointer;
 }
 
+.css_header_menu_cart_icon li {
+    padding-left: 0;
+}
+
 .css_header_menu_cart_icon svg {
     height: auto;
     width: 30px;
@@ -442,6 +446,8 @@ header {
 .header_burger_icon {
     margin-right: auto;
 }
+
+
 
 
 @media only screen and (min-width: 700px) {
