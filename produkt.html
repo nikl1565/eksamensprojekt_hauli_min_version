@@ -104,7 +104,7 @@
             <div class="footercolumn">
                 <h3 class="footer_title">Kontakt HAULI</h3>
                 <ul>
-                    <li><a class="footer_link" href="https://goo.gl/maps/QZTs9b3uJH38N15x6" target="_blank">Kronprinsessegade 24, <br> 1306 Kbh K</a></li>
+                    <li><a class="footer_link" href="https://goo.gl/maps/QZTs9b3uJH38N15x6" target="_blank">Værkstedets adresse: <br> Kronprinsessegade 24, <br> 1306 Kbh K</a></li>
                     <li><a class="footer_link" href="tel:+45 21 96 32 61">+45 21 96 32 61</a></li>
                     <li><a class="footer_link" href="mailto:info@hauli.dk">info@hauli.dk</a></li>
                     <li><a class="footer_link" href="om-os.html">CVR: 35902619</a></li>
@@ -344,15 +344,6 @@
 
         }
 
-        function showSEO() {
-            console.log('showSEO');
-
-            let title = document.querySelector("title");
-            let metaDescription = document.querySelector("meta[name='description']");
-            title.textContent = product.seo_titletag;
-            metaDescription.setAttribute("content", product.seo_metadescription);
-        }
-
         function showSEO(content) {
             console.log('showSEO');
 
@@ -371,8 +362,5 @@
             // FB Website url tag
             document.querySelector("meta[property='og:url']").setAttribute("content", window.location.href);
         }
-
     </script>
-</body>
-
-</html>
+</body></html>
