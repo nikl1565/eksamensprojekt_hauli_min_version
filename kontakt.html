@@ -148,45 +148,73 @@
 
     <script src="JS/global.js"></script>
     <script>
+        // Når DOMen er loadet kør start funktion
         document.addEventListener("DOMContentLoaded", init);
 
+        // Start funktion
         function init() {
+
+            // URL til Kontakt os siden
             let url = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/pages?slug=kontakt-hauli';
+
+            // Hent kontakt side data fra Wordpress --> getData(data)
             getData(url);
 
         }
 
+
+
+
+
+        // Henter data fra Wordpress til Kontakt os siden
         async function getData(url) {
-            //            console.log('getData');
+            console.log('getData');
+
+            // Henter kontakt os data fra Wordpress
             const response = await fetch(url);
+            // Afventer response - Konverteres til JSON og gemmes i data variablen
             const data = await response.json();
-            console.log(data);
+
+            // Tager Om Os dataen med --> showData(data)
             showData(data);
         }
 
+
+
+
+
+        // Viser Kontakt os dataen på siden
         function showData(data) {
-            //            console.log(data);
+            console.log('showData');
+
+            // Vis Om Os data i ".contact_content" elementet
             document.querySelector(".contact_content").innerHTML = data[0].content.rendered;
 
+            // Start showSEO funktionen og tag info fra Om Os siden med
             showSEO(data);
         }
 
+
+
+
+
+        // Her bruger vi dataen fra Om os siden og indsætter vores SEO
         function showSEO(content) {
             console.log('showSEO');
 
-            // Indsæt title tag
+            // Indsæt data til title tag
             document.querySelector("title").textContent = content[0].seo_titletag;
             // Indsæt meta description
             document.querySelector("meta[name='description']").setAttribute("content", content[0].seo_metadescription);
 
-            // Indsæt Facebook meta title tags
-            // FB Title tag
+            // Indsæt Facebook meta
+            // Facebook Title tag
             document.querySelector("meta[property='og:title']").setAttribute("content", content[0].seo_titletag);
-            // FB description tag
+            // Facebook description tag
             document.querySelector("meta[property='og:description']").setAttribute("content", content[0].seo_metadescription);
-            // FB Image tag
+            // Facebook Image tag
             document.querySelector("meta[property='og:image']").setAttribute("content", content[0].seo_image.guid);
-            // FB Website url tag
+            // Facebook Website url tag
             document.querySelector("meta[property='og:url']").setAttribute("content", window.location.href);
         }
     </script>

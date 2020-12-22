@@ -229,8 +229,6 @@
 
     </main>
 
-
-
     <!--FOOTER-->
     <footer class="footerstyling u-margin-top">
         <!--FOOTER COLUMN WRAPPER-->
@@ -292,67 +290,89 @@
 
     <script src="JS/global.js"></script>
     <script>
-        //Venter på DOMContent er loaded, starter hentData, opretter JSON-url som variabel.
+        // Når DOMen er loadet kør start funktion
         document.addEventListener("DOMContentLoaded", start);
+
+        // URL til landingpage (forsiden)
         var url = "https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/pages?slug=landingpage";
 
+        // Splashbillede
         let splash = document.querySelector(".css_splash");
+        // Fixed header
         let header = document.querySelector("header");
 
+        // Start funktion
         function start() {
+
+            // Hent landingpage data fra Wordpress
             hentData();
 
-
-
+            // Tilføj eventlistener, der kører hver gang brugeren scroller op eller ned
             document.addEventListener("scroll", showHideHeader);
         }
 
+        // Henter data fra Wordpress til landingpage
         async function hentData() {
+
+            // Henter kontakt os data fra Wordpress
             const respons = await fetch(url);
+            // Afventer response - Konverteres til JSON og gemmes i landing variablen
             const landingpage = await respons.json();
+
+            // Tager Landingpage dataen med --> showLandingpage(landingpage)
             showLandingpage(landingpage);
+            // Tager landingpage dataen med --> showSEO(landingpage)
             showSEO(landingpage);
         }
 
+        // Viser landingpage dataen på siden
         function showLandingpage(landingpage) {
             console.log(landingpage);
 
+            // Vis landingpage data i "js_dynamic_content" elementet
             document.querySelector(".js_dynamic_content").innerHTML = landingpage[0].content.rendered;
         }
 
+        // Vis eller skjul vores fixed header
         function showHideHeader() {
-            let headerHeight = header.offsetHeight;
-            console.log('headerHeight', headerHeight);
 
+            // Få fat på vores splash sektions højde i px
             let splashHeight = splash.offsetHeight;
             console.log('splashHeight', splashHeight);
 
+            // Find ud af hvor vi er henne på siden i px's
             let clientHeight = window.pageYOffset;
             console.log('clientHeight', clientHeight);
 
+            // Hvis vi ikke længere kan se splash sektionen på skærmen
             if (clientHeight >= splashHeight) {
+                // ... Så vis fixed header
                 header.classList.add("is-shown");
             } else {
+                // ... Ellers hvis vi stadig kan se splash eller
+                // hvis vi er scrollet tilbage til splash sektionen
+                // så skjul fixed header
                 header.classList.remove("is-shown");
             }
         }
 
+        // Her bruger vi dataen fra Om os siden og indsætter vores SEO
         function showSEO(content) {
             console.log('showSEO');
 
-            // Indsæt title tag
+            // Indsæt data til title tag
             document.querySelector("title").textContent = content[0].seo_titletag;
             // Indsæt meta description
             document.querySelector("meta[name='description']").setAttribute("content", content[0].seo_metadescription);
 
-            // Indsæt Facebook meta title tags
-            // FB Title tag
+            // Indsæt Facebook meta
+            // Facebook Title tag
             document.querySelector("meta[property='og:title']").setAttribute("content", content[0].seo_titletag);
-            // FB description tag
+            // Facebook description tag
             document.querySelector("meta[property='og:description']").setAttribute("content", content[0].seo_metadescription);
-            // FB Image tag
+            // Facebook Image tag
             document.querySelector("meta[property='og:image']").setAttribute("content", content[0].seo_image.guid);
-            // FB Website url tag
+            // Facebook Website url tag
             document.querySelector("meta[property='og:url']").setAttribute("content", window.location.href);
         }
     </script>
