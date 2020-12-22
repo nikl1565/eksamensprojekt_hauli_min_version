@@ -385,10 +385,6 @@ header {
     padding-right: 1.5rem;
 }
 
-.kurv_kom_frem {
-    display: inline-block;
-}
-
 .height {
     height: 100vh;
 }
@@ -571,6 +567,7 @@ header {
 
     header.css_header_mobile_open .css_header_menu_cart_icon {
         order: 4;
+        width: 100%;
     }
 
     header.css_header_mobile_open .cart-link {
@@ -607,6 +604,11 @@ header {
 
     header.css_header_mobile_open .cart-link svg g path {
         stroke: #fff;
+    }
+
+
+    .kurv_kom_frem {
+        display: inline-block;
     }
 
 }

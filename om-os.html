@@ -148,80 +148,112 @@
 
     <script src="JS/global.js"></script>
     <script>
+        // Når DOMen er loadet kør start funktion
         document.addEventListener("DOMContentLoaded", init);
 
+        // Start funktion
         function init() {
+            // URL til Om Os siden
             let url = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/pages?slug=om-os';
-            getData(url);
 
+            // Tager URL med --> getData(url)
+            getData(url);
         }
 
+        // Henter data fra Wordpress til Om Os siden
         async function getData(url) {
-            //            console.log('getData');
+            console.log('getData');
+
+            // Henter om os data fra Wordpress
             const response = await fetch(url);
+            // Afventer response - Konverteres til JSON og gemmes i data variablen
             const data = await response.json();
-            console.log(data);
+
+            // Tager Om Os dataen med --> showData(data)
             showData(data);
 
         }
 
+        // Viser Om Os dataen på siden
         function showData(data) {
-            //            console.log(data);
+            console.log(data);
+
+            // Vis Om Os data i ".about_content" elementet
             document.querySelector(".about_content").innerHTML = data[0].content.rendered;
 
+            // Start showSEO funktionen og tag info fra Om Os siden med
             showSEO(data);
+
+            // Start videoafspilleren
             initVideoPlayer();
         }
 
 
         /*  VIDEO PLAYER    */
 
+        // Starter videoafspilleren
         function initVideoPlayer() {
-            const videoPlayerButton = document.querySelector(".js-block-video-button");
-            const videoPlayerVideo = document.querySelector(".js-block-video");
-            const videoPlayerOverlay = document.querySelector(".js-block-video-overlay");
-
             console.log('initVideoPlayer');
 
+            // Startknappen
+            const videoPlayerButton = document.querySelector(".js-block-video-button");
+            // Videoen
+            const videoPlayerVideo = document.querySelector(".js-block-video");
+            // Overlay til videoen
+            const videoPlayerOverlay = document.querySelector(".js-block-video-overlay");
+
+            // Sætter videoen til 50%, så den ikke er for høj for brugeren
             videoPlayerVideo.volume = 0.5;
 
+            // Når videoen bliver pauset...
             videoPlayerVideo.onpause = function() {
+                // ... Så skjul vores overlay med knappen på videoen
                 videoPlayerOverlay.classList.remove('is-hidden');
             }
 
+            // Ved klik på overlay eller videoknap
             videoPlayerOverlay.addEventListener("click", videoPlayerPlayPause);
 
+            // Start eller stop videoen
             function videoPlayerPlayPause() {
 
+                // Hvis videoen er pauset...
                 if (videoPlayerVideo.paused) {
                     console.log('Play video');
+
+                    // ... Så afspil videoen
                     videoPlayerVideo.play();
+                    // Skjul overlay med play knappen
                     videoPlayerOverlay.classList.add("is-hidden");
+                    // Vis video controls
                     videoPlayerVideo.setAttribute("controls", "controls");
                 } else {
                     console.log('Pause video');
+
+                    // Ellers så sæt videoen på pause
                     videoPlayerVideo.pause();
                 }
             }
 
         }
 
+        // Her bruger vi dataen fra Om os siden og indsætter vores SEO
         function showSEO(content) {
             console.log('showSEO');
 
-            // Indsæt title tag
+            // Indsæt data til title tag
             document.querySelector("title").textContent = content[0].seo_titletag;
             // Indsæt meta description
             document.querySelector("meta[name='description']").setAttribute("content", content[0].seo_metadescription);
 
-            // Indsæt Facebook meta title tags
-            // FB Title tag
+            // Indsæt Facebook meta
+            // Facebook Title tag
             document.querySelector("meta[property='og:title']").setAttribute("content", content[0].seo_titletag);
-            // FB description tag
+            // Facebook description tag
             document.querySelector("meta[property='og:description']").setAttribute("content", content[0].seo_metadescription);
-            // FB Image tag
+            // Facebook Image tag
             document.querySelector("meta[property='og:image']").setAttribute("content", content[0].seo_image.guid);
-            // FB Website url tag
+            // Facebook Website url tag
             document.querySelector("meta[property='og:url']").setAttribute("content", window.location.href);
         }
     </script>
