@@ -157,10 +157,14 @@
             // URL til Kontakt os siden
             let url = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/pages?slug=kontakt-hauli';
 
-            // Tager Kontakt Os dataen med --> showData(data)
+            // Hent kontakt side data fra Wordpress --> getData(data)
             getData(url);
 
         }
+
+
+
+
 
         // Henter data fra Wordpress til Kontakt os siden
         async function getData(url) {
@@ -170,22 +174,29 @@
             const response = await fetch(url);
             // Afventer response - Konverteres til JSON og gemmes i data variablen
             const data = await response.json();
-            console.log(data);
 
             // Tager Om Os dataen med --> showData(data)
             showData(data);
         }
 
+
+
+
+
         // Viser Kontakt os dataen på siden
         function showData(data) {
             console.log('showData');
 
-            // Vis Om Os data i ".contact" elementet" elementet
+            // Vis Om Os data i ".contact_content" elementet
             document.querySelector(".contact_content").innerHTML = data[0].content.rendered;
 
             // Start showSEO funktionen og tag info fra Om Os siden med
             showSEO(data);
         }
+
+
+
+
 
         // Her bruger vi dataen fra Om os siden og indsætter vores SEO
         function showSEO(content) {

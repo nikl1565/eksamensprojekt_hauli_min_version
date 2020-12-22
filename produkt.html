@@ -223,128 +223,210 @@
 
     <script src="JS/global.js"></script>
     <script>
+        // Når DOMen er loaded, kør start funktionen --> init()
         document.addEventListener("DOMContentLoaded", init);
 
+
+
+
+
+        // Globale variabler
+        // Kategori URL
         const categoriesUrl = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/categories';
+        // Produkt URL
         const productUrl = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/produkt';
+        // Produkt template
         const productTemplate = document.querySelector(".t-product-page");
+        // Relateret produkt template
         const relatedProductTemplate = document.querySelector(".t-related-product");
-
+        // Product container (Hvor produktet skal placeres på siden)
         const productContainer = document.querySelector(".js-product-container");
+        // Relaterede produkter (Hvor relaterede produkter skal placeres på siden)
         const relatedProductsList = document.querySelector(".js-related-products-list");
-
-        let queryString = window.location.search;
-        console.log(queryString);
-        let urlParams = new URLSearchParams(queryString);
-        console.log(urlParams);
-
-        let urlProductNameSlug = urlParams.get('name');
-        console.log('urlProductNameSlug', urlProductNameSlug);
-
-        let productNameSlug = urlProductNameSlug;
-        console.log(productNameSlug)
-
+        // Produkt data
         let product;
+        // Array over relateret produkter
         let relatedProducts;
+        // Array over alle produktkategorier
         let categories;
 
+
+
+
+
+        // Tag produkt URLens querystring
+        let queryString = window.location.search;
+
+        // Få fat på URLens parametre
+        let urlParams = new URLSearchParams(queryString);
+
+        // Få fat på parametret med hovedproduktets slug,
+        // så vi ved hvilket hovedprodukt vi skal hente og vise på siden
+        let urlProductNameSlug = urlParams.get('name');
+
+        // Tilføj hovedproduktets slug til productNameSlug
+        let productNameSlug = urlProductNameSlug;
+
+
+
+
+
+        // Start funktion
         async function init() {
+            // Hent alle produktkategorier fra Wordpress --> getCategories()
             await getCategories();
         }
 
+
+
+
+
+        // Hent alle produktkategorier
         async function getCategories() {
             console.log('getCategories');
 
+            // Henter alle produktkategorier fra Wordpress
             const response = await fetch(categoriesUrl);
-            categories = await response.json();
-            console.log(categories);
 
+            // Afventer response - Konverteres til JSON og gemmes i categories variablen
+            categories = await response.json();
+
+            // Hent hovedprodukt data fra Wordpress  --> getProduct()
             getProduct();
         }
 
+
+
+
+
+        // Hent hovedprodukt data fra Wordpress
         async function getProduct() {
             console.log('getProducts');
 
+            // Henter alle kategorier data fra Wordpress
             const response = await fetch(`${productUrl}?slug=${productNameSlug}`);
-            product = await response.json();
-            console.log(product);
 
+            // Afventer response - Konverteres til JSON og gemmes i product variablen
+            product = await response.json();
+
+            // Det data vi modtager er en array, og da vi kun henter et produkt
+            // Laver vi produktvariablen om til et object med produktdata
             product = product[0];
-            console.log(product);
+
+            // Hent relaterede produkter data fra Wordpress --> getRelatedProducts()
             getRelatedProducts();
+
+            // Vis produkt på siden --> showProduct()
             showProduct();
+
+            // Vis SEO på siden --> showSEO()
             showSEO();
         }
 
+
+
+
+
+        // Hent alle relaterede produkter
         async function getRelatedProducts() {
             console.log('getRelatedProducts');
 
+            // Hovedproduktet kan være tilføjet til flere kategorier på en gang
+            // Få fat på alle kategorier hovedproduktet er tilknyttet til, og tilføj dets ID som en array
             let categoryIds = product.categories.join();
-            console.log(categoryIds);
 
+            // Henter alle relaterede produkter fra en eller flere forskellige kategorier
+            // som hovedproduktet er tilknyttet til
             const response = await fetch(`${productUrl}?per_page=100&categories=${categoryIds}`);
-            relatedProducts = await response.json();
-            console.log('relatedProducts', relatedProducts);
 
+            // Afventer response - Konverteres til JSON og gemmes i relatedProducts variablen
+            relatedProducts = await response.json();
+
+            // Vis relaterede produkter i en slider på siden --> showRelatedProducts()
             showRelatedProducts();
+
+            // Vis SEO på siden --> ShowSEO()
             showSEO();
         }
 
+
+
+
+
+        // Vis produktet vi har klikket på, på siden
         function showProduct() {
             console.log('showProduct');
 
-            console.log(product);
-
+            // Klon produkt template
             const productClone = productTemplate.content.cloneNode(true);
 
-            // Product Image link
+            // Indsæt produktets data i templaten i de rette HTML tags
+            // Billede URL
             productClone.querySelector(".product__image").src = product.primary_billede.guid;
-            // Product Image alt
+            // Billede alt tekst
             productClone.querySelector(".product__image").alt = product.title.rendered;
-            // Product title
+            // Produkt titel
             productClone.querySelector(".product__title").textContent = product.title.rendered;
-            // Product price
+            // Produkt pris
             productClone.querySelector(".product__price").textContent = `${product.pris} DKK`;
-            // Product description
+            // Produktbeskrivelse
             productClone.querySelector(".product-description__text").innerHTML = product.produktbeskrivelse;
-            // Product information
+            // Produktinformation
             productClone.querySelector(".product-information__text").innerHTML = product.produktinformation;
 
+            // Vis produktet på siden i vores "productContainer"
             productContainer.appendChild(productClone);
         }
 
+
+
+
+
+        // Hvis alle relaterede produkter på siden
         function showRelatedProducts() {
             console.log('showRelatedProducts');
 
+            // For hvert relateret produkt...
             relatedProducts.forEach(relatedProduct => {
+                // Klon relateret produkt templaten
                 const relatedProductClone = relatedProductTemplate.content.cloneNode(true);
 
+                // ... og det relaterede produkt ikke er det hovedprodukt man er inde på
                 if (relatedProduct.id !== product.id) {
+
+                    // Så find dens kategori
                     let findCategory = categories.find(category => category.id === relatedProduct.categories[0]);
                     console.log(findCategory);
 
-                    // Related product Image link
+                    // Tilføj relateret produktdata til de forskellige HTML tags
+                    // Billede URL
                     relatedProductClone.querySelector(".related-product__image").src = relatedProduct.primary_billede.guid;
-                    // Related product Image alt
+                    // Billede alt tekst
                     relatedProductClone.querySelector(".related-product__image").alt = relatedProduct.title.rendered;
-                    // Related product title
+                    // Produkt titel
                     relatedProductClone.querySelector(".related-product__name").textContent = relatedProduct.title.rendered;
-                    // Related product link
+                    // Produkt URL
                     relatedProductClone.querySelector(".related-product__link").href = `produkt.html?name=${relatedProduct.slug}`;
-                    // related product category link
+                    // Produkt Kategori Link
                     relatedProductClone.querySelector(".related-product__category-link").href = `alle-produkter.html?filter=${findCategory.slug}`;
-                    // Related product category name / text
+                    // Produkt Kategori Navn
                     relatedProductClone.querySelector(".related-product__category-link").textContent = findCategory.name;
-                    // Related product price
+                    // Produkt pris
                     relatedProductClone.querySelector(".related-product__price").textContent = `${relatedProduct.pris} DKK`;
 
+                    // Vis dette relateret produkt på siden i relatedProductsList" HTML tagget
                     relatedProductsList.appendChild(relatedProductClone);
                 }
             });
 
         }
 
-        function showSEO(content) {
+
+
+
+
+        // Indsæt SEO indhold på siden fra produktet
+        function showSEO() {
             console.log('showSEO');
 
             // Indsæt title tag

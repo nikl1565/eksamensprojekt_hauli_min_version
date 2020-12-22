@@ -242,11 +242,17 @@
     <script>
         document.addEventListener("DOMContentLoaded", init);
 
+        // Opretter globale variabler
         let findCategory;
+        let products;
+        let categories;
 
+        // Får fat på vores boks, hvor vores H1 med kategorinavn og kategoribeskrivelse skal indsættes
         const categoryBox = document.querySelector(".js-category-box");
+        // Får fat på vores categoryBox template
         const categoryBoxTemplate = document.querySelector(".t-category-box");
 
+        // Kategori URL
         const categoriesUrl = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/categories';
         const productsUrl = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/produkt?per_page=100';
         const productTemplate = document.querySelector(".t-product");
@@ -265,25 +271,38 @@
             filter = urlFilter;
         }
 
+
         document.querySelector(`.js-category-button[data-category="${filter}"]`).classList.add("button-clicked");
 
-        let products;
-        let categories;
+
+
+
 
         async function init() {
             await getCategories();
             initCategoryButtons();
         }
 
+
+
+
+
+        // Henter alle produktkategorier
         async function getCategories() {
             console.log('getCategories');
 
+            // Bruger fetch API til at hente JSON data
             const response = await fetch(categoriesUrl);
+            // Afventer data, laves om til JSON som Javascript kan forstå og gemmes i global variabel kaldet categories
             categories = await response.json();
-            console.log(categories);
 
+            // Henter alle produkter --> getProducts()
             getProducts();
         }
+
+
+
+
 
         async function getProducts() {
             console.log('getProducts');
@@ -294,6 +313,10 @@
 
             showProducts(products);
         }
+
+
+
+
 
         function showProducts(products) {
             console.log('showProducts');
@@ -344,9 +367,16 @@
                 }
             });
 
+            // Vis SEO --> showSEO()
             showSEO();
+
+            // Vis kategorinavn som H1 og kategoribeskrivelse som p tag i vores categorybox --> createCategoryBox(filter)
             createCategoryBox(filter);
         }
+
+
+
+
 
         function initCategoryButtons() {
             console.log('initCategoryButtons');
@@ -358,6 +388,10 @@
                 categoryButton.addEventListener("click", filterProducts);
             });
         }
+
+
+
+
 
         function filterProducts(event) {
             console.log(this);
@@ -373,12 +407,16 @@
             showProducts(products);
         }
 
+
+
+
+
         function createCategoryBox(category) {
             console.log('createCategoryBox');
             console.log('category', category);
 
+            // Nulstil kategorinavn og kategoribeskrivelse
             categoryBox.innerHTML = "";
-
 
             const categoryBoxClone = categoryBoxTemplate.content.cloneNode(true);
 
@@ -387,8 +425,11 @@
             categoryBoxClone.querySelector(".category-box__description").textContent = findCategory.description;
 
             categoryBox.appendChild(categoryBoxClone);
-
         }
+
+
+
+
 
         function showSEO() {
             console.log('showSEO');

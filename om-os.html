@@ -151,6 +151,10 @@
         // Når DOMen er loadet kør start funktion
         document.addEventListener("DOMContentLoaded", init);
 
+
+
+
+
         // Start funktion
         function init() {
             // URL til Om Os siden
@@ -159,6 +163,11 @@
             // Tager URL med --> getData(url)
             getData(url);
         }
+
+
+
+
+
 
         // Henter data fra Wordpress til Om Os siden
         async function getData(url) {
@@ -173,6 +182,10 @@
             showData(data);
 
         }
+
+
+
+
 
         // Viser Om Os dataen på siden
         function showData(data) {
@@ -189,7 +202,8 @@
         }
 
 
-        /*  VIDEO PLAYER    */
+
+
 
         // Starter videoafspilleren
         function initVideoPlayer() {
@@ -207,12 +221,16 @@
 
             // Når videoen bliver pauset...
             videoPlayerVideo.onpause = function() {
-                // ... Så skjul vores overlay med knappen på videoen
+                // ... Så skjul vores overlay med playknappen på videoen
                 videoPlayerOverlay.classList.remove('is-hidden');
             }
 
-            // Ved klik på overlay eller videoknap
+            // Ved klik på overlay eller videoknap --> videoPlayerPlayPause()
             videoPlayerOverlay.addEventListener("click", videoPlayerPlayPause);
+
+
+
+
 
             // Start eller stop videoen
             function videoPlayerPlayPause() {
@@ -236,6 +254,10 @@
             }
 
         }
+
+
+
+
 
         // Her bruger vi dataen fra Om os siden og indsætter vores SEO
         function showSEO(content) {
