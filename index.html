@@ -111,6 +111,10 @@
             </div>
 
         </section>
+
+        <section class="js_globalmenu">
+            <div class="container js_globalmenu" data-menu="footer"></div>
+        </section>
         <section id="usp-slider" class="usp-slider u-margin-bottom red">
             <div class="container">
                 <h2 class="usp-slider__title">Kvaliteter ved produkterne</h2>
@@ -288,7 +292,22 @@
         <!--END FOOTER COLUMN WRAPPER-->
     </footer>
 
+    <template class="js_side_navigation_link_template">
+
+        <a class="css_side_navigation_link js_side_navigation_link" href="#"></a>
+
+    </template>
+
+    <template class="js_side_navigation_list_template">
+        <ul class="css_side_navigation_liste js_side_navigation_list"></ul>
+    </template>
+
+    <template class="js_side_navigation_list_item_template">
+        <li class="css_side_navigation_list_item js_side_navigation_list_item"></li>
+    </template>
+
     <script src="JS/global.js"></script>
+    <script src="JS/menu.js"></script>
     <script>
         // Når DOMen er loadet kør start funktion
         document.addEventListener("DOMContentLoaded", start);
@@ -338,11 +357,11 @@
 
             // Få fat på vores splash sektions højde i px
             let splashHeight = splash.offsetHeight;
-            console.log('splashHeight', splashHeight);
+            //            console.log('splashHeight', splashHeight);
 
             // Find ud af hvor vi er henne på siden i px's
             let clientHeight = window.pageYOffset;
-            console.log('clientHeight', clientHeight);
+            //            console.log('clientHeight', clientHeight);
 
             // Hvis vi ikke længere kan se splash sektionen på skærmen
             if (clientHeight >= splashHeight) {
