@@ -1,16 +1,19 @@
+// Start scriptet når DOM'en er loaded
 window.addEventListener("DOMContentLoaded", start);
 
+// Få fat i nuværende URL
 let pageUrl = window.location.pathname;
 console.log(pageUrl);
+
+// Filtrer URL'en, så vi kun har HTML filens navn tilbage
 let htmlName = pageUrl.substring(pageUrl.lastIndexOf('/') + 1).replace('.html', '');
 console.log(htmlName);
-const pageName = htmlName;
+
 const menuPageName = pageUrl.substring(pageUrl.lastIndexOf('/') + 1);
 console.log('menuPageName', menuPageName);
-const globalmenuContainer = document.querySelector(".js_globalmenu");
 
 async function start() {
-    getMenu(pageName);
+    getMenu(htmlName);
 }
 
 /***** Vertikal menu  *****/
@@ -23,15 +26,16 @@ Globale variabler
 // website url (index page)
 let baseUrl;
 
+// Hvis vi udvikler lokalt, så brug 127.0.0.1
 if (location.hostname === "127.0.0.1") {
     baseUrl = 'https://schjoldby.dk/kea/10_eksamensprojekt/eksamen/wordpress/wp-json/';
 } else {
+    // Ellers hvis vi er online, så brug det rigtige domæne + mappestruktur
     baseUrl = `${window.location.href}/wordpress/wp-json/`;
 }
 
-let apiRoute;
-
 // API route
+let apiRoute;
 let apiRouteMenu = 'wp-api-menus/v2/';
 let apiRouteContent = 'wp/v2/';
 
@@ -42,9 +46,11 @@ let urlRoutePosts = 'posts';
 let urlRouteMenu = 'menus';
 
 // Parameters
+/* Omformuler */
 let parameterGetOneHundred = '?per_page=100';
 
 // Post types
+/* Fjern det her lort */
 let urlRouteFacilitet = 'facilitet';
 let urlRouteFag = 'fag';
 let urlRoutePersonale = 'person';
@@ -52,8 +58,6 @@ let urlRoutePersonale = 'person';
 // pages, categories and posts data
 let pages;
 let categories;
-let personale;
-let faciliteter;
 
 /*****
 
@@ -72,6 +76,7 @@ let sideNavigationListTemplate = document.querySelector(".js_side_navigation_lis
 // List item
 let sideNavigationListItemTemplate = document.querySelector(".js_side_navigation_list_item_template").content;
 
+// Henter data fra Wordpress ned asynkront
 async function getData(urlRoute, urlParameter) {
 
     if (urlRoute === 'category') {
@@ -85,7 +90,7 @@ async function getData(urlRoute, urlParameter) {
         apiRoute = apiRouteContent;
     } else if (urlRoute === 'nav_menu') {
         urlRoute = 'menus/';
-    } else if (urlRoute === pageName) {
+    } else if (urlRoute === htmlName) {
         urlRoute = 'menus';
         apiRoute = apiRouteMenu;
     } else {
@@ -103,6 +108,7 @@ async function getData(urlRoute, urlParameter) {
 
 async function getMenu(menuName) {
     categories = await getData(urlRouteCategories, parameterGetOneHundred);
+    console.log('categories', categories);
 
     // Hent array liste med menuer
     let allMenus = await getData(menuName, '');
@@ -152,6 +158,7 @@ function createMenu(menuDetails, menu) {
 
                 if (categoryDetails.indtast_target_link != '') {
                     href = categoryDetails.indtast_target_link;
+                    console.log('Category href', href);
                 }
             } else if (typeLabel === 'Page') {
                 href = `${menuItems[i]['object_slug']}.html`;
@@ -176,14 +183,5 @@ function createMenu(menuDetails, menu) {
     }
 
     menu.innerHTML = `<ul class="list">${constructMenu(menuDetails.items)}</ul>`;
-
-    console.log('globalMenuContainer', globalmenuContainer);
-    const globalMenuItems = globalmenuContainer.querySelector(`a[href="${menuPageName}"]`);
-
-    if (globalMenuItems != null) {
-        globalMenuItems.classList.add("is-active");
-    }
-
-    console.log('globalMenuItems', globalMenuItems);
 
 }
