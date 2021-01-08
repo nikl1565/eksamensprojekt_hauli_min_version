@@ -1,119 +1,80 @@
 // Start scriptet når DOM'en er loaded
 window.addEventListener("DOMContentLoaded", start);
 
-// Få fat i nuværende URL
-let pageUrl = window.location.pathname;
-console.log(pageUrl);
-
-// Filtrer URL'en, så vi kun har HTML filens navn tilbage
-let htmlName = pageUrl.substring(pageUrl.lastIndexOf('/') + 1).replace('.html', '');
-console.log(htmlName);
-
-const menuPageName = pageUrl.substring(pageUrl.lastIndexOf('/') + 1);
-console.log('menuPageName', menuPageName);
-
-async function start() {
-    getMenu(htmlName);
-}
-
-/***** Vertikal menu  *****/
-/*****
-
-Globale variabler
-
-*****/
-
 // website url (index page)
-let baseUrl;
-
-// Hvis vi udvikler lokalt, så brug 127.0.0.1
-if (location.hostname === "127.0.0.1") {
-    baseUrl = 'https://schjoldby.dk/kea/10_eksamensprojekt/eksamen/wordpress/wp-json/';
-} else {
-    // Ellers hvis vi er online, så brug det rigtige domæne + mappestruktur
-    baseUrl = `${window.location.href}/wordpress/wp-json/`;
-}
+const baseUrl = 'https://schjoldby.dk/kea/10_eksamensprojekt/eksamen/wordpress/wp-json/';
 
 // API route
 let apiRoute;
-let apiRouteMenu = 'wp-api-menus/v2/';
-let apiRouteContent = 'wp/v2/';
+const apiRouteMenu = 'wp-api-menus/v2/';
+const apiRouteContent = 'wp/v2/';
 
 // Routes
-let urlRoutePage = 'page';
-let urlRouteCategories = 'category';
-let urlRoutePosts = 'posts';
-let urlRouteMenu = 'menus';
+const urlRoutePage = 'page';
+const urlRouteCategories = 'category';
+const urlRoutePosts = 'posts';
+const urlRouteMenu = 'nav_menu';
 
 // Parameters
-/* Omformuler */
-let parameterGetOneHundred = '?per_page=100';
+const parameterGetOneHundred = '?per_page=100';
 
-// Post types
-/* Fjern det her lort */
-let urlRouteFacilitet = 'facilitet';
-let urlRouteFag = 'fag';
-let urlRoutePersonale = 'person';
+// JSON Data
+let categoriesData;
+let pagesData;
+let menusData;
 
-// pages, categories and posts data
-let pages;
-let categories;
 
-/*****
 
-Globale templates og containers
+async function start() {
+    categoriesData = await getData(urlRouteCategories, parameterGetOneHundred);
+    menusData = await getData(urlRouteMenu, '');
+    console.log('menusData', menusData);
+    getMenu();
+}
 
-*****/
 
-// Container
-let sideNavigationContainer = document.querySelector(".js_side_navigation");
 
-// Templates
-// Link
-let sideNavigationLinkTemplate = document.querySelector(".js_side_navigation_link_template").content;
-// List
-let sideNavigationListTemplate = document.querySelector(".js_side_navigation_list_template").content;
-// List item
-let sideNavigationListItemTemplate = document.querySelector(".js_side_navigation_list_item_template").content;
+
 
 // Henter data fra Wordpress ned asynkront
 async function getData(urlRoute, urlParameter) {
 
-    if (urlRoute === 'category') {
-        urlRoute = 'categories';
-        apiRoute = apiRouteContent;
-    } else if (urlRoute === 'post') {
-        urlRoute = 'posts';
-        apiRoute = apiRouteContent;
-    } else if (urlRoute === 'page') {
-        urlRoute = 'pages';
-        apiRoute = apiRouteContent;
-    } else if (urlRoute === 'nav_menu') {
-        urlRoute = 'menus/';
-    } else if (urlRoute === htmlName) {
-        urlRoute = 'menus';
-        apiRoute = apiRouteMenu;
-    } else {
-        apiRoute = apiRouteContent;
+    switch (urlRoute) {
+        case 'category':
+            console.log('Category');
+            urlRoute = 'categories';
+            apiRoute = apiRouteContent;
+            break;
+        case 'post':
+            console.log('Post');
+            urlRoute = 'posts';
+            apiRoute = apiRouteContent;
+            break;
+        case 'nav_menu':
+            console.log('Menu');
+            urlRoute = 'menus/';
+            apiRoute = apiRouteMenu;
+            break;
+        default:
+            return console.log('Kunne ikke hente JSON ned');
+            break;
     }
 
-    let response = await fetch(`${baseUrl}${apiRoute}${urlRoute}${urlParameter}`);
+    const response = await fetch(`${baseUrl}${apiRoute}${urlRoute}${urlParameter}`);
+    const data = await response.json();
 
-    let data = await response.json();
-
-    console.log(data);
-
+    console.log('getData', data);
     return data;
 }
 
-async function getMenu(menuName) {
-    categories = await getData(urlRouteCategories, parameterGetOneHundred);
-    console.log('categories', categories);
 
-    // Hent array liste med menuer
-    let allMenus = await getData(menuName, '');
 
-    // Hent alle menuer der skal vises på siden
+
+
+async function getMenu() {
+    console.log('getMenu');
+
+    // Find alle menuer der skal vises på siden i HTML'en
     let menusOnPage = document.querySelectorAll("[data-menu]");
 
     menusOnPage = Array.prototype.slice.call(menusOnPage);
@@ -121,10 +82,11 @@ async function getMenu(menuName) {
     for (let menu of menusOnPage) {
 
         // Find den rigtige menu
-        let findMenu = allMenus.find(allmenus => allmenus.name === menu.dataset.menu);
+        let findMenu = menusData.find(menuData => menuData.name === menu.dataset.menu);
 
         // Hent menu detaljer
         let menuDetails = await getData(findMenu.taxonomy, findMenu.ID);
+        console.log('menuDetails', menuDetails);
 
         if (menuDetails.items.length > 0) {
             createMenu(menuDetails, menu);
@@ -133,55 +95,154 @@ async function getMenu(menuName) {
 
 }
 
+
+
+
+
 function createMenu(menuDetails, menu) {
+    menu.innerHTML = `<ul class="category-list">${constructMenu(menuDetails.items)}</ul>`;
+}
 
-    function constructMenu(menuItems) {
 
-        var nav_html = '';
 
-        for (let i = 0; i < menuItems.length; i++) {
-            let title = menuItems[i]['title'];
-            let href = `${menuItems[i]['title']}.html`;
-            href = href.toLowerCase();
-            let submenu = menuItems[i]['children'];
-            let typeLabel = menuItems[i]['type_label'];
-            let objectType = menuItems[i]['object'];
 
-            if (typeLabel === 'fag') {
-                href = `fag.html?id=${menuItems[i]['object_id']}`;
-            } else if (typeLabel === 'facilitet') {
 
-            } else if (typeLabel === 'Category') {
-                let objectId = menuItems[i]['object_id'];
+function constructMenu(menuItems) {
+    var nav_html = '';
 
-                let categoryDetails = categories.find(category => category.id === objectId);
+    for (let i = 0; i < menuItems.length; i++) {
 
-                if (categoryDetails.indtast_target_link != '') {
-                    href = categoryDetails.indtast_target_link;
-                    console.log('Category href', href);
-                }
-            } else if (typeLabel === 'Page') {
-                href = `${menuItems[i]['object_slug']}.html`;
-            } else if (typeLabel === 'Custom Link') {
-                href = menuItems[i]['url'];
+        let title = menuItems[i]['title'];
+        let link = `${menuItems[i]['title']}.html`.toLowerCase();
+        let linkType = menuItems[i]['type_label'];
+        let svgImage;
+
+        let submenu = menuItems[i]['children'];
+
+        if (linkType === 'Category') {
+            console.log('Det var en kategori', menuItems[i]);
+            let objectId = menuItems[i]['object_id'];
+
+            let categoryDetails = categoriesData.find(category => category.id === objectId);
+
+            if (categoryDetails.indtast_target_link != '') {
+                link = categoryDetails.indtast_target_link;
             }
 
-            if (submenu != null) {
-                nav_html += `<li class="list__item"><a class="list__link has-submenu" href="${href}">${title}<span class="list__link-arrow"></span></a>`;
-                nav_html += '<ul class="list__submenu">';
-
-
-                nav_html += constructMenu(submenu);
-                nav_html += '</ul>';
-            } else {
-                // Link til fagsingleview.html hvis det er en post, som har post typen "fag".
-                nav_html += `<li class="list__item"><a class="list__link" href="${href}">${title}</a>`;
+            if (categoryDetails.svgImage != '') {
+                svgImage = categoryDetails.svg_image.guid;
             }
-            nav_html += '</li>';
+        } else if (linkType === 'Page') {
+            link = `${menuItems[i]['object_slug']}.html`;
+        } else if (linkType === 'Custom Link') {
+            link = menuItems[i]['url'];
         }
-        return nav_html;
+
+        if (submenu != null) {
+            constructSubmenu(menuItems[i]);
+        } else {
+            if (svgImage != undefined) {
+                console.log('svgImage', svgImage);
+                nav_html +=
+                    `<li class="category-list__item">
+                        <a href="${link}" class="category-list__link js-category-button">
+                            <div class="category-list__icon-container">
+                                <img src="${svgImage}" alt="${title}" class="category-list__icon">
+                            </div>
+                            <h3 class="category-list__category-title">${title}</h3>
+                        </a>
+                    </li>`;
+            } else {
+                nav_html +=
+                    `<li class="category-list__item">
+                        <a href="${link}" class="category-list__link js-category-button">
+                            <div class="category-list__icon-container">
+                                <img src="img/alle-produkter.svg" alt="${title}" class="category-list__icon">
+                            </div>
+                            <h3 class="category-list__category-title">${title}</h3>
+                        </a>
+                    </li>`;
+            }
+        }
+        nav_html += '</li>';
     }
 
-    menu.innerHTML = `<ul class="list">${constructMenu(menuDetails.items)}</ul>`;
-
+    return nav_html;
 }
+
+
+function constructCategoryLink() {
+    console.log('constructCategory');
+}
+
+function constructPageLink() {
+    console.log('constructPage');
+}
+
+function constructCustomLink() {
+    console.log('constructCustomLink');
+}
+
+function constructSubmenu(submenu) {
+    console.log('submenu', submenu);
+
+    nav_html +=
+        `<li class="list__item">
+            <a class="list__link has-submenu" href="${href}">
+                ${title}
+                    <span class="list__link-arrow"></span>
+            </a>`;
+    nav_html += '<ul class="list__submenu">';
+    nav_html += constructMenu(submenu);
+    nav_html += '</ul>';
+}
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', pageLoaded);
+
+async function pageLoaded() {
+    console.log('init');
+    categories = await getData('categories');
+    menus = await getData('menus');
+}
+
+async function getData() {
+    console.log('getData');
+}
+
+function findMenusOnPage() {}
+
+function getMenuData() {}
+
+function constructMenu() {}
+
+function constructMenuItem() {
+
+    /* Detect what link should be made */
+    // createCategoryLink
+
+    // createPageLink
+
+    // createCustomLink
+
+    // createProductLink
+}
+
+function createCategoryLink() {}
+
+function createPageLink() {}
+
+function createCustomLink() {}
+
+function createProductLink() {}
+
+function constructSubMenu() {}
+
+function displayMenuOnPage() {}

@@ -112,9 +112,6 @@
 
         </section>
 
-        <section class="js_globalmenu">
-            <div class="container js_globalmenu" data-menu="footer"></div>
-        </section>
         <section id="usp-slider" class="usp-slider u-margin-bottom red">
             <div class="container">
                 <h2 class="usp-slider__title">Kvaliteter ved produkterne</h2>
@@ -292,10 +289,17 @@
         <!--END FOOTER COLUMN WRAPPER-->
     </footer>
 
+
+
+
+
     <template class="js_side_navigation_link_template">
-
-        <a class="css_side_navigation_link js_side_navigation_link" href="#"></a>
-
+        <a href="alle-produkter.html?filter=alle-produkter" class="category-list__link js-category-button" data-category="alle-produkter">
+            <div class="category-list__icon-container">
+                <img src="img/alle-produkter.svg" alt="Alle produkter" class="category-list__icon">
+            </div>
+            <h3 class="category-list__category-title">Alle produkter</h3>
+        </a>
     </template>
 
     <template class="js_side_navigation_list_template">
@@ -303,8 +307,13 @@
     </template>
 
     <template class="js_side_navigation_list_item_template">
-        <li class="css_side_navigation_list_item js_side_navigation_list_item"></li>
+        <li class="category-list__item"></li>
     </template>
+
+
+
+
+
 
     <script src="JS/global.js"></script>
     <script src="JS/menu.js"></script>
@@ -390,6 +399,9 @@
             // Facebook Website url tag
             document.querySelector("meta[property='og:url']").setAttribute("content", window.location.href);
         }
+
     </script>
 
-</body></html>
+</body>
+
+</html>
