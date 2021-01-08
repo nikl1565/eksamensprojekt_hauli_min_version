@@ -1,114 +1,169 @@
-// Start scriptet når DOM'en er loaded
-window.addEventListener("DOMContentLoaded", start);
-
-// website url (index page)
-const baseUrl = 'https://schjoldby.dk/kea/10_eksamensprojekt/eksamen/wordpress/wp-json/';
-
-// API route
-let apiRoute;
-const apiRouteMenu = 'wp-api-menus/v2/';
-const apiRouteContent = 'wp/v2/';
-
-// Routes
-const urlRoutePage = 'page';
-const urlRouteCategories = 'category';
-const urlRoutePosts = 'posts';
-const urlRouteMenu = 'nav_menu';
-
-// Parameters
-const parameterGetOneHundred = '?per_page=100';
-
-// JSON Data
-let categoriesData;
-let pagesData;
-let menusData;
-
-
-
-async function start() {
-    categoriesData = await getData(urlRouteCategories, parameterGetOneHundred);
-    menusData = await getData(urlRouteMenu, '');
-    console.log('menusData', menusData);
-    getMenu();
+// Indstillinger
+const BASEURL = 'https://schjoldby.dk/kea/10_eksamensprojekt/eksamen/wordpress/wp-json/';
+const ROUTES = {
+    PAGES: {
+        PATH: 'wp/v2/',
+        ENDPOINT: 'pages'
+    },
+    CATEGORIES: {
+        PATH: 'wp/v2/',
+        ENDPOINT: 'categories'
+    },
+    POSTS: {
+        PATH: 'wp/v2/',
+        ENDPOINT: 'posts'
+    },
+    MENUS: {
+        PATH: 'wp-api-menus/v2/',
+        ENDPOINT: 'menus'
+    },
+    NAV_MENU: {
+        PATH: 'wp-api-menus/v2/',
+        ENDPOINT: 'menus/'
+    }
 }
+
+
+// Det JSON data der bliver hentet ned fra Wordpress
+let categories;
+let posts;
+let pages;
+let menus;
+
+// Start menu funktion
+async function startMenu() {
+    console.log('Start menu');
+
+    // Hent alt data fra Wordpress
+    categories = await getData(ROUTES.CATEGORIES.ENDPOINT, '');
+    pages = await getData(ROUTES.PAGES.ENDPOINT, '');
+    menus = await getData(ROUTES.MENUS.ENDPOINT, '');
+    posts = await getData(ROUTES.POSTS.ENDPOINT, '');
+
+    // Find alle menuer på siden
+    findMenusOnPage();
+}
+
+// Find alle menuer på siden
+async function findMenusOnPage() {
+    console.log('Find menus on page');
+
+    // Find alle menuer der skal vises på siden i HTML'en
+    let menusOnPage = document.querySelectorAll("[data-menu]");
+    console.log('Menus on the page ', menusOnPage);
+
+    // Gør det muligt så vi kan brug et for loop
+    menusOnPage = Array.prototype.slice.call(menusOnPage);
+    console.log('Menus on the page ', menusOnPage);
+
+    // Hvis der er en wordpress Menu på siden...
+    if (menusOnPage.length > 0) {
+
+        //... Så loop igennem alle menuer på siden
+        for (let menu of menusOnPage) {
+
+            // Find den rigtige menu
+            let findMenuInformation = menus.find(menuInformation => menuInformation.name === menu.dataset.menu);
+            console.log('Find menu information: ', findMenuInformation);
+
+            // Hent menu detaljer
+            let getMenuDetails = await getData(findMenuInformation.taxonomy, findMenuInformation.ID);
+            console.log('Menu details: ', getMenuDetails);
+
+            if (getMenuDetails.items.length > 0) {
+                createMenu(getMenuDetails, menu);
+            }
+        }
+    } else {
+        //... Og hvis der ikke er, så stop funktionen her
+        return console.log('Der er ingen menuer på siden');
+    }
+
+    // Hvis der er menuer på siden [...]
+
+    // [...] Så
+}
+
+function constructMenu() {
+    console.log('constructMenu');
+}
+
+function constructMenuItem() {
+    console.log('constructMenuItem');
+
+    /* Detect what link should be made */
+    // createCategoryLink
+
+    // createPageLink
+
+    // createCustomLink
+
+    // createProductLink
+}
+
+function constructSubMenu() {}
+
+function displayMenuOnPage() {}
+
+
+
+
 
 
 
 
 
 // Henter data fra Wordpress ned asynkront
-async function getData(urlRoute, urlParameter) {
+async function getData(contentType, parameters) {
+    //    console.log('Get Data content: ', contentType);
 
-    switch (urlRoute) {
-        case 'category':
-            console.log('Category');
-            urlRoute = 'categories';
-            apiRoute = apiRouteContent;
+    let path;
+    let endpoint;
+
+    switch (contentType) {
+        case 'categories':
+            path = ROUTES.CATEGORIES.PATH;
+            endpoint = ROUTES.CATEGORIES.ENDPOINT;
             break;
-        case 'post':
-            console.log('Post');
-            urlRoute = 'posts';
-            apiRoute = apiRouteContent;
+
+        case 'posts':
+            path = ROUTES.POSTS.PATH;
+            endpoint = ROUTES.POSTS.ENDPOINT;
             break;
+
+        case 'pages':
+            path = ROUTES.PAGES.PATH;
+            endpoint = ROUTES.PAGES.ENDPOINT;
+            break;
+
+        case 'menus':
+            path = ROUTES.MENUS.PATH;
+            endpoint = ROUTES.MENUS.ENDPOINT;
+            break;
+
         case 'nav_menu':
-            console.log('Menu');
-            urlRoute = 'menus/';
-            apiRoute = apiRouteMenu;
+            path = ROUTES.NAV_MENU.PATH;
+            endpoint = ROUTES.NAV_MENU.ENDPOINT;
             break;
+
         default:
             return console.log('Kunne ikke hente JSON ned');
             break;
     }
 
-    const response = await fetch(`${baseUrl}${apiRoute}${urlRoute}${urlParameter}`);
-    const data = await response.json();
+    const RESPONSE = await fetch(`${BASEURL}${path}${endpoint}${parameters}`);
+    const DATA = await RESPONSE.json();
 
-    console.log('getData', data);
-    return data;
+    //    console.log('Downloaded', contentType, DATA);
+    return DATA;
 }
-
-
-
-
-
-async function getMenu() {
-    console.log('getMenu');
-
-    // Find alle menuer der skal vises på siden i HTML'en
-    let menusOnPage = document.querySelectorAll("[data-menu]");
-
-    menusOnPage = Array.prototype.slice.call(menusOnPage);
-
-    for (let menu of menusOnPage) {
-
-        // Find den rigtige menu
-        let findMenu = menusData.find(menuData => menuData.name === menu.dataset.menu);
-
-        // Hent menu detaljer
-        let menuDetails = await getData(findMenu.taxonomy, findMenu.ID);
-        console.log('menuDetails', menuDetails);
-
-        if (menuDetails.items.length > 0) {
-            createMenu(menuDetails, menu);
-        }
-    }
-
-}
-
-
-
-
 
 function createMenu(menuDetails, menu) {
     menu.innerHTML = `<ul class="category-list">${constructMenu(menuDetails.items)}</ul>`;
 }
 
-
-
-
-
 function constructMenu(menuItems) {
-    var nav_html = '';
+    let nav_html = '';
 
     for (let i = 0; i < menuItems.length; i++) {
 
@@ -123,7 +178,7 @@ function constructMenu(menuItems) {
             console.log('Det var en kategori', menuItems[i]);
             let objectId = menuItems[i]['object_id'];
 
-            let categoryDetails = categoriesData.find(category => category.id === objectId);
+            let categoryDetails = categories.find(category => category.id === objectId);
 
             if (categoryDetails.indtast_target_link != '') {
                 link = categoryDetails.indtast_target_link;
@@ -170,7 +225,6 @@ function constructMenu(menuItems) {
     return nav_html;
 }
 
-
 function constructCategoryLink() {
     console.log('constructCategory');
 }
@@ -196,53 +250,3 @@ function constructSubmenu(submenu) {
     nav_html += constructMenu(submenu);
     nav_html += '</ul>';
 }
-
-
-
-
-
-
-
-
-
-document.addEventListener('DOMContentLoaded', pageLoaded);
-
-async function pageLoaded() {
-    console.log('init');
-    categories = await getData('categories');
-    menus = await getData('menus');
-}
-
-async function getData() {
-    console.log('getData');
-}
-
-function findMenusOnPage() {}
-
-function getMenuData() {}
-
-function constructMenu() {}
-
-function constructMenuItem() {
-
-    /* Detect what link should be made */
-    // createCategoryLink
-
-    // createPageLink
-
-    // createCustomLink
-
-    // createProductLink
-}
-
-function createCategoryLink() {}
-
-function createPageLink() {}
-
-function createCustomLink() {}
-
-function createProductLink() {}
-
-function constructSubMenu() {}
-
-function displayMenuOnPage() {}

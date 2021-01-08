@@ -316,13 +316,12 @@
 
 
     <script src="JS/global.js"></script>
-    <script src="JS/menu.js"></script>
     <script>
         // Når DOMen er loadet kør start funktion
         document.addEventListener("DOMContentLoaded", start);
 
         // URL til landingpage (forsiden)
-        var url = "https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/pages?slug=landingpage";
+        var url = "https://schjoldby.dk/kea/10_eksamensprojekt/eksamen/wordpress/wp-json/wp/v2/pages?slug=landingpage";
 
         // Splashbillede
         let splash = document.querySelector(".css_splash");
@@ -399,9 +398,7 @@
             // Facebook Website url tag
             document.querySelector("meta[property='og:url']").setAttribute("content", window.location.href);
         }
-
     </script>
+    <script src="JS/menu.js"></script>
 
-</body>
-
-</html>
+</body></html>

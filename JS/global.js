@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", init);
 function init() {
     // Ved klik på hamburger menu knappen --> toggleHeaderBurgerIcon()
     document.querySelector(".js_header_burger_icon").addEventListener("click", toggleHeaderBurgerIcon);
+
+    startMenu();
 }
 
 // Toggle / skift mellem åben og lukket mobilmenu
