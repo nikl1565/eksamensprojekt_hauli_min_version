@@ -35,7 +35,6 @@
 </head>
 
 <body>
-
     <header>
         <div class="header_menu_width container">
 
@@ -53,13 +52,7 @@
                     </a>
                 </div>
 
-                <nav class="js_globalmenu css_globalmenu css_globalmenu_hidden js_globalmenu_hidden">
-                    <ul class="">
-                        <li class="overpunkter mobile_styling"> <a href="alle-produkter.html" class="overpunkter_styling shop">Webshop</a></li>
-                        <li class="overpunkter mobile_styling"> <a href="om-os.html" class="overpunkter_styling om">Om HAULI</a></li>
-                        <li class="overpunkter mobile_styling"> <a href="kontakt.html" class="overpunkter_styling kontakt is-active">Kontakt</a></li>
-
-                    </ul>
+                <nav class="js_globalmenu css_globalmenu css_globalmenu_hidden js_globalmenu_hidden" data-menu-name="global-menu" data-menu-type="header">
                 </nav>
 
                 <div class="css_header_menu_cart_icon">
@@ -80,7 +73,6 @@
             </div>
         </div>
     </header>
-
 
     <main class="contact_content">
     </main>
@@ -147,6 +139,7 @@
     </footer>
 
     <script src="JS/global.js"></script>
+    <script src="JS/menu.js"></script>
     <script>
         // Når DOMen er loadet kør start funktion
         document.addEventListener("DOMContentLoaded", init);
@@ -155,10 +148,10 @@
         function init() {
 
             // URL til Kontakt os siden
-            let url = 'https://schjoldby.dk/kea/10_eksamensprojekt/eksamen/wordpress/wp-json/wp/v2/pages?slug=kontakt-hauli';
+            let url = 'https://schjoldby.dk/kea/10_eksamensprojekt/eksamen/wordpress/wp-json/wp/v2/pages?slug=kontakt';
 
-            // Hent kontakt side data fra Wordpress --> getData(data)
-            getData(url);
+            // Hent kontakt side data fra Wordpress --> getContactData(data)
+            getContactData(url);
 
         }
 
@@ -167,8 +160,8 @@
 
 
         // Henter data fra Wordpress til Kontakt os siden
-        async function getData(url) {
-            console.log('getData');
+        async function getContactData(url) {
+            console.log('getContactData');
 
             // Henter kontakt os data fra Wordpress
             const response = await fetch(url);
@@ -217,5 +210,8 @@
             // Facebook Website url tag
             document.querySelector("meta[property='og:url']").setAttribute("content", window.location.href);
         }
+
     </script>
-</body></html>
+</body>
+
+</html>

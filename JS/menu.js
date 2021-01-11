@@ -106,7 +106,7 @@ async function findMenusOnPage() {
 // Lav menuen via createMenu funktionen
 function createMenu(menuDetails, menu) {
     // Og når den er lavet, så vis den for brugeren
-    menu.innerHTML = `<ul class="category-list">${constructMenu(menuDetails.items, menu.dataset.menuType)}</ul>`;
+    menu.innerHTML = `<ul>${constructMenu(menuDetails.items, menu.dataset.menuType)}</ul>`;
 }
 
 
@@ -119,8 +119,6 @@ function constructMenu(menuItems, menuType) {
 
     // For hvert menupunkt i menuen
     for (let i = 0; i < menuItems.length; i++) {
-
-        //        console.log('For hver menu item..: ', menuItems[i]);
 
         let link = `${menuItems[i]['title']}.html`.toLowerCase();
 
@@ -142,29 +140,29 @@ function constructMenu(menuItems, menuType) {
 
             case 'page':
                 console.log(`Menupunkt nr. ${i + 1} er en page 🥳 ${menuItems[i]['title']}`);
-                link = `${menuItems[i]['object_slug']}.html`;
-                createPageLink(menuType);
+                nav_html += createPageLink(menuItems[i], menuType);
                 break;
 
             case 'custom':
                 console.log(`Menupunkt nr. ${i + 1} er et custom link 🥳 ${menuItems[i]['title']}`);
                 link = menuItems[i]['url'];
-                createCustomLink(menuType);
+                nav_html += createCustomLink(menuItems[i], menuType);
                 break;
 
             case 'produkt':
                 console.log(`Menupunkt nr. ${i + 1} er et produkt link 🥳 ${menuItems[i]['title']}`);
-                createProductLink(menuType);
+                nav_html += createProductLink(menuItems[i], menuType);
                 break;
 
             default:
                 console.log('Jeg ved ikke hvad det her er 😢', menuItems[i]['title']);
         }
 
+        // Later 🐊
+        //        if (menuItemInfo.submenu != null) {
+        //            createSubmenu(menuItems[i]);
+        //        } else { nav_html += '</li>'; }
 
-        if (menuItemInfo.submenu != null) {
-            createSubmenu(menuItems[i]);
-        }
         nav_html += '</li>';
     }
 
@@ -193,8 +191,7 @@ function createSubmenu(submenu) {
 
 
 
-function createProductLink(menuType) {
-    console.log('createProductLink');
+function createProductLink(menuItem, menuType) {
 
     switch (menuType) {
         case 'header':
@@ -239,6 +236,11 @@ function createCategoryLink(menuItem, menuType) {
     switch (menuType) {
         case 'header':
             console.log('Menutypen er header! 🤓');
+            html = `
+                <li class="overpunkter mobile_styling">
+                    <a href="${menuItem.link}" class="overpunkter_styling">${menuItem.title}</a>
+                </li>`;
+
             break;
 
         case 'footer':
@@ -266,6 +268,78 @@ function createCategoryLink(menuItem, menuType) {
 }
 
 
+
+
+
+function createPageLink(menuItem, menuType) {
+
+    let html;
+
+    menuItem.link = `${menuItem.object_slug}.html`;
+
+    switch (menuType) {
+        case 'header':
+            console.log('Menutypen er header! 🤓');
+            html = `
+                <li class="overpunkter mobile_styling">
+                    <a href="${menuItem.link}" class="overpunkter_styling">${menuItem.title}</a>
+                </li>`;
+
+
+            break;
+
+        case 'footer':
+            console.log('Menutypen er footer! 🤓');
+            break;
+
+        case 'slider':
+            console.log('Menutypen er slider! 🤓');
+            break;
+
+        default:
+            console.log('Jeg ved ikke hvilken menutype det er 😔');
+            break;
+    }
+
+    return html;
+}
+
+
+
+
+
+function createCustomLink(menuItem, menuType) {
+
+    let html;
+
+    console.log(menuItem);
+
+    menuItem.link = menuItem.url;
+
+    console.log(menuItem.link);
+
+    switch (menuType) {
+        case 'header':
+            console.log('Menutypen er header! 🤓');
+
+            html = `
+                <li class="overpunkter mobile_styling">
+                    <a href="${menuItem.link}" class="overpunkter_styling">${menuItem.title}</a>
+                </li>`;
+            break;
+        case 'footer':
+            console.log('Menutypen er footer! 🤓');
+            break;
+        case 'slider':
+            console.log('Menutypen er slider! 🤓');
+            break;
+        default:
+            console.log('Jeg ved ikke hvilken menutype det er 😔');
+            break;
+    }
+
+    return html;
+}
 
 
 
@@ -312,43 +386,3 @@ async function getData(contentType, parameters) {
 
     return DATA;
 }
-
-function createPageLink(menuType) {
-    console.log('createPageLink');
-
-    switch (menuType) {
-        case 'header':
-            console.log('Menutypen er header! 🤓');
-            break;
-        case 'footer':
-            console.log('Menutypen er footer! 🤓');
-            break;
-        case 'slider':
-            console.log('Menutypen er slider! 🤓');
-            break;
-        default:
-            console.log('Jeg ved ikke hvilken menutype det er 😔');
-            break;
-    }
-}
-
-function createCustomLink(menuType) {
-    console.log('createCustomLink');
-
-    switch (menuType) {
-        case 'header':
-            console.log('Menutypen er header! 🤓');
-            break;
-        case 'footer':
-            console.log('Menutypen er footer! 🤓');
-            break;
-        case 'slider':
-            console.log('Menutypen er slider! 🤓');
-            break;
-        default:
-            console.log('Jeg ved ikke hvilken menutype det er 😔');
-            break;
-    }
-}
-
-function showMenu() {}
