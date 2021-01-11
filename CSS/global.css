@@ -759,3 +759,7 @@ footer {
 .u-margin-top {
     margin-top: var(--space-xl);
 }
+
+.u-text-center {
+    text-align: center;
+}

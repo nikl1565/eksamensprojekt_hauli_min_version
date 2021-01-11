@@ -59,6 +59,7 @@
                         <li class="overpunkter mobile_styling"> <a href="kontakt.html" class="overpunkter_styling kontakt">Kontakt</a></li>
 
                     </ul>
+                    <div data-menu-name="hovedmenu" data-menu-type="main-menu"></div>
                 </nav>
 
                 <div class="css_header_menu_cart_icon">
@@ -86,7 +87,7 @@
             <div class="container js-category-box u-margin-bottom"></div>
 
             <section class="category-slider u-margin-bottom">
-                <div class="category-list-container" data-menu-name="product-categories" data-menu-type="">
+                <div class="category-list-container" data-menu-name="product-categories" data-menu-type="category-slider">
                     <!--
                     <ul class="category-list">
 
@@ -175,6 +176,7 @@
                     <li><a class="footer_link" href="mailto:info@hauli.dk">info@hauli.dk</a></li>
                     <li><a class="footer_link" href="om-os.html">CVR: 35902619</a></li>
                 </ul>
+                <div data-menu-name="footer-kontakt" data-menu-type="footer"></div>
             </div>
             <!---->
             <!---->
@@ -200,6 +202,7 @@
                     <li><a class="footer_link" href="#">Kundeservice</a></li>
 
                 </ul>
+                <div data-menu-name="footer-information" data-menu-type="footer"></div>
 
                 <div class="socialmediabox">
                     <!--FOOTER SOCIALMEDIA LINK-->
@@ -272,6 +275,9 @@
         const productTemplate = document.querySelector(".t-product");
         const productList = document.querySelector(".js-product-list");
 
+
+
+
         let queryString = window.location.search;
         let urlParams = new URLSearchParams(queryString);
 
@@ -289,8 +295,7 @@
 
 
         async function init() {
-            await getCategories();
-            initCategoryButtons();
+            getCategories();
         }
 
 
@@ -377,7 +382,13 @@
 
             // Hvis der ikke er nogen produkter der er tilføjet til den kategori vi viser for brugeren...
             if (!productList.childNodes.length > 0) {
-                productList.innerHTML = '<h2>Der er ingen produkter i denne kategori 😔</h2>';
+                productList.classList.remove("product-list");
+                productList.classList.add("u-text-center");
+                productList.innerHTML = '<h2 class="u-text-center">Der er ingen produkter i denne kategori 😔</h2><a class="cta-primary" href="alle-produkter.html">Se alle produkter</a>';
+
+            } else {
+                productList.classList.add("product-list");
+                productList.classList.remove("u-text-center");
             }
 
             // Vis SEO --> showSEO()
@@ -397,7 +408,6 @@
             const categoryButtons = document.querySelectorAll(".js-category-button");
 
             categoryButtons.forEach(categoryButton => {
-
                 categoryButton.addEventListener("click", filterProducts);
             });
         }
@@ -407,8 +417,6 @@
 
 
         function filterProducts(event) {
-            console.log(this);
-
             event.preventDefault();
 
             filter = this.dataset.category;
@@ -425,8 +433,6 @@
 
 
         function createCategoryBox(category) {
-            console.log('createCategoryBox');
-            console.log('category', category);
 
             // Nulstil kategorinavn og kategoribeskrivelse
             categoryBox.innerHTML = "";
@@ -445,9 +451,7 @@
 
 
         function showSEO() {
-            console.log('showSEO');
 
-            console.log('SEO', findCategory);
             // Indsæt title tag
             document.querySelector("title").textContent = findCategory.seo_titletag;
             // Indsæt meta description
@@ -463,5 +467,8 @@
             // FB Website url tag
             document.querySelector("meta[property='og:url']").setAttribute("content", window.location.href);
         }
+
     </script>
-</body></html>
+</body>
+
+</html>

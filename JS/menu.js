@@ -47,8 +47,12 @@ async function startMenu() {
     // Når alle menuer på siden er fundet og vist for brugeren
     const htmlBody = document.querySelector("body");
 
+    // Hvis vi er på alle produkter siden..
     if (htmlBody.classList.contains("page-alle-produkter")) {
+        // Så vis hvilken knap der er aktiv
         document.querySelector(`.js-category-button[data-category="${filter}"]`).classList.add("button-clicked");
+        // Gør så man kan klikke på kategoriknapperne
+        initCategoryButtons();
     }
 }
 
