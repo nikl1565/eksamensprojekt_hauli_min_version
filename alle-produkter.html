@@ -34,7 +34,7 @@
     <meta name="theme-color" content="#ffffff">
 </head>
 
-<body>
+<body class="page-alle-produkter">
     <header>
         <div class="header_menu_width container">
 
@@ -86,7 +86,8 @@
             <div class="container js-category-box u-margin-bottom"></div>
 
             <section class="category-slider u-margin-bottom">
-                <div class="category-list-container">
+                <div class="category-list-container" data-menu-name="product-categories" data-menu-type="">
+                    <!--
                     <ul class="category-list">
 
                         <li class="category-list__item">
@@ -148,6 +149,7 @@
                         </li>
 
                     </ul>
+-->
                 </div>
             </section>
 
@@ -238,7 +240,19 @@
         </section>
     </template>
 
+    <template class="t-menu-category-item">
+        <li class="category-list__item">
+            <a href="${link}" class="category-list__link js-category-button" data-category="${slug}">
+                <div class="category-list__icon-container">
+                    <img src="${svgImage}" alt="${title}" class="category-list__icon">
+                </div>
+                <h3 class="category-list__category-title">${title}</h3>
+            </a>
+        </li>
+    </template>
+
     <script src="JS/global.js"></script>
+    <script src="JS/menu.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", init);
 
@@ -271,11 +285,7 @@
             filter = urlFilter;
         }
 
-
-        document.querySelector(`.js-category-button[data-category="${filter}"]`).classList.add("button-clicked");
-
-
-
+        console.log(filter);
 
 
         async function init() {
@@ -339,8 +349,6 @@
 
                     let findProductCategory = categories.find(productCategory => productCategory.id === category);
 
-                    console.log('findProductCategory', findProductCategory);
-
                     if (findProductCategory !== null) {
                         productCategoriesList.push(findProductCategory);
                     }
@@ -366,6 +374,11 @@
 
                 }
             });
+
+            // Hvis der ikke er nogen produkter der er tilføjet til den kategori vi viser for brugeren...
+            if (!productList.childNodes.length > 0) {
+                productList.innerHTML = '<h2>Der er ingen produkter i denne kategori 😔</h2>';
+            }
 
             // Vis SEO --> showSEO()
             showSEO();
