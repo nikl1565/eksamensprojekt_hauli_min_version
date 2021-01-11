@@ -73,17 +73,18 @@ async function findMenusOnPage() {
 
             // Find den rigtige menu
             const findMenuInformation = menus.find(menuInformation => menuInformation.name === menu.dataset.menuName);
-            console.log('Find menu information: ', findMenuInformation);
+            //            console.log('Find menu information: ', findMenuInformation);
 
             // Hent menu detaljer
             const getMenuDetails = await getData(findMenuInformation.taxonomy, findMenuInformation.ID);
-            console.log('Menu details: ', getMenuDetails);
+            //            console.log('Menu details: ', getMenuDetails);
 
             // Hvis menuen indeholder 1 eller flere menupunkter
             if (getMenuDetails.items.length > 0) {
                 // Så find ud af hvilken menutype menuen er
                 const menuType = menu.dataset.menuType;
-                console.log('menuType', menuType);
+                console.table(`%cMenunavn: ${getMenuDetails.name}`, 'background: #FFE4E4; font-size: 1rem;');
+                console.log(`%cMenutype ${menuType}`, 'background: #FFE4E4; font-size: 0.8rem;');
 
                 // Så lav menuen
                 createMenu(getMenuDetails, menu);
@@ -97,62 +98,63 @@ async function findMenusOnPage() {
 
 }
 
+
+
+
+
+
 // Lav menuen via createMenu funktionen
 function createMenu(menuDetails, menu) {
     // Og når den er lavet, så vis den for brugeren
-    menu.innerHTML = `<ul class="category-list">${constructMenu(menuDetails.items)}</ul>`;
+    menu.innerHTML = `<ul class="category-list">${constructMenu(menuDetails.items, menu.dataset.menuType)}</ul>`;
 }
 
-function constructMenu(menuItems) {
+
+
+
+
+
+function constructMenu(menuItems, menuType) {
     let nav_html = '';
 
     // For hvert menupunkt i menuen
     for (let i = 0; i < menuItems.length; i++) {
 
-        let title = menuItems[i]['title'];
+        //        console.log('For hver menu item..: ', menuItems[i]);
+
         let link = `${menuItems[i]['title']}.html`.toLowerCase();
-        let linkType = menuItems[i]['object'];
-        let svgImage;
-        let slug;
 
-        let submenu = menuItems[i]['children'];
+        let menuItemInfo = {
+            title: menuItems[i]['title'],
+            link: link,
+            linkType: menuItems[i]["object"],
+            svgImage: '',
+            slug: '',
+            submenu: menuItems[i]['children']
+        }
 
-        switch (linkType) {
-            // Hvis det er en kategori
+        switch (menuItemInfo.linkType) {
             case 'category':
-                console.log('Det er en kategori 🥳', menuItems[i]['title']);
+                console.log(`Menupunkt nr. ${i + 1} er et kategori link 🥳 ${menuItems[i]['title']}`);
 
-                let objectId = menuItems[i]['object_id'];
-                let categoryDetails = menuCategories.find(category => category.id === objectId);
-
-                slug = categoryDetails.slug;
-
-
-
-                if (categoryDetails.indtast_target_link != '') {
-                    link = categoryDetails.indtast_target_link;
-                } else {
-                    link = `alle-produkter.html?filter=${categoryDetails.slug}`;
-                }
-
-                if (categoryDetails.svgImage != '') {
-                    svgImage = categoryDetails.svg_image.guid;
-                }
-
+                nav_html += createCategoryLink(menuItems[i], menuType);
                 break;
 
             case 'page':
-                console.log('Det er en page 🥳', menuItems[i]['title']);
+                console.log(`Menupunkt nr. ${i + 1} er en page 🥳 ${menuItems[i]['title']}`);
                 link = `${menuItems[i]['object_slug']}.html`;
+                createPageLink(menuType);
                 break;
 
             case 'custom':
-                console.log('Det er et custom link! 🥳', menuItems[i]['title']);
+                console.log(`Menupunkt nr. ${i + 1} er et custom link 🥳 ${menuItems[i]['title']}`);
                 link = menuItems[i]['url'];
+                createCustomLink(menuType);
                 break;
 
             case 'produkt':
-                console.log('Det er et produkt link! 🥳', menuItems[i]['title']);
+                console.log(`Menupunkt nr. ${i + 1} er et produkt link 🥳 ${menuItems[i]['title']}`);
+                createProductLink(menuType);
                 break;
 
             default:
@@ -160,31 +162,8 @@ function constructMenu(menuItems) {
         }
 
 
-        if (submenu != null) {
-            constructSubmenu(menuItems[i]);
-        } else {
-            if (svgImage != undefined) {
-                nav_html +=
-                    `<li class="category-list__item">
-                        <a href="${link}" class="category-list__link js-category-button" data-category="${slug}">
-                            <div class="category-list__icon-container">
-                                <img src="${svgImage}" alt="${title}" class="category-list__icon">
-                            </div>
-                            <h3 class="category-list__category-title">${title}</h3>
-                        </a>
-                    </li>`;
-
-            } else {
-                nav_html +=
-                    `<li class="category-list__item">
-                        <a href="${link}" class="category-list__link js-category-button" data-category="${slug}">
-                            <div class="category-list__icon-container">
-                                <img src="img/alle-produkter.svg" alt="${title}" class="category-list__icon">
-                            </div>
-                            <h3 class="category-list__category-title">${title}</h3>
-                        </a>
-                    </li>`;
-            }
+        if (menuItemInfo.submenu != null) {
+            createSubmenu(menuItems[i]);
         }
         nav_html += '</li>';
     }
@@ -192,8 +171,12 @@ function constructMenu(menuItems) {
     return nav_html;
 }
 
-function constructSubmenu(submenu) {
-    console.log('submenu', submenu);
+
+
+
+
+function createSubmenu(submenu) {
+    console.log('createSubMenu', submenu);
 
     nav_html +=
         `<li class="list__item">
@@ -205,6 +188,87 @@ function constructSubmenu(submenu) {
     nav_html += constructMenu(submenu);
     nav_html += '</ul>';
 }
+
+
+
+
+
+function createProductLink(menuType) {
+    console.log('createProductLink');
+
+    switch (menuType) {
+        case 'header':
+            console.log('Menutypen er header! 🤓');
+            break;
+        case 'footer':
+            console.log('Menutypen er footer! 🤓');
+            break;
+        case 'slider':
+            console.log('Menutypen er slider! 🤓');
+            break;
+        default:
+            console.log('Jeg ved ikke hvilken menutype det er 😔');
+            break;
+    }
+}
+
+
+
+
+
+function createCategoryLink(menuItem, menuType) {
+    // Det link vi opretter
+    let html;
+
+
+    let objectId = menuItem.object_id;
+    let categoryDetails = menuCategories.find(category => category.id === objectId);
+
+    slug = categoryDetails.slug;
+
+    if (categoryDetails.indtast_target_link != '') {
+        menuItem.link = categoryDetails.indtast_target_link;
+    } else {
+        menuItem.link = `alle-produkter.html?filter=${categoryDetails.slug}`;
+    }
+
+    if (categoryDetails.svgImage != '') {
+        menuItem.svgImage = categoryDetails.svg_image.guid;
+    }
+
+    switch (menuType) {
+        case 'header':
+            console.log('Menutypen er header! 🤓');
+            break;
+
+        case 'footer':
+            console.log('Menutypen er footer! 🤓');
+            break;
+
+        case 'slider':
+            console.log('Menutypen er slider! 🤓');
+            html = `<li class="category-list__item">
+                        <a href="${menuItem.link}" class="category-list__link js-category-button" data-category="${menuItem.slug}">
+                            <div class="category-list__icon-container">
+                                <img src="${menuItem.svgImage ? menuItem.svgImage : 'img/alle-produkter.svg'}" alt="${menuItem.title}" class="category-list__icon">
+                            </div>
+                            <h3 class="category-list__category-title">${menuItem.title}</h3>
+                        </a>
+                    </li>`;
+            break;
+
+        default:
+            console.log('Jeg ved ikke hvilken menutype det er 😔');
+            break;
+    }
+
+    return html;
+}
+
+
+
+
+
 
 // Henter data fra Wordpress ned asynkront
 async function getData(contentType, parameters) {
@@ -249,40 +313,42 @@ async function getData(contentType, parameters) {
     return DATA;
 }
 
+function createPageLink(menuType) {
+    console.log('createPageLink');
 
-
-
-
-
-
-
-
-function constructMenuItem() {
-    console.log('constructMenuItem');
-
-    /* Detect what link should be made */
-
-    // createCategoryLink
-
-    // createPageLink
-
-    // createCustomLink
-
-    // createProductLink
+    switch (menuType) {
+        case 'header':
+            console.log('Menutypen er header! 🤓');
+            break;
+        case 'footer':
+            console.log('Menutypen er footer! 🤓');
+            break;
+        case 'slider':
+            console.log('Menutypen er slider! 🤓');
+            break;
+        default:
+            console.log('Jeg ved ikke hvilken menutype det er 😔');
+            break;
+    }
 }
 
-function createCategoryLink() {
-    console.log('constructCategory');
-}
+function createCustomLink(menuType) {
+    console.log('createCustomLink');
 
-function constructPageLink() {
-    console.log('constructPage');
+    switch (menuType) {
+        case 'header':
+            console.log('Menutypen er header! 🤓');
+            break;
+        case 'footer':
+            console.log('Menutypen er footer! 🤓');
+            break;
+        case 'slider':
+            console.log('Menutypen er slider! 🤓');
+            break;
+        default:
+            console.log('Jeg ved ikke hvilken menutype det er 😔');
+            break;
+    }
 }
-
-function constructCustomLink() {
-    console.log('constructCustomLink');
-}
-
-function constructSubMenu() {}
 
 function showMenu() {}

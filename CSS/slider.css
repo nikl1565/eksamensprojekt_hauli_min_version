@@ -166,7 +166,6 @@
     right: 0;
     top: 0;
     background-color: #fff;
-    z-index: 2;
 }
 
 .category-list__item {
@@ -186,6 +185,8 @@
     color: #000;
     display: flex;
     flex-direction: column;
+    position: relative;
+    z-index: 1;
 }
 
 .category-list__item:last-child {
