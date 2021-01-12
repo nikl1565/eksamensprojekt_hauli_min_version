@@ -1,5 +1,8 @@
 // Indstillinger
+
 const BASEURL = 'https://schjoldby.dk/kea/10_eksamensprojekt/eksamen/wordpress/wp-json/';
+
+// Et object der beskriver hvilke endpoints der er til de forskellige ting man kan hente
 const ROUTES = {
     PAGES: {
         PATH: 'wp/v2/',
@@ -24,14 +27,23 @@ const ROUTES = {
 }
 
 // Globale variabler
-// Det JSON data der bliver hentet ned fra Wordpress
+// Skal indeholde det JSON data der bliver hentet ned fra Wordpress
+// Som vi skal bruge til menuen
 let menuCategories;
 let menuPosts;
 let menuPages;
 let menus;
 
+
+
+
+
 // Når DOMen er loaded så kør startMenu funktionen
 document.addEventListener("DOMContentLoaded", startMenu);
+
+
+
+
 
 // Start menu funktion
 async function startMenu() {
@@ -50,8 +62,9 @@ async function startMenu() {
 
     // Hvis vi er på alle-produkter.html siden..
     if (htmlBody.classList.contains("page-alle-produkter")) {
+
         // Så vis hvilken knap der er aktiv
-        document.querySelector(`.js-category-button[data-category="${filter}"]`).classList.add("button-clicked");
+        document.querySelector(`[data-category="${filter}"]`).classList.add("button-clicked");
         // Gør så man kan klikke på kategoriknapperne
         initCategoryButtons();
     }
@@ -105,15 +118,13 @@ async function findMenusOnPage() {
 
 
 
-
-
-
 // Lav menuen via createMenu funktionen
 function createMenu(menuDetails, menu) {
 
     let menuType = menu.dataset.menuType;
 
     // Og når den er lavet, så vis den for brugeren
+    // i forskellige layouts alt efter hvilken slags menu det er
     switch (menuType) {
         case 'header':
             menu.innerHTML = `<ul>${constructMenu(menuDetails.items, menuType)}</ul>`;
@@ -139,10 +150,12 @@ function createMenu(menuDetails, menu) {
 
 
 function constructMenu(menuItems, menuType) {
-    let nav_html = '';
+    // Hele menustrukturen for menuen
+    let menuStructure = '';
 
     // For hvert menupunkt i menuen
     for (let i = 0; i < menuItems.length; i++) {
+
 
         let link = `${menuItems[i]['title']}.html`.toLowerCase();
 
@@ -159,23 +172,23 @@ function constructMenu(menuItems, menuType) {
             case 'category':
                 console.log(`Menupunkt nr. ${i + 1} er et kategori link 🥳 ${menuItems[i]['title']}`);
 
-                nav_html += createCategoryLink(menuItems[i], menuType);
+                menuStructure += createCategoryLink(menuItems[i], menuType);
                 break;
 
             case 'page':
                 console.log(`Menupunkt nr. ${i + 1} er en page 🥳 ${menuItems[i]['title']}`);
-                nav_html += createPageLink(menuItems[i], menuType);
+                menuStructure += createPageLink(menuItems[i], menuType);
                 break;
 
             case 'custom':
                 console.log(`Menupunkt nr. ${i + 1} er et custom link 🥳 ${menuItems[i]['title']}`);
                 link = menuItems[i]['url'];
-                nav_html += createCustomLink(menuItems[i], menuType);
+                menuStructure += createCustomLink(menuItems[i], menuType);
                 break;
 
             case 'produkt':
                 console.log(`Menupunkt nr. ${i + 1} er et produkt link 🥳 ${menuItems[i]['title']}`);
-                nav_html += createProductLink(menuItems[i], menuType);
+                menuStructure += createProductLink(menuItems[i], menuType);
                 break;
 
             default:
@@ -185,12 +198,12 @@ function constructMenu(menuItems, menuType) {
         // Later 🐊
         //        if (menuItemInfo.submenu != null) {
         //            createSubmenu(menuItems[i]);
-        //        } else { nav_html += '</li>'; }
+        //        } else { menuStructure += '</li>'; }
 
-        nav_html += '</li>';
+        menuStructure += '</li>';
     }
 
-    return nav_html;
+    return menuStructure;
 }
 
 
@@ -200,15 +213,15 @@ function constructMenu(menuItems, menuType) {
 function createSubmenu(submenu) {
     console.log('createSubMenu', submenu);
 
-    nav_html +=
+    menuStructure +=
         `<li class="list__item">
             <a class="list__link has-submenu" href="${href}">
                 ${title}
                     <span class="list__link-arrow"></span>
             </a>`;
-    nav_html += '<ul class="list__submenu">';
-    nav_html += constructMenu(submenu);
-    nav_html += '</ul>';
+    menuStructure += '<ul class="list__submenu">';
+    menuStructure += constructMenu(submenu);
+    menuStructure += '</ul>';
 }
 
 
@@ -244,7 +257,7 @@ function createCategoryLink(menuItem, menuType) {
     let objectId = menuItem.object_id;
     let categoryDetails = menuCategories.find(category => category.id === objectId);
 
-    slug = categoryDetails.slug;
+    menuItem.slug = categoryDetails.slug;
 
     if (categoryDetails.indtast_target_link != '') {
         menuItem.link = categoryDetails.indtast_target_link;
