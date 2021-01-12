@@ -23,20 +23,21 @@ const ROUTES = {
     }
 }
 
+// Globale variabler
 // Det JSON data der bliver hentet ned fra Wordpress
 let menuCategories;
 let menuPosts;
 let menuPages;
 let menus;
 
-// Når DOMen er loaded så kør startmenu funktionen
+// Når DOMen er loaded så kør startMenu funktionen
 document.addEventListener("DOMContentLoaded", startMenu);
 
 // Start menu funktion
 async function startMenu() {
     console.log('Start menu');
 
-    // Hent alt data fra Wordpress
+    // Hent alt data fra Wordpress som vi skal bruge til menupunkterne
     menuCategories = await getData(ROUTES.CATEGORIES.ENDPOINT, '');
     menuPages = await getData(ROUTES.PAGES.ENDPOINT, '');
     menuPosts = await getData(ROUTES.POSTS.ENDPOINT, '');
@@ -47,7 +48,7 @@ async function startMenu() {
     // Når alle menuer på siden er fundet og vist for brugeren
     const htmlBody = document.querySelector("body");
 
-    // Hvis vi er på alle produkter siden..
+    // Hvis vi er på alle-produkter.html siden..
     if (htmlBody.classList.contains("page-alle-produkter")) {
         // Så vis hvilken knap der er aktiv
         document.querySelector(`.js-category-button[data-category="${filter}"]`).classList.add("button-clicked");
@@ -62,37 +63,41 @@ async function findMenusOnPage() {
 
     // Find alle menuer der skal vises på siden i HTML'en
     let menusOnPage = Array.prototype.slice.call(document.querySelectorAll("[data-menu-name]"));
-    console.log('Menus on the page ', menusOnPage);
 
-    // Hvis der er en wordpress Menu på siden...
+    // Hvis der er en eller flere menuer på siden...
     if (menusOnPage.length > 0) {
+        // Så hent basic info om alle menuer fra Wordpress
         menus = await getData(ROUTES.MENUS.ENDPOINT, '');
+        console.log('Menuer fra Wordpress', menus);
 
-        //... Så loop igennem alle menuer på siden
+        // og loop herefter igennem alle menuer på siden
         for (let menu of menusOnPage) {
 
-            // Find den rigtige menu
+            // Find den rigtige menu fra basic info
             const findMenuInformation = menus.find(menuInformation => menuInformation.name === menu.dataset.menuName);
-            //            console.log('Find menu information: ', findMenuInformation);
 
-            // Hent menu detaljer
+            // Herefter hent detaljerne om menuen
             const getMenuDetails = await getData(findMenuInformation.taxonomy, findMenuInformation.ID);
-            //            console.log('Menu details: ', getMenuDetails);
 
-            // Hvis menuen indeholder 1 eller flere menupunkter
+            // Hvis menuen indeholder 1 eller flere menupunkter...
             if (getMenuDetails.items.length > 0) {
-                // Så find ud af hvilken menutype menuen er
+                //... Så find ud af hvilken menutype menuen er
                 const menuType = menu.dataset.menuType;
-                console.table(`%cMenunavn: ${getMenuDetails.name}`, 'background: #FFE4E4; font-size: 1rem;');
-                console.log(`%cMenutype ${menuType}`, 'background: #FFE4E4; font-size: 0.8rem;');
 
-                // Så lav menuen
+                // Viser menunavn og menutype i konsollen med rød baggrund
+                console.table(`%cMenunavnet er: ${getMenuDetails.name} 🤓`, 'background: #FFE4E4; font-size: 1rem;');
+                console.log(`%cMenutypen er ${menuType} 🤓`, 'background: #FFE4E4; font-size: 0.8rem;');
+
+                // og lav menuen
                 createMenu(getMenuDetails, menu);
+            } else {
+                // ... og hvis ikke så stop funktionen her
+                return console.log('Menuen indeholder ingen menupunkter 😔');
             }
         }
     } else {
         //... Og hvis der ikke er, så stop funktionen her
-        return console.log('Der er ingen menuer på siden');
+        return console.log('Der er ingen menuer på siden 😔');
     }
 
 
@@ -111,16 +116,14 @@ function createMenu(menuDetails, menu) {
     // Og når den er lavet, så vis den for brugeren
     switch (menuType) {
         case 'header':
-            console.log('Menutypen er header! 🤓');
             menu.innerHTML = `<ul>${constructMenu(menuDetails.items, menuType)}</ul>`;
             break;
 
         case 'footer':
-            console.log('Menutypen er footer! 🤓');
+            menu.innerHTML = `<ul>${constructMenu(menuDetails.items, menuType)}</ul>`;
             break;
 
         case 'slider':
-            console.log('Menutypen er slider! 🤓');
             menu.innerHTML = `<ul class="category-list">${constructMenu(menuDetails.items, menuType)}</ul>`;
             break;
 
@@ -217,10 +220,13 @@ function createProductLink(menuItem, menuType) {
     switch (menuType) {
         case 'header':
             break;
+
         case 'footer':
             break;
+
         case 'slider':
             break;
+
         default:
             break;
     }
@@ -252,20 +258,20 @@ function createCategoryLink(menuItem, menuType) {
 
     switch (menuType) {
         case 'header':
-            console.log('Menutypen er header! 🤓');
             html = `
                 <li class="overpunkter mobile_styling">
                     <a href="${menuItem.link}" class="overpunkter_styling">${menuItem.title}</a>
                 </li>`;
-
             break;
 
         case 'footer':
-            console.log('Menutypen er footer! 🤓');
+            html = `
+                <li>
+                    <a class="footer_link" href="${menuItem.link}">${menuItem.title}</a>
+                </li>`;
             break;
 
         case 'slider':
-            console.log('Menutypen er slider! 🤓');
             html = `<li class="category-list__item">
                         <a href="${menuItem.link}" class="category-list__link js-category-button" data-category="${menuItem.slug}">
                             <div class="category-list__icon-container">
@@ -296,7 +302,6 @@ function createPageLink(menuItem, menuType) {
 
     switch (menuType) {
         case 'header':
-            console.log('Menutypen er header! 🤓');
             html = `
                 <li class="overpunkter mobile_styling">
                     <a href="${menuItem.link}" class="overpunkter_styling">${menuItem.title}</a>
@@ -306,11 +311,13 @@ function createPageLink(menuItem, menuType) {
             break;
 
         case 'footer':
-            console.log('Menutypen er footer! 🤓');
+            html = `
+                <li>
+                    <a class="footer_link" href="${menuItem.link}">${menuItem.title}</a>
+                </li>`;
             break;
 
         case 'slider':
-            console.log('Menutypen er slider! 🤓');
             break;
 
         default:
@@ -329,26 +336,22 @@ function createCustomLink(menuItem, menuType) {
 
     let html;
 
-    console.log(menuItem);
-
     menuItem.link = menuItem.url;
-
-    console.log(menuItem.link);
 
     switch (menuType) {
         case 'header':
-            console.log('Menutypen er header! 🤓');
-
             html = `
                 <li class="overpunkter mobile_styling">
                     <a href="${menuItem.link}" class="overpunkter_styling">${menuItem.title}</a>
                 </li>`;
             break;
         case 'footer':
-            console.log('Menutypen er footer! 🤓');
+            html = `
+                <li>
+                    <a class="footer_link" href="${menuItem.link}">${menuItem.title}</a>
+                </li>`;
             break;
         case 'slider':
-            console.log('Menutypen er slider! 🤓');
             break;
         default:
             console.log('Jeg ved ikke hvilken menutype det er 😔');
