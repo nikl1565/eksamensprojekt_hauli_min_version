@@ -33,7 +33,6 @@
 </head>
 
 <body>
-
     <header>
         <div class="header_menu_width container">
 
@@ -51,13 +50,7 @@
                     </a>
                 </div>
 
-                <nav class="js_globalmenu css_globalmenu css_globalmenu_hidden js_globalmenu_hidden">
-                    <ul class="">
-                        <li class="overpunkter mobile_styling"> <a href="alle-produkter.html" class="overpunkter_styling shop">Webshop</a></li>
-                        <li class="overpunkter mobile_styling"> <a href="om-os.html" class="overpunkter_styling om is-active">Om HAULI</a></li>
-                        <li class="overpunkter mobile_styling"> <a href="kontakt.html" class="overpunkter_styling kontakt">Kontakt</a></li>
-
-                    </ul>
+                <nav class="js_globalmenu css_globalmenu css_globalmenu_hidden js_globalmenu_hidden" data-menu-name="global-menu" data-menu-type="header">
                 </nav>
 
                 <div class="css_header_menu_cart_icon">
@@ -79,7 +72,6 @@
         </div>
     </header>
 
-
     <main>
         <section class="about_content">
         </section>
@@ -88,19 +80,14 @@
 
 
     <!--FOOTER-->
-    <footer class="footerstyling">
+    <footer class="footerstyling u-margin-top">
         <!--FOOTER COLUMN WRAPPER-->
 
         <div class="footerinfo container">
             <!--FOOTER COLUMN-->
             <div class="footercolumn">
                 <h3 class="footer_title">Kontakt HAULI</h3>
-                <ul>
-                    <li><a class="footer_link" href="https://goo.gl/maps/QZTs9b3uJH38N15x6" target="_blank">Værkstedets adresse: <br> Kronprinsessegade 24, <br> 1306 Kbh K</a></li>
-                    <li><a class="footer_link" href="tel:+4521963261">+45 21 96 32 61</a></li>
-                    <li><a class="footer_link" href="mailto:info@hauli.dk">info@hauli.dk</a></li>
-                    <li><a class="footer_link" href="om-os.html">CVR: 35902619</a></li>
-                </ul>
+                <div data-menu-name="footer-kontakt" data-menu-type="footer"></div>
             </div>
             <!---->
             <!---->
@@ -118,14 +105,7 @@
             <!---->
             <div class="footercolumn">
                 <h3 class="footer_title">Information</h3>
-                <ul>
-                    <li><a class="footer_link" href="om-os.html">Om HAULI</a></li>
-                    <li><a class="footer_link" href="#">Handelsbetingelser</a></li>
-                    <li><a class="footer_link" href="#">Privatlivspolitik</a></li>
-                    <li><a class="footer_link" href="#">Levering og returnering</a></li>
-                    <li><a class="footer_link" href="#">Kundeservice</a></li>
-
-                </ul>
+                <div data-menu-name="footer-information" data-menu-type="footer"></div>
 
                 <div class="socialmediabox">
                     <!--FOOTER SOCIALMEDIA LINK-->
@@ -147,6 +127,7 @@
     </footer>
 
     <script src="JS/global.js"></script>
+    <script src="JS/menu.js"></script>
     <script>
         // Når DOMen er loadet kør start funktion
         document.addEventListener("DOMContentLoaded", init);
@@ -158,10 +139,10 @@
         // Start funktion
         function init() {
             // URL til Om Os siden
-            let url = 'https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/pages?slug=om-os';
+            let url = 'https://schjoldby.dk/kea/10_eksamensprojekt/eksamen/wordpress/wp-json/wp/v2/pages?slug=om-os';
 
-            // Tager URL med --> getData(url)
-            getData(url);
+            // Tager URL med --> getAboutData(url)
+            getAboutData(url);
         }
 
 
@@ -170,8 +151,8 @@
 
 
         // Henter data fra Wordpress til Om Os siden
-        async function getData(url) {
-            console.log('getData');
+        async function getAboutData(url) {
+            console.log('getAboutData');
 
             // Henter om os data fra Wordpress
             const response = await fetch(url);
@@ -278,5 +259,8 @@
             // Facebook Website url tag
             document.querySelector("meta[property='og:url']").setAttribute("content", window.location.href);
         }
+
     </script>
-</body></html>
+</body>
+
+</html>

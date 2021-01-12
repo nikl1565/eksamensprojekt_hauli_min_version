@@ -52,13 +52,7 @@
                     </a>
                 </div>
 
-                <nav class="js_globalmenu css_globalmenu css_globalmenu_hidden js_globalmenu_hidden">
-                    <ul class="">
-                        <li class="overpunkter mobile_styling"> <a href="alle-produkter.html" class="overpunkter_styling shop">Webshop</a></li>
-                        <li class="overpunkter mobile_styling"> <a href="om-os.html" class="overpunkter_styling om">Om HAULI</a></li>
-                        <li class="overpunkter mobile_styling"> <a href="kontakt.html" class="overpunkter_styling kontakt">Kontakt</a></li>
-
-                    </ul>
+                <nav class="js_globalmenu css_globalmenu css_globalmenu_hidden js_globalmenu_hidden" data-menu-name="global-menu" data-menu-type="header">
                 </nav>
 
                 <div class="css_header_menu_cart_icon">
@@ -146,6 +140,9 @@
                 </ul>
             </div>
         </section>
+
+
+
         <section class="js_dynamic_content"></section>
 
         <section class="instagram-slider">
@@ -238,12 +235,7 @@
             <!--FOOTER COLUMN-->
             <div class="footercolumn">
                 <h3 class="footer_title">Kontakt HAULI</h3>
-                <ul>
-                    <li><a class="footer_link" href="https://goo.gl/maps/QZTs9b3uJH38N15x6" target="_blank">Værkstedets adresse: <br> Kronprinsessegade 24, <br> 1306 Kbh K</a></li>
-                    <li><a class="footer_link" href="tel:+4521963261">+45 21 96 32 61</a></li>
-                    <li><a class="footer_link" href="mailto:info@hauli.dk">info@hauli.dk</a></li>
-                    <li><a class="footer_link" href="om-os.html">CVR: 35902619</a></li>
-                </ul>
+                <div data-menu-name="footer-kontakt" data-menu-type="footer"></div>
             </div>
             <!---->
             <!---->
@@ -261,14 +253,7 @@
             <!---->
             <div class="footercolumn">
                 <h3 class="footer_title">Information</h3>
-                <ul>
-                    <li><a class="footer_link" href="om-os.html">Om HAULI</a></li>
-                    <li><a class="footer_link" href="#">Handelsbetingelser</a></li>
-                    <li><a class="footer_link" href="#">Privatlivspolitik</a></li>
-                    <li><a class="footer_link" href="#">Levering og returnering</a></li>
-                    <li><a class="footer_link" href="#">Kundeservice</a></li>
-
-                </ul>
+                <div data-menu-name="footer-information" data-menu-type="footer"></div>
 
                 <div class="socialmediabox">
                     <!--FOOTER SOCIALMEDIA LINK-->
@@ -322,7 +307,7 @@
         document.addEventListener("DOMContentLoaded", start);
 
         // URL til landingpage (forsiden)
-        var url = "https://schjoldby.dk/kea/10_eksamensprojekt/hauli/wordpress/wp-json/wp/v2/pages?slug=landingpage";
+        var url = "https://schjoldby.dk/kea/10_eksamensprojekt/eksamen/wordpress/wp-json/wp/v2/pages?slug=landingpage";
 
         // Splashbillede
         let splash = document.querySelector(".css_splash");
@@ -365,9 +350,11 @@
 
             // Få fat på vores splash sektions højde i px
             let splashHeight = splash.offsetHeight;
+            console.log(`splashHeight: ${splashHeight}`);
 
             // Find ud af hvor vi er henne på siden i px's
             let clientHeight = window.pageYOffset;
+            console.log(`clientHeight: ${clientHeight}`);
 
             // Hvis vi ikke længere kan se splash sektionen på skærmen
             if (clientHeight >= splashHeight) {
