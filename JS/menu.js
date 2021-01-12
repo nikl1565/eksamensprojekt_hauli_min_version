@@ -105,8 +105,29 @@ async function findMenusOnPage() {
 
 // Lav menuen via createMenu funktionen
 function createMenu(menuDetails, menu) {
+
+    let menuType = menu.dataset.menuType;
+
     // Og når den er lavet, så vis den for brugeren
-    menu.innerHTML = `<ul>${constructMenu(menuDetails.items, menu.dataset.menuType)}</ul>`;
+    switch (menuType) {
+        case 'header':
+            console.log('Menutypen er header! 🤓');
+            menu.innerHTML = `<ul>${constructMenu(menuDetails.items, menuType)}</ul>`;
+            break;
+
+        case 'footer':
+            console.log('Menutypen er footer! 🤓');
+            break;
+
+        case 'slider':
+            console.log('Menutypen er slider! 🤓');
+            menu.innerHTML = `<ul class="category-list">${constructMenu(menuDetails.items, menuType)}</ul>`;
+            break;
+
+        default:
+            console.log('Jeg ved ikke hvilken menutype det er 😔');
+            break;
+    }
 }
 
 
@@ -195,16 +216,12 @@ function createProductLink(menuItem, menuType) {
 
     switch (menuType) {
         case 'header':
-            console.log('Menutypen er header! 🤓');
             break;
         case 'footer':
-            console.log('Menutypen er footer! 🤓');
             break;
         case 'slider':
-            console.log('Menutypen er slider! 🤓');
             break;
         default:
-            console.log('Jeg ved ikke hvilken menutype det er 😔');
             break;
     }
 }
