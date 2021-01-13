@@ -210,24 +210,6 @@ function constructMenu(menuItems, menuType) {
 
 
 
-function createSubmenu(submenu) {
-    console.log('createSubMenu', submenu);
-
-    menuStructure +=
-        `<li class="list__item">
-            <a class="list__link has-submenu" href="${href}">
-                ${title}
-                    <span class="list__link-arrow"></span>
-            </a>`;
-    menuStructure += '<ul class="list__submenu">';
-    menuStructure += constructMenu(submenu);
-    menuStructure += '</ul>';
-}
-
-
-
-
-
 function createProductLink(menuItem, menuType) {
 
     switch (menuType) {
@@ -418,4 +400,25 @@ async function getData(contentType, parameters) {
     const DATA = await RESPONSE.json();
 
     return DATA;
+}
+
+
+
+
+
+
+
+/* :-) */
+function createSubmenu(submenu) {
+    console.log('createSubMenu', submenu);
+
+    menuStructure +=
+        `<li class="list__item">
+            <a class="list__link has-submenu" href="${href}">
+                ${title}
+                    <span class="list__link-arrow"></span>
+            </a>`;
+    menuStructure += '<ul class="list__submenu">';
+    menuStructure += constructMenu(submenu);
+    menuStructure += '</ul>';
 }
